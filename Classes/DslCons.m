@@ -498,7 +498,7 @@
     return [(DslCons*)[[self cadr] eval:bindings] cdddr];
   } else if ([procName isEqualToString:@"cdadr"]) {
     return [(DslCons*)[[self cadr] eval:bindings] cdadr];
-  } else if ([procName isEqualToString:@"cadddd"]) {
+  } else if ([procName isEqualToString:@"cddddr"]) {
     return [(DslCons*)[[self cadr] eval:bindings] cddddr];
   } else if ([procName isEqualToString:@"cdar"]) {
     return [(DslCons*)[[self cadr] eval:bindings] cdar];
