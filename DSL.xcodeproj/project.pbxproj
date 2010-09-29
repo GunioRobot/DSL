@@ -1,0 +1,690 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1096733E12528B8C0004C216 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1096733D12528B8C0004C216 /* main.m */; };
+		1096734712528C3B0004C216 /* DslBoolean.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A07D12516E1900E0A8C8 /* DslBoolean.m */; };
+		1096734812528C3B0004C216 /* DslCons.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A07F12516E1900E0A8C8 /* DslCons.m */; };
+		1096734912528C3B0004C216 /* DslExpression.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A08112516E1900E0A8C8 /* DslExpression.m */; };
+		1096734A12528C3B0004C216 /* DslFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A08312516E1900E0A8C8 /* DslFunction.m */; };
+		1096734B12528C3B0004C216 /* DslIdentifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A08512516E1900E0A8C8 /* DslIdentifier.m */; };
+		1096734C12528C3B0004C216 /* DslNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A08712516E1900E0A8C8 /* DslNumber.m */; };
+		1096734D12528C3B0004C216 /* DslObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A08912516E1900E0A8C8 /* DslObject.m */; };
+		1096734E12528C3B0004C216 /* DslParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A08B12516E1900E0A8C8 /* DslParser.m */; };
+		1096734F12528C3B0004C216 /* DslString.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A08D12516E1900E0A8C8 /* DslString.m */; };
+		1096735012528C3B0004C216 /* Functions.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A08F12516E1900E0A8C8 /* Functions.m */; };
+		1096735112528C3B0004C216 /* InputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A09112516E1900E0A8C8 /* InputStream.m */; };
+		1096743C1252BB940004C216 /* Tester.m in Sources */ = {isa = PBXBuildFile; fileRef = 1096743B1252BB940004C216 /* Tester.m */; };
+		10A8A09212516E1900E0A8C8 /* dsl.h in Headers */ = {isa = PBXBuildFile; fileRef = 10A8A07B12516E1900E0A8C8 /* dsl.h */; };
+		10A8A09312516E1900E0A8C8 /* DslBoolean.h in Headers */ = {isa = PBXBuildFile; fileRef = 10A8A07C12516E1900E0A8C8 /* DslBoolean.h */; };
+		10A8A09412516E1900E0A8C8 /* DslBoolean.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A07D12516E1900E0A8C8 /* DslBoolean.m */; };
+		10A8A09512516E1900E0A8C8 /* DslCons.h in Headers */ = {isa = PBXBuildFile; fileRef = 10A8A07E12516E1900E0A8C8 /* DslCons.h */; };
+		10A8A09612516E1900E0A8C8 /* DslCons.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A07F12516E1900E0A8C8 /* DslCons.m */; };
+		10A8A09712516E1900E0A8C8 /* DslExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = 10A8A08012516E1900E0A8C8 /* DslExpression.h */; };
+		10A8A09812516E1900E0A8C8 /* DslExpression.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A08112516E1900E0A8C8 /* DslExpression.m */; };
+		10A8A09912516E1900E0A8C8 /* DslFunction.h in Headers */ = {isa = PBXBuildFile; fileRef = 10A8A08212516E1900E0A8C8 /* DslFunction.h */; };
+		10A8A09A12516E1900E0A8C8 /* DslFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A08312516E1900E0A8C8 /* DslFunction.m */; };
+		10A8A09B12516E1900E0A8C8 /* DslIdentifier.h in Headers */ = {isa = PBXBuildFile; fileRef = 10A8A08412516E1900E0A8C8 /* DslIdentifier.h */; };
+		10A8A09C12516E1900E0A8C8 /* DslIdentifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A08512516E1900E0A8C8 /* DslIdentifier.m */; };
+		10A8A09D12516E1900E0A8C8 /* DslNumber.h in Headers */ = {isa = PBXBuildFile; fileRef = 10A8A08612516E1900E0A8C8 /* DslNumber.h */; };
+		10A8A09E12516E1900E0A8C8 /* DslNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A08712516E1900E0A8C8 /* DslNumber.m */; };
+		10A8A09F12516E1900E0A8C8 /* DslObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 10A8A08812516E1900E0A8C8 /* DslObject.h */; };
+		10A8A0A012516E1900E0A8C8 /* DslObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A08912516E1900E0A8C8 /* DslObject.m */; };
+		10A8A0A112516E1900E0A8C8 /* DslParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 10A8A08A12516E1900E0A8C8 /* DslParser.h */; };
+		10A8A0A212516E1900E0A8C8 /* DslParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A08B12516E1900E0A8C8 /* DslParser.m */; };
+		10A8A0A312516E1900E0A8C8 /* DslString.h in Headers */ = {isa = PBXBuildFile; fileRef = 10A8A08C12516E1900E0A8C8 /* DslString.h */; };
+		10A8A0A412516E1900E0A8C8 /* DslString.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A08D12516E1900E0A8C8 /* DslString.m */; };
+		10A8A0A512516E1900E0A8C8 /* Functions.h in Headers */ = {isa = PBXBuildFile; fileRef = 10A8A08E12516E1900E0A8C8 /* Functions.h */; };
+		10A8A0A612516E1900E0A8C8 /* Functions.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A08F12516E1900E0A8C8 /* Functions.m */; };
+		10A8A0A712516E1900E0A8C8 /* InputStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 10A8A09012516E1900E0A8C8 /* InputStream.h */; };
+		10A8A0A812516E1900E0A8C8 /* InputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A09112516E1900E0A8C8 /* InputStream.m */; };
+		10A8A0A912516E1900E0A8C8 /* DslBoolean.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A07D12516E1900E0A8C8 /* DslBoolean.m */; };
+		10A8A0AA12516E1900E0A8C8 /* DslCons.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A07F12516E1900E0A8C8 /* DslCons.m */; };
+		10A8A0AB12516E1900E0A8C8 /* DslExpression.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A08112516E1900E0A8C8 /* DslExpression.m */; };
+		10A8A0AC12516E1900E0A8C8 /* DslFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A08312516E1900E0A8C8 /* DslFunction.m */; };
+		10A8A0AD12516E1900E0A8C8 /* DslIdentifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A08512516E1900E0A8C8 /* DslIdentifier.m */; };
+		10A8A0AE12516E1900E0A8C8 /* DslNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A08712516E1900E0A8C8 /* DslNumber.m */; };
+		10A8A0AF12516E1900E0A8C8 /* DslObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A08912516E1900E0A8C8 /* DslObject.m */; };
+		10A8A0B012516E1900E0A8C8 /* DslParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A08B12516E1900E0A8C8 /* DslParser.m */; };
+		10A8A0B112516E1900E0A8C8 /* DslString.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A08D12516E1900E0A8C8 /* DslString.m */; };
+		10A8A0B212516E1900E0A8C8 /* Functions.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A08F12516E1900E0A8C8 /* Functions.m */; };
+		10A8A0B312516E1900E0A8C8 /* InputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A09112516E1900E0A8C8 /* InputStream.m */; };
+		10A8A0D112516E2600E0A8C8 /* AtomicExpressionParsingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A0B612516E2600E0A8C8 /* AtomicExpressionParsingTest.m */; };
+		10A8A0D212516E2600E0A8C8 /* BooleanParsingTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A0B812516E2600E0A8C8 /* BooleanParsingTestCase.m */; };
+		10A8A0D312516E2600E0A8C8 /* CondTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A0BA12516E2600E0A8C8 /* CondTestCase.m */; };
+		10A8A0D412516E2600E0A8C8 /* ConsParsingTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A0BC12516E2600E0A8C8 /* ConsParsingTestCase.m */; };
+		10A8A0D512516E2600E0A8C8 /* EvalTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A0BE12516E2600E0A8C8 /* EvalTestCase.m */; };
+		10A8A0D612516E2600E0A8C8 /* IdentifierParsingTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A0C012516E2600E0A8C8 /* IdentifierParsingTestCase.m */; };
+		10A8A0D712516E2600E0A8C8 /* LambdaTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A0C212516E2600E0A8C8 /* LambdaTestCase.m */; };
+		10A8A0D812516E2600E0A8C8 /* LetTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A0C412516E2600E0A8C8 /* LetTestCase.m */; };
+		10A8A0D912516E2600E0A8C8 /* ListFunctionsTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A0C612516E2600E0A8C8 /* ListFunctionsTestCase.m */; };
+		10A8A0DA12516E2600E0A8C8 /* NumberFunctionsTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A0C812516E2600E0A8C8 /* NumberFunctionsTestCase.m */; };
+		10A8A0DB12516E2600E0A8C8 /* NumberParsingTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A0CA12516E2600E0A8C8 /* NumberParsingTestCase.m */; };
+		10A8A0DC12516E2600E0A8C8 /* ObjectFunctionsTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A0CC12516E2600E0A8C8 /* ObjectFunctionsTestCase.m */; };
+		10A8A0DD12516E2600E0A8C8 /* OperatorFunctionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A0CE12516E2600E0A8C8 /* OperatorFunctionTest.m */; };
+		10A8A0DE12516E2600E0A8C8 /* StringParsingTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A0D012516E2600E0A8C8 /* StringParsingTestCase.m */; };
+		AA747D9F0F9514B9006C5449 /* DSL_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* DSL_Prefix.pch */; };
+		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1096731E12528B190004C216 /* Repl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Repl.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1096732012528B190004C216 /* Repl-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Repl-Info.plist"; sourceTree = "<group>"; };
+		1096733D12528B8C0004C216 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1096743A1252BB940004C216 /* Tester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tester.h; sourceTree = "<group>"; };
+		1096743B1252BB940004C216 /* Tester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tester.m; sourceTree = "<group>"; };
+		10A8A07412516DEA00E0A8C8 /* UnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		10A8A07512516DEA00E0A8C8 /* UnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UnitTests-Info.plist"; sourceTree = "<group>"; };
+		10A8A07B12516E1900E0A8C8 /* dsl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dsl.h; sourceTree = "<group>"; };
+		10A8A07C12516E1900E0A8C8 /* DslBoolean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DslBoolean.h; sourceTree = "<group>"; };
+		10A8A07D12516E1900E0A8C8 /* DslBoolean.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DslBoolean.m; sourceTree = "<group>"; };
+		10A8A07E12516E1900E0A8C8 /* DslCons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DslCons.h; sourceTree = "<group>"; };
+		10A8A07F12516E1900E0A8C8 /* DslCons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DslCons.m; sourceTree = "<group>"; };
+		10A8A08012516E1900E0A8C8 /* DslExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DslExpression.h; sourceTree = "<group>"; };
+		10A8A08112516E1900E0A8C8 /* DslExpression.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DslExpression.m; sourceTree = "<group>"; };
+		10A8A08212516E1900E0A8C8 /* DslFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DslFunction.h; sourceTree = "<group>"; };
+		10A8A08312516E1900E0A8C8 /* DslFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DslFunction.m; sourceTree = "<group>"; };
+		10A8A08412516E1900E0A8C8 /* DslIdentifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DslIdentifier.h; sourceTree = "<group>"; };
+		10A8A08512516E1900E0A8C8 /* DslIdentifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DslIdentifier.m; sourceTree = "<group>"; };
+		10A8A08612516E1900E0A8C8 /* DslNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DslNumber.h; sourceTree = "<group>"; };
+		10A8A08712516E1900E0A8C8 /* DslNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DslNumber.m; sourceTree = "<group>"; };
+		10A8A08812516E1900E0A8C8 /* DslObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DslObject.h; sourceTree = "<group>"; };
+		10A8A08912516E1900E0A8C8 /* DslObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DslObject.m; sourceTree = "<group>"; };
+		10A8A08A12516E1900E0A8C8 /* DslParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DslParser.h; sourceTree = "<group>"; };
+		10A8A08B12516E1900E0A8C8 /* DslParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DslParser.m; sourceTree = "<group>"; };
+		10A8A08C12516E1900E0A8C8 /* DslString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DslString.h; sourceTree = "<group>"; };
+		10A8A08D12516E1900E0A8C8 /* DslString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DslString.m; sourceTree = "<group>"; };
+		10A8A08E12516E1900E0A8C8 /* Functions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Functions.h; sourceTree = "<group>"; };
+		10A8A08F12516E1900E0A8C8 /* Functions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Functions.m; sourceTree = "<group>"; };
+		10A8A09012516E1900E0A8C8 /* InputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputStream.h; sourceTree = "<group>"; };
+		10A8A09112516E1900E0A8C8 /* InputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputStream.m; sourceTree = "<group>"; };
+		10A8A0B512516E2600E0A8C8 /* AtomicExpressionParsingTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomicExpressionParsingTest.h; sourceTree = "<group>"; };
+		10A8A0B612516E2600E0A8C8 /* AtomicExpressionParsingTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AtomicExpressionParsingTest.m; sourceTree = "<group>"; };
+		10A8A0B712516E2600E0A8C8 /* BooleanParsingTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BooleanParsingTestCase.h; sourceTree = "<group>"; };
+		10A8A0B812516E2600E0A8C8 /* BooleanParsingTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BooleanParsingTestCase.m; sourceTree = "<group>"; };
+		10A8A0B912516E2600E0A8C8 /* CondTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CondTestCase.h; sourceTree = "<group>"; };
+		10A8A0BA12516E2600E0A8C8 /* CondTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CondTestCase.m; sourceTree = "<group>"; };
+		10A8A0BB12516E2600E0A8C8 /* ConsParsingTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsParsingTestCase.h; sourceTree = "<group>"; };
+		10A8A0BC12516E2600E0A8C8 /* ConsParsingTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsParsingTestCase.m; sourceTree = "<group>"; };
+		10A8A0BD12516E2600E0A8C8 /* EvalTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EvalTestCase.h; sourceTree = "<group>"; };
+		10A8A0BE12516E2600E0A8C8 /* EvalTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EvalTestCase.m; sourceTree = "<group>"; };
+		10A8A0BF12516E2600E0A8C8 /* IdentifierParsingTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IdentifierParsingTestCase.h; sourceTree = "<group>"; };
+		10A8A0C012516E2600E0A8C8 /* IdentifierParsingTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IdentifierParsingTestCase.m; sourceTree = "<group>"; };
+		10A8A0C112516E2600E0A8C8 /* LambdaTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LambdaTestCase.h; sourceTree = "<group>"; };
+		10A8A0C212516E2600E0A8C8 /* LambdaTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LambdaTestCase.m; sourceTree = "<group>"; };
+		10A8A0C312516E2600E0A8C8 /* LetTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LetTestCase.h; sourceTree = "<group>"; };
+		10A8A0C412516E2600E0A8C8 /* LetTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LetTestCase.m; sourceTree = "<group>"; };
+		10A8A0C512516E2600E0A8C8 /* ListFunctionsTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListFunctionsTestCase.h; sourceTree = "<group>"; };
+		10A8A0C612516E2600E0A8C8 /* ListFunctionsTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListFunctionsTestCase.m; sourceTree = "<group>"; };
+		10A8A0C712516E2600E0A8C8 /* NumberFunctionsTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberFunctionsTestCase.h; sourceTree = "<group>"; };
+		10A8A0C812516E2600E0A8C8 /* NumberFunctionsTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumberFunctionsTestCase.m; sourceTree = "<group>"; };
+		10A8A0C912516E2600E0A8C8 /* NumberParsingTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberParsingTestCase.h; sourceTree = "<group>"; };
+		10A8A0CA12516E2600E0A8C8 /* NumberParsingTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumberParsingTestCase.m; sourceTree = "<group>"; };
+		10A8A0CB12516E2600E0A8C8 /* ObjectFunctionsTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectFunctionsTestCase.h; sourceTree = "<group>"; };
+		10A8A0CC12516E2600E0A8C8 /* ObjectFunctionsTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectFunctionsTestCase.m; sourceTree = "<group>"; };
+		10A8A0CD12516E2600E0A8C8 /* OperatorFunctionTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OperatorFunctionTest.h; sourceTree = "<group>"; };
+		10A8A0CE12516E2600E0A8C8 /* OperatorFunctionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OperatorFunctionTest.m; sourceTree = "<group>"; };
+		10A8A0CF12516E2600E0A8C8 /* StringParsingTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringParsingTestCase.h; sourceTree = "<group>"; };
+		10A8A0D012516E2600E0A8C8 /* StringParsingTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringParsingTestCase.m; sourceTree = "<group>"; };
+		AA747D9E0F9514B9006C5449 /* DSL_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSL_Prefix.pch; sourceTree = SOURCE_ROOT; };
+		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D2AAC07E0554694100DB518D /* libDSL.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDSL.a; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1096731C12528B190004C216 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		10A8A07112516DEA00E0A8C8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2AAC07C0554694100DB518D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		034768DFFF38A50411DB9C8B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D2AAC07E0554694100DB518D /* libDSL.a */,
+				10A8A07412516DEA00E0A8C8 /* UnitTests.octest */,
+				1096731E12528B190004C216 /* Repl.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0867D691FE84028FC02AAC07 /* DSL */ = {
+			isa = PBXGroup;
+			children = (
+				10A8A0B412516E2600E0A8C8 /* Tests */,
+				10A8A07A12516E1900E0A8C8 /* Classes */,
+				32C88DFF0371C24200C91783 /* Other Sources */,
+				0867D69AFE84028FC02AAC07 /* Frameworks */,
+				034768DFFF38A50411DB9C8B /* Products */,
+				10A8A07512516DEA00E0A8C8 /* UnitTests-Info.plist */,
+				1096732012528B190004C216 /* Repl-Info.plist */,
+			);
+			name = DSL;
+			sourceTree = "<group>";
+		};
+		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AACBBE490F95108600F1A2B1 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		10A8A07A12516E1900E0A8C8 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				10A8A07B12516E1900E0A8C8 /* dsl.h */,
+				10A8A07C12516E1900E0A8C8 /* DslBoolean.h */,
+				10A8A07D12516E1900E0A8C8 /* DslBoolean.m */,
+				10A8A07E12516E1900E0A8C8 /* DslCons.h */,
+				10A8A07F12516E1900E0A8C8 /* DslCons.m */,
+				10A8A08012516E1900E0A8C8 /* DslExpression.h */,
+				10A8A08112516E1900E0A8C8 /* DslExpression.m */,
+				10A8A08212516E1900E0A8C8 /* DslFunction.h */,
+				10A8A08312516E1900E0A8C8 /* DslFunction.m */,
+				10A8A08412516E1900E0A8C8 /* DslIdentifier.h */,
+				10A8A08512516E1900E0A8C8 /* DslIdentifier.m */,
+				10A8A08612516E1900E0A8C8 /* DslNumber.h */,
+				10A8A08712516E1900E0A8C8 /* DslNumber.m */,
+				10A8A08812516E1900E0A8C8 /* DslObject.h */,
+				10A8A08912516E1900E0A8C8 /* DslObject.m */,
+				10A8A08A12516E1900E0A8C8 /* DslParser.h */,
+				10A8A08B12516E1900E0A8C8 /* DslParser.m */,
+				10A8A08C12516E1900E0A8C8 /* DslString.h */,
+				10A8A08D12516E1900E0A8C8 /* DslString.m */,
+				10A8A08E12516E1900E0A8C8 /* Functions.h */,
+				10A8A08F12516E1900E0A8C8 /* Functions.m */,
+				10A8A09012516E1900E0A8C8 /* InputStream.h */,
+				10A8A09112516E1900E0A8C8 /* InputStream.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		10A8A0B412516E2600E0A8C8 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				10A8A0B512516E2600E0A8C8 /* AtomicExpressionParsingTest.h */,
+				10A8A0B612516E2600E0A8C8 /* AtomicExpressionParsingTest.m */,
+				10A8A0B712516E2600E0A8C8 /* BooleanParsingTestCase.h */,
+				10A8A0B812516E2600E0A8C8 /* BooleanParsingTestCase.m */,
+				10A8A0B912516E2600E0A8C8 /* CondTestCase.h */,
+				10A8A0BA12516E2600E0A8C8 /* CondTestCase.m */,
+				10A8A0BB12516E2600E0A8C8 /* ConsParsingTestCase.h */,
+				10A8A0BC12516E2600E0A8C8 /* ConsParsingTestCase.m */,
+				10A8A0BD12516E2600E0A8C8 /* EvalTestCase.h */,
+				10A8A0BE12516E2600E0A8C8 /* EvalTestCase.m */,
+				10A8A0BF12516E2600E0A8C8 /* IdentifierParsingTestCase.h */,
+				10A8A0C012516E2600E0A8C8 /* IdentifierParsingTestCase.m */,
+				10A8A0C112516E2600E0A8C8 /* LambdaTestCase.h */,
+				10A8A0C212516E2600E0A8C8 /* LambdaTestCase.m */,
+				10A8A0C312516E2600E0A8C8 /* LetTestCase.h */,
+				10A8A0C412516E2600E0A8C8 /* LetTestCase.m */,
+				10A8A0C512516E2600E0A8C8 /* ListFunctionsTestCase.h */,
+				10A8A0C612516E2600E0A8C8 /* ListFunctionsTestCase.m */,
+				10A8A0C712516E2600E0A8C8 /* NumberFunctionsTestCase.h */,
+				10A8A0C812516E2600E0A8C8 /* NumberFunctionsTestCase.m */,
+				10A8A0C912516E2600E0A8C8 /* NumberParsingTestCase.h */,
+				10A8A0CA12516E2600E0A8C8 /* NumberParsingTestCase.m */,
+				10A8A0CB12516E2600E0A8C8 /* ObjectFunctionsTestCase.h */,
+				10A8A0CC12516E2600E0A8C8 /* ObjectFunctionsTestCase.m */,
+				10A8A0CD12516E2600E0A8C8 /* OperatorFunctionTest.h */,
+				10A8A0CE12516E2600E0A8C8 /* OperatorFunctionTest.m */,
+				10A8A0CF12516E2600E0A8C8 /* StringParsingTestCase.h */,
+				10A8A0D012516E2600E0A8C8 /* StringParsingTestCase.m */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		32C88DFF0371C24200C91783 /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				1096733D12528B8C0004C216 /* main.m */,
+				AA747D9E0F9514B9006C5449 /* DSL_Prefix.pch */,
+				1096743A1252BB940004C216 /* Tester.h */,
+				1096743B1252BB940004C216 /* Tester.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		D2AAC07A0554694100DB518D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA747D9F0F9514B9006C5449 /* DSL_Prefix.pch in Headers */,
+				10A8A09212516E1900E0A8C8 /* dsl.h in Headers */,
+				10A8A09312516E1900E0A8C8 /* DslBoolean.h in Headers */,
+				10A8A09512516E1900E0A8C8 /* DslCons.h in Headers */,
+				10A8A09712516E1900E0A8C8 /* DslExpression.h in Headers */,
+				10A8A09912516E1900E0A8C8 /* DslFunction.h in Headers */,
+				10A8A09B12516E1900E0A8C8 /* DslIdentifier.h in Headers */,
+				10A8A09D12516E1900E0A8C8 /* DslNumber.h in Headers */,
+				10A8A09F12516E1900E0A8C8 /* DslObject.h in Headers */,
+				10A8A0A112516E1900E0A8C8 /* DslParser.h in Headers */,
+				10A8A0A312516E1900E0A8C8 /* DslString.h in Headers */,
+				10A8A0A512516E1900E0A8C8 /* Functions.h in Headers */,
+				10A8A0A712516E1900E0A8C8 /* InputStream.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		1096731D12528B190004C216 /* Repl */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1096732312528B1A0004C216 /* Build configuration list for PBXNativeTarget "Repl" */;
+			buildPhases = (
+				1096731A12528B190004C216 /* Resources */,
+				1096731B12528B190004C216 /* Sources */,
+				1096731C12528B190004C216 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Repl;
+			productName = Repl;
+			productReference = 1096731E12528B190004C216 /* Repl.app */;
+			productType = "com.apple.product-type.application";
+		};
+		10A8A07312516DEA00E0A8C8 /* UnitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 10A8A07912516DEA00E0A8C8 /* Build configuration list for PBXNativeTarget "UnitTests" */;
+			buildPhases = (
+				10A8A06F12516DEA00E0A8C8 /* Resources */,
+				10A8A07012516DEA00E0A8C8 /* Sources */,
+				10A8A07112516DEA00E0A8C8 /* Frameworks */,
+				10A8A07212516DEA00E0A8C8 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = UnitTests;
+			productName = UnitTests;
+			productReference = 10A8A07412516DEA00E0A8C8 /* UnitTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+		D2AAC07D0554694100DB518D /* DSL */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DEB921E08733DC00010E9CD /* Build configuration list for PBXNativeTarget "DSL" */;
+			buildPhases = (
+				D2AAC07A0554694100DB518D /* Headers */,
+				D2AAC07B0554694100DB518D /* Sources */,
+				D2AAC07C0554694100DB518D /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DSL;
+			productName = DSL;
+			productReference = D2AAC07E0554694100DB518D /* libDSL.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0867D690FE84028FC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "DSL" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			mainGroup = 0867D691FE84028FC02AAC07 /* DSL */;
+			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D2AAC07D0554694100DB518D /* DSL */,
+				10A8A07312516DEA00E0A8C8 /* UnitTests */,
+				1096731D12528B190004C216 /* Repl */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1096731A12528B190004C216 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		10A8A06F12516DEA00E0A8C8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		10A8A07212516DEA00E0A8C8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1096731B12528B190004C216 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1096733E12528B8C0004C216 /* main.m in Sources */,
+				1096734712528C3B0004C216 /* DslBoolean.m in Sources */,
+				1096734812528C3B0004C216 /* DslCons.m in Sources */,
+				1096734912528C3B0004C216 /* DslExpression.m in Sources */,
+				1096734A12528C3B0004C216 /* DslFunction.m in Sources */,
+				1096734B12528C3B0004C216 /* DslIdentifier.m in Sources */,
+				1096734C12528C3B0004C216 /* DslNumber.m in Sources */,
+				1096734D12528C3B0004C216 /* DslObject.m in Sources */,
+				1096734E12528C3B0004C216 /* DslParser.m in Sources */,
+				1096734F12528C3B0004C216 /* DslString.m in Sources */,
+				1096735012528C3B0004C216 /* Functions.m in Sources */,
+				1096735112528C3B0004C216 /* InputStream.m in Sources */,
+				1096743C1252BB940004C216 /* Tester.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		10A8A07012516DEA00E0A8C8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10A8A0A912516E1900E0A8C8 /* DslBoolean.m in Sources */,
+				10A8A0AA12516E1900E0A8C8 /* DslCons.m in Sources */,
+				10A8A0AB12516E1900E0A8C8 /* DslExpression.m in Sources */,
+				10A8A0AC12516E1900E0A8C8 /* DslFunction.m in Sources */,
+				10A8A0AD12516E1900E0A8C8 /* DslIdentifier.m in Sources */,
+				10A8A0AE12516E1900E0A8C8 /* DslNumber.m in Sources */,
+				10A8A0AF12516E1900E0A8C8 /* DslObject.m in Sources */,
+				10A8A0B012516E1900E0A8C8 /* DslParser.m in Sources */,
+				10A8A0B112516E1900E0A8C8 /* DslString.m in Sources */,
+				10A8A0B212516E1900E0A8C8 /* Functions.m in Sources */,
+				10A8A0B312516E1900E0A8C8 /* InputStream.m in Sources */,
+				10A8A0D112516E2600E0A8C8 /* AtomicExpressionParsingTest.m in Sources */,
+				10A8A0D212516E2600E0A8C8 /* BooleanParsingTestCase.m in Sources */,
+				10A8A0D312516E2600E0A8C8 /* CondTestCase.m in Sources */,
+				10A8A0D412516E2600E0A8C8 /* ConsParsingTestCase.m in Sources */,
+				10A8A0D512516E2600E0A8C8 /* EvalTestCase.m in Sources */,
+				10A8A0D612516E2600E0A8C8 /* IdentifierParsingTestCase.m in Sources */,
+				10A8A0D712516E2600E0A8C8 /* LambdaTestCase.m in Sources */,
+				10A8A0D812516E2600E0A8C8 /* LetTestCase.m in Sources */,
+				10A8A0D912516E2600E0A8C8 /* ListFunctionsTestCase.m in Sources */,
+				10A8A0DA12516E2600E0A8C8 /* NumberFunctionsTestCase.m in Sources */,
+				10A8A0DB12516E2600E0A8C8 /* NumberParsingTestCase.m in Sources */,
+				10A8A0DC12516E2600E0A8C8 /* ObjectFunctionsTestCase.m in Sources */,
+				10A8A0DD12516E2600E0A8C8 /* OperatorFunctionTest.m in Sources */,
+				10A8A0DE12516E2600E0A8C8 /* StringParsingTestCase.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2AAC07B0554694100DB518D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10A8A09412516E1900E0A8C8 /* DslBoolean.m in Sources */,
+				10A8A09612516E1900E0A8C8 /* DslCons.m in Sources */,
+				10A8A09812516E1900E0A8C8 /* DslExpression.m in Sources */,
+				10A8A09A12516E1900E0A8C8 /* DslFunction.m in Sources */,
+				10A8A09C12516E1900E0A8C8 /* DslIdentifier.m in Sources */,
+				10A8A09E12516E1900E0A8C8 /* DslNumber.m in Sources */,
+				10A8A0A012516E1900E0A8C8 /* DslObject.m in Sources */,
+				10A8A0A212516E1900E0A8C8 /* DslParser.m in Sources */,
+				10A8A0A412516E1900E0A8C8 /* DslString.m in Sources */,
+				10A8A0A612516E1900E0A8C8 /* Functions.m in Sources */,
+				10A8A0A812516E1900E0A8C8 /* InputStream.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1096732112528B1A0004C216 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
+				INFOPLIST_FILE = "Repl-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = Repl;
+				SDKROOT = iphoneos4.0;
+			};
+			name = Debug;
+		};
+		1096732212528B1A0004C216 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
+				INFOPLIST_FILE = "Repl-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = Repl;
+				SDKROOT = iphoneos4.0;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		10A8A07712516DEA00E0A8C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INFOPLIST_FILE = "UnitTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					SenTestingKit,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = UnitTests;
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		10A8A07812516DEA00E0A8C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				INFOPLIST_FILE = "UnitTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					SenTestingKit,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = UnitTests;
+				WRAPPER_EXTENSION = octest;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		1DEB921F08733DC00010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/DSL.dst;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = DSL_Prefix.pch;
+				INSTALL_PATH = /usr/local/lib;
+				PRODUCT_NAME = DSL;
+			};
+			name = Debug;
+		};
+		1DEB922008733DC00010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				DSTROOT = /tmp/DSL.dst;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = DSL_Prefix.pch;
+				INSTALL_PATH = /usr/local/lib;
+				PRODUCT_NAME = DSL;
+			};
+			name = Release;
+		};
+		1DEB922308733DC00010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PREBINDING = NO;
+				SDKROOT = iphoneos4.0;
+			};
+			name = Debug;
+		};
+		1DEB922408733DC00010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
+				PREBINDING = NO;
+				SDKROOT = iphoneos4.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1096732312528B1A0004C216 /* Build configuration list for PBXNativeTarget "Repl" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1096732112528B1A0004C216 /* Debug */,
+				1096732212528B1A0004C216 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		10A8A07912516DEA00E0A8C8 /* Build configuration list for PBXNativeTarget "UnitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				10A8A07712516DEA00E0A8C8 /* Debug */,
+				10A8A07812516DEA00E0A8C8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DEB921E08733DC00010E9CD /* Build configuration list for PBXNativeTarget "DSL" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB921F08733DC00010E9CD /* Debug */,
+				1DEB922008733DC00010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "DSL" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB922308733DC00010E9CD /* Debug */,
+				1DEB922408733DC00010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0867D690FE84028FC02AAC07 /* Project object */;
+}
