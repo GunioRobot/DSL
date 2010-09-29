@@ -38,7 +38,10 @@
 - (void) runTest:(NSString*)test
 {
   NSArray *parts = [test componentsSeparatedByString:@"\n\n"];
-  [self for:[parts objectAtIndex:0] checkThat:[parts objectAtIndex:1] evalsTo:[parts objectAtIndex:2]];
+  int limit = [parts count];
+  for (int i = 1; i < limit; i += 2) {
+    [self for:[parts objectAtIndex:0] checkThat:[parts objectAtIndex:i] evalsTo:[parts objectAtIndex:i+1]];
+  }
 }
 
 
@@ -53,6 +56,9 @@
 
 - (void) runTestFile:(NSString*)path
 {
+  NSArray *pathParts = [path componentsSeparatedByString:@"/"];
+  NSLog(@"Running test case: %@", [pathParts lastObject]);
+  
   NSFileHandle *readHandle = [NSFileHandle fileHandleForReadingAtPath:path];
   NSString *testString = [[NSString alloc] initWithData: [readHandle readDataToEndOfFile] encoding:NSUTF8StringEncoding];
   [self process:testString];

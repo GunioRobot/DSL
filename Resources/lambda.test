@@ -1,0 +1,12 @@
+Applying Single Argument Lambda
+
+(apply (lambda (x) (+ x 2)) 40)
+
+42
+----
+Applying Multiple Argument Lambda
+
+(apply (lambda (x y) (+ x y)) 40 2)
+
+42
+
