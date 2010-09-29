@@ -476,6 +476,33 @@
     return [self logResult:[(DslCons*)[self cdr] fetchBoolean:bindings] ];
   } else if ([procName isEqualToString:@"list"]) {
     return [self logResult:[(DslCons*)[self cdr] makeList:bindings] ];
+  } else if ([procName isEqualToString:@"car"]) {
+    return [(DslCons*)[[self cadr] eval:bindings] car];
+  } else if ([procName isEqualToString:@"cadr"]) {
+    return [(DslCons*)[[self cadr] eval:bindings] cadr];
+  } else if ([procName isEqualToString:@"caddr"]) {
+    return [(DslCons*)[[self cadr] eval:bindings] caddr];
+  } else if ([procName isEqualToString:@"cadar"]) {
+    return [(DslCons*)[[self cadr] eval:bindings] cadar]; 
+  } else if ([procName isEqualToString:@"cadddr"]) {
+    return [(DslCons*)[[self cadr] eval:bindings] cadddr];
+  } else if ([procName isEqualToString:@"caar"]) {
+    return [(DslCons*)[[self cadr] eval:bindings] caar];
+  } else if ([procName isEqualToString:@"caadr"]) {
+    return [(DslCons*)[[self cadr] eval:bindings] caadr];
+  } else if ([procName isEqualToString:@"cdr"]) {
+    return [(DslCons*)[[self cadr] eval:bindings] cdr];
+  } else if ([procName isEqualToString:@"cddr"]) {
+    return [(DslCons*)[[self cadr] eval:bindings] cddr];
+  } else if ([procName isEqualToString:@"cdddr"]) {
+    return [(DslCons*)[[self cadr] eval:bindings] cdddr];
+  } else if ([procName isEqualToString:@"cdadr"]) {
+    return [(DslCons*)[[self cadr] eval:bindings] cdadr];
+  } else if ([procName isEqualToString:@"cadddd"]) {
+    return [(DslCons*)[[self cadr] eval:bindings] cddddr];
+  } else if ([procName isEqualToString:@"cdar"]) {
+    return [(DslCons*)[[self cadr] eval:bindings] cdar];
+    
   } else {
     Functions *f = [Functions alloc];
     DslExpression *result = [f eval:procName withArgs:(DslCons*)[self cdr] andBindings:bindings];

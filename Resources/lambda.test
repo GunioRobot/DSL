@@ -9,4 +9,3 @@ Applying Multiple Argument Lambda
 (apply (lambda (x y) (+ x y)) 40 2)
 
 42
-

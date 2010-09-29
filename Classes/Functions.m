@@ -36,12 +36,14 @@
 
 - (DslExpression*) length:(DslCons*)args withBindings:(DslCons*)bindings
 {
-  if (args.head == nil) return [DslNumber numberWith:666];
   int len = 0;
-  DslCons *aList = [args car];
+  DslCons *aList = args.head;
+  if (aList.head == nil && aList.tail == nil) {
+    return [DslNumber numberWith:0];
+  }
   while (aList != nil) {
     len++;
-    aList = [aList cdr];
+    aList = aList.tail;
   }
   return [DslNumber numberWith:len];
 }

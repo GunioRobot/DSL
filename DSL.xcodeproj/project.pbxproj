@@ -71,8 +71,8 @@
 		10A8A0DE12516E2600E0A8C8 /* StringParsingTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A0D012516E2600E0A8C8 /* StringParsingTestCase.m */; };
 		10F7FF8912530137007A402F /* eval.test in Resources */ = {isa = PBXBuildFile; fileRef = 10F7FF801252FB8A007A402F /* eval.test */; };
 		10F7FFA5125302A9007A402F /* lambda.test in Resources */ = {isa = PBXBuildFile; fileRef = 10F7FFA112530248007A402F /* lambda.test */; };
-		10F7FFAD125302DF007A402F /* let.test in Resources */ = {isa = PBXBuildFile; fileRef = 10F7FFAC125302D8007A402F /* let.test */; };
 		10F7FFB31253040E007A402F /* list.test in Resources */ = {isa = PBXBuildFile; fileRef = 10F7FFB212530403007A402F /* list.test */; };
+		10F7FFDC125324BD007A402F /* let.test in Resources */ = {isa = PBXBuildFile; fileRef = 10F7FFAC125302D8007A402F /* let.test */; };
 		AA747D9F0F9514B9006C5449 /* DSL_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* DSL_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 /* End PBXBuildFile section */
@@ -399,8 +399,8 @@
 				109675001252E6E80004C216 /* cond.test in Resources */,
 				10F7FF8912530137007A402F /* eval.test in Resources */,
 				10F7FFA5125302A9007A402F /* lambda.test in Resources */,
-				10F7FFAD125302DF007A402F /* let.test in Resources */,
 				10F7FFB31253040E007A402F /* list.test in Resources */,
+				10F7FFDC125324BD007A402F /* let.test in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -60,10 +60,12 @@
   NSLog(@"Running test case: %@", [pathParts lastObject]);
   
   NSFileHandle *readHandle = [NSFileHandle fileHandleForReadingAtPath:path];
-  NSString *testString = [[NSString alloc] initWithData: [readHandle readDataToEndOfFile] encoding:NSUTF8StringEncoding];
-  [self process:testString];
-  [testString release];
-  [readHandle closeFile];
+  if (readHandle) {
+    NSString *testString = [[NSString alloc] initWithData: [readHandle readDataToEndOfFile] encoding:NSUTF8StringEncoding];
+    [self process:testString];
+    [testString release];
+    [readHandle closeFile];
+  }
 }
 
 - (void) runTests
