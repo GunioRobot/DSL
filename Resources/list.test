@@ -42,60 +42,93 @@ Length Of Nested Lists
 
 10
 ----
-Car Cdr
+car
 
 (car '(1 2 3 4 5))
 
 1
 
+(car '((1 a b) 2 3 4 5))
+
+'(1 a b)
+----
+cadr
+
 (cadr '(1 2 3 4 5))
 
 2
+----
+caddr
 
 (caddr '(1 2 3 4 5))
 
 3
+----
+cdar
+
+(cdar '((1 a b) 2 3 4 5))
+
+'(a b)
+----
+cadar
 
 (cadar '((1 a b) 2 3 4 5))
 
-a
+'a
+----
+cadddr
 
 (cadddr '(1 2 3 4 5))
 
 4
+----
+caar
 
 (caar '((1 a b) 2 3 4 5))
 
 1
+----
+caadr
 
 (caadr '(1 (2 a b) 3 4 5))
 
 2
+----
+cdr
 
 (cdr '(1 2 3 4 5))
 
 '(2 3 4 5)
+----
+cddr
 
 (cddr '(1 2 3 4 5))
 
 '(3 4 5)
+----
+cdddr
 
 (cdddr '(1 2 3 4 5))
 
 '(4 5)
+----
+cdadr
 
 (cdadr '(1 (2 3 4) 5))
 
 '(3 4)
+----
+cddddr
 
 (cddddr '(1 2 3 4 5))
 
 '(5)
+----
+cdar
 
-'(cdar '((1 2 3) 4 5))
+(cdar '((1 2 3) 4 5))
 
-(2 3)
-
+'(2 3)
 ----
 Degenerate Map
 
@@ -143,7 +176,7 @@ Any With None
 
 (any? (lambda (i) (< i 3)) '(3 4 5))
 
-#t
+#f
 ----
 Any With One
 
@@ -155,4 +188,4 @@ Any With Multiple
 
 (any? (lambda (i) (< i 3)) '(1 4 2))
 
-#f
+#t
