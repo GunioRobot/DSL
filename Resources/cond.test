@@ -1,0 +1,29 @@
+Single Condition
+
+(cond (#t 4))
+
+4
+----
+Multiple Conditions With First Passing
+
+(cond (#t 3) (#f 15)(#f 25))
+
+3
+----
+Multiple Conditions With Middle Passing
+
+(cond (#f 15) (#t 3) (#f 25))
+
+3
+----
+Multiple Conditions With Last Passing
+
+(cond (#f 15) (#f 25) (#t 3))
+
+3
+----
+Multiple Sexp Code Block
+
+(cond (#t (+ 1 2) 3) #f 1)
+
+3
