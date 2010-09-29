@@ -17,6 +17,7 @@
 - (Tester*) init
 {
   p = [[DslParser alloc] init];
+  reporter = [[TestReporter alloc] init];
   return self;
 }
 
@@ -27,9 +28,9 @@
   DslExpression *expected = [[p parseExpression:[InputStream withString:result]] eval:nil];
   BOOL areEqual = [actual compareTo:expected];
   if (areEqual) {
-    NSLog(@"PASS: '%@'", name);
+    [reporter pass:name];
   } else {
-    NSLog(@"FAIL: '%@' Expected %@ but got %@", name, [expected toString], [actual toString]);
+    [reporter fail:name for:code actual:[actual toString] expected:[expected toString]];
   }
   return areEqual;
 }
@@ -54,14 +55,18 @@
 }
 
 
+- (NSString*) testNameFromPath:(NSString*)path
+{
+  return [[[[path componentsSeparatedByString:@"/"] lastObject] componentsSeparatedByString:@"."] objectAtIndex:0];
+}
+
+
 - (void) runTestFile:(NSString*)path
 {
-  NSArray *pathParts = [path componentsSeparatedByString:@"/"];
-  NSLog(@"Running test case: %@", [pathParts lastObject]);
-  
   NSFileHandle *readHandle = [NSFileHandle fileHandleForReadingAtPath:path];
   if (readHandle) {
     NSString *testString = [[NSString alloc] initWithData: [readHandle readDataToEndOfFile] encoding:NSUTF8StringEncoding];
+    [reporter startFile:[self testNameFromPath:path]];
     [self process:testString];
     [testString release];
     [readHandle closeFile];
@@ -70,10 +75,13 @@
 
 - (void) runTests
 {
+
   NSArray *testFiles = [[NSBundle mainBundle] pathsForResourcesOfType:@"test" inDirectory:nil];
+  [reporter startRun];
   for (NSString *test in testFiles) {
     [self runTestFile:test];
   }
+  [reporter endRun];
 }
 
 

@@ -189,3 +189,9 @@ Any With Multiple
 (any? (lambda (i) (< i 3)) '(1 4 2))
 
 #t
+----
+Test Failure
+
+(+ 1 2 3)
+
+2

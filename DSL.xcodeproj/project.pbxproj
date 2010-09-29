@@ -69,6 +69,8 @@
 		10A8A0DC12516E2600E0A8C8 /* ObjectFunctionsTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A0CC12516E2600E0A8C8 /* ObjectFunctionsTestCase.m */; };
 		10A8A0DD12516E2600E0A8C8 /* OperatorFunctionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A0CE12516E2600E0A8C8 /* OperatorFunctionTest.m */; };
 		10A8A0DE12516E2600E0A8C8 /* StringParsingTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A0D012516E2600E0A8C8 /* StringParsingTestCase.m */; };
+		10B1A8B71253E0FA00BD2E8C /* TestReporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B1A8B61253E0FA00BD2E8C /* TestReporter.m */; };
+		10B1A8BA1253E42600BD2E8C /* FailureReport.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B1A8B91253E42600BD2E8C /* FailureReport.m */; };
 		10F7FF8912530137007A402F /* eval.test in Resources */ = {isa = PBXBuildFile; fileRef = 10F7FF801252FB8A007A402F /* eval.test */; };
 		10F7FFA5125302A9007A402F /* lambda.test in Resources */ = {isa = PBXBuildFile; fileRef = 10F7FFA112530248007A402F /* lambda.test */; };
 		10F7FFB31253040E007A402F /* list.test in Resources */ = {isa = PBXBuildFile; fileRef = 10F7FFB212530403007A402F /* list.test */; };
@@ -137,6 +139,10 @@
 		10A8A0CE12516E2600E0A8C8 /* OperatorFunctionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OperatorFunctionTest.m; sourceTree = "<group>"; };
 		10A8A0CF12516E2600E0A8C8 /* StringParsingTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringParsingTestCase.h; sourceTree = "<group>"; };
 		10A8A0D012516E2600E0A8C8 /* StringParsingTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringParsingTestCase.m; sourceTree = "<group>"; };
+		10B1A8B51253E0FA00BD2E8C /* TestReporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestReporter.h; sourceTree = "<group>"; };
+		10B1A8B61253E0FA00BD2E8C /* TestReporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestReporter.m; sourceTree = "<group>"; };
+		10B1A8B81253E42600BD2E8C /* FailureReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FailureReport.h; sourceTree = "<group>"; };
+		10B1A8B91253E42600BD2E8C /* FailureReport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FailureReport.m; sourceTree = "<group>"; };
 		10F7FF801252FB8A007A402F /* eval.test */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = eval.test; sourceTree = "<group>"; };
 		10F7FFA112530248007A402F /* lambda.test */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lambda.test; sourceTree = "<group>"; };
 		10F7FFAC125302D8007A402F /* let.test */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = let.test; sourceTree = "<group>"; };
@@ -289,6 +295,10 @@
 				AA747D9E0F9514B9006C5449 /* DSL_Prefix.pch */,
 				1096743A1252BB940004C216 /* Tester.h */,
 				1096743B1252BB940004C216 /* Tester.m */,
+				10B1A8B51253E0FA00BD2E8C /* TestReporter.h */,
+				10B1A8B61253E0FA00BD2E8C /* TestReporter.m */,
+				10B1A8B81253E42600BD2E8C /* FailureReport.h */,
+				10B1A8B91253E42600BD2E8C /* FailureReport.m */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -447,6 +457,8 @@
 				1096735012528C3B0004C216 /* Functions.m in Sources */,
 				1096735112528C3B0004C216 /* InputStream.m in Sources */,
 				1096743C1252BB940004C216 /* Tester.m in Sources */,
+				10B1A8B71253E0FA00BD2E8C /* TestReporter.m in Sources */,
+				10B1A8BA1253E42600BD2E8C /* FailureReport.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
