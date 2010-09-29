@@ -49,7 +49,7 @@
 
 - (BOOL) compareTo:(DslExpression*)other
 {
-  return [super compareTo:other] && (value = [other booleanValue]);
+  return [super compareTo:other] && (value == [other booleanValue]);
 }
 
 @end
