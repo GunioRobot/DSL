@@ -16,5 +16,6 @@
 
 - (Tester*) init;
 - (BOOL) for:(NSString*)name checkThat:(NSString*)code evalsTo:(NSString*)result;
+- (void) runTestFile:(NSString*)testName;
 
 @end

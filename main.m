@@ -15,8 +15,7 @@ int main(int argc, char *argv[]) {
   @try {
     NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
     Tester *t = [[Tester alloc]init];
-    [t for:@"test pass" checkThat:@"(map (lambda (l) (length l)) '((1) (2 2)) )" evalsTo:@"'(1 2)"];
-    [t for:@"test fail" checkThat:@"(+ 2 2)" evalsTo:@"5"];
+    [t runTests];
     [pool release];
   }
   @catch (NSException *ex) {

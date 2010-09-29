@@ -6,6 +6,8 @@
 //  Copyright 2010 Dave Astels. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
+#import <Foundation/NSFileHandle.h>
 #import "Tester.h"
 
 
@@ -30,6 +32,40 @@
     NSLog(@"FAIL: '%@' Expected %@ but got %@", name, [expected toString], [actual toString]);
   }
   return areEqual;
+}
+
+
+- (void) runTest:(NSString*)test
+{
+  NSArray *parts = [test componentsSeparatedByString:@"\n\n"];
+  [self for:[parts objectAtIndex:0] checkThat:[parts objectAtIndex:1] evalsTo:[parts objectAtIndex:2]];
+}
+
+
+- (void) process:(NSString*)testString
+{
+  NSArray *tests = [testString componentsSeparatedByString:@"----\n"];
+  for (NSString *test in tests) {
+    [self runTest:test];
+  }
+}
+
+
+- (void) runTestFile:(NSString*)path
+{
+  NSFileHandle *readHandle = [NSFileHandle fileHandleForReadingAtPath:path];
+  NSString *testString = [[NSString alloc] initWithData: [readHandle readDataToEndOfFile] encoding:NSUTF8StringEncoding];
+  [self process:testString];
+  [testString release];
+  [readHandle closeFile];
+}
+
+- (void) runTests
+{
+  NSArray *testFiles = [[NSBundle mainBundle] pathsForResourcesOfType:@"test" inDirectory:nil];
+  for (NSString *test in testFiles) {
+    [self runTestFile:test];
+  }
 }
 
 

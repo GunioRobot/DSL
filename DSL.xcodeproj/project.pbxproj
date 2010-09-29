@@ -20,6 +20,7 @@
 		1096735012528C3B0004C216 /* Functions.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A08F12516E1900E0A8C8 /* Functions.m */; };
 		1096735112528C3B0004C216 /* InputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A09112516E1900E0A8C8 /* InputStream.m */; };
 		1096743C1252BB940004C216 /* Tester.m in Sources */ = {isa = PBXBuildFile; fileRef = 1096743B1252BB940004C216 /* Tester.m */; };
+		109675001252E6E80004C216 /* cond.test in Resources */ = {isa = PBXBuildFile; fileRef = 109674FF1252E6E80004C216 /* cond.test */; };
 		10A8A09212516E1900E0A8C8 /* dsl.h in Headers */ = {isa = PBXBuildFile; fileRef = 10A8A07B12516E1900E0A8C8 /* dsl.h */; };
 		10A8A09312516E1900E0A8C8 /* DslBoolean.h in Headers */ = {isa = PBXBuildFile; fileRef = 10A8A07C12516E1900E0A8C8 /* DslBoolean.h */; };
 		10A8A09412516E1900E0A8C8 /* DslBoolean.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A07D12516E1900E0A8C8 /* DslBoolean.m */; };
@@ -78,6 +79,7 @@
 		1096733D12528B8C0004C216 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1096743A1252BB940004C216 /* Tester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tester.h; sourceTree = "<group>"; };
 		1096743B1252BB940004C216 /* Tester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tester.m; sourceTree = "<group>"; };
+		109674FF1252E6E80004C216 /* cond.test */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cond.test; sourceTree = "<group>"; };
 		10A8A07412516DEA00E0A8C8 /* UnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		10A8A07512516DEA00E0A8C8 /* UnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UnitTests-Info.plist"; sourceTree = "<group>"; };
 		10A8A07B12516E1900E0A8C8 /* dsl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dsl.h; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 		0867D691FE84028FC02AAC07 /* DSL */ = {
 			isa = PBXGroup;
 			children = (
+				109674FE1252E6E80004C216 /* Resources */,
 				10A8A0B412516E2600E0A8C8 /* Tests */,
 				10A8A07A12516E1900E0A8C8 /* Classes */,
 				32C88DFF0371C24200C91783 /* Other Sources */,
@@ -192,6 +195,14 @@
 				AACBBE490F95108600F1A2B1 /* Foundation.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		109674FE1252E6E80004C216 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				109674FF1252E6E80004C216 /* cond.test */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		10A8A07A12516E1900E0A8C8 /* Classes */ = {
@@ -373,6 +384,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				109675001252E6E80004C216 /* cond.test in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
