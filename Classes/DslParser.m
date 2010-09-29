@@ -59,6 +59,7 @@
 {
   if (isalnum(ch)) return YES;
   if (ch == '-') return YES;
+  if (ch == '?') return YES;
   return NO;
 }
 
