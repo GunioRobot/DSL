@@ -1,0 +1,35 @@
+Binary Or
+
+(or #f #f)
+
+#f
+
+(or #f #t)
+
+#t
+
+(or #t #f)
+
+#t
+
+(or #t #t)
+
+#t
+----
+Multiple arg Or
+
+(or #f #f #f)
+
+#f
+
+(or #f #f #t)
+
+#t
+
+(or #f #t #f)
+
+#t
+
+(or #t #f #f)
+
+#t

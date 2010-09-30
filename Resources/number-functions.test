@@ -1,0 +1,63 @@
+Less Than True
+
+(< 1 2)
+
+#t
+----
+Less Than False
+
+(< 2 1)
+
+#f
+----
+Greater Than True
+
+(> 2 1)
+
+#t
+----
+Greater Than False
+
+(> 1 2)
+
+#f
+----
+EqualTo True
+
+(= 1 1)
+
+#t
+----
+EqualTo False
+
+(= 1 2)
+
+#f
+----
+Addition
+
+(+ 1 1)
+
+2
+
+(+ 0 0)
+
+0
+
+(+ 3 2)
+
+5
+----
+Subtraction
+
+(- 0 0)
+
+0
+
+(- 1 1)
+
+0
+
+(- 5 2)
+
+3
