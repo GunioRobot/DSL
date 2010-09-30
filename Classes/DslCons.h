@@ -14,8 +14,6 @@
 
 @class DslFunction;
 
-@class DslFunction;
-
 
 @interface DslCons : DslExpression {
   DslExpression *head;
