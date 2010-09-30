@@ -14,8 +14,8 @@
   DslCons *body;
 }
 
-+ (DslFunction*) withParameters:(DslCons*)p andBody:(DslCons*)b;
-- (DslFunction*) init;
-- (DslFunction*) initWithParameters:(DslCons*)p andBody:(DslCons*)b;
++ (DslDefinedFunction*) withParameters:(DslCons*)p andBody:(DslCons*)b;
+- (DslDefinedFunction*) init;
+- (DslDefinedFunction*) initWithParameters:(DslCons*)p andBody:(DslCons*)b;
 
 @end

@@ -11,19 +11,19 @@
 
 @implementation DslDefinedFunction
 
-+ (DslFunction*) withParameters:(DslCons*)p andBody:(DslCons*)b
++ (DslDefinedFunction*) withParameters:(DslCons*)p andBody:(DslCons*)b
 {
-  return [[DslFunction alloc] initWithParameters:(DslCons*)p andBody:(DslCons*)b];
+  return [[DslDefinedFunction alloc] initWithParameters:(DslCons*)p andBody:(DslCons*)b];
 }
 
 
-- (DslFunction*) init
+- (DslDefinedFunction*) init
 {
   return [self initWithParameters:[[DslCons alloc] init] andBody:[[DslCons alloc] init]];
 }
 
 
-- (DslFunction*) initWithParameters:(DslCons*)p andBody:(DslCons*)b
+- (DslDefinedFunction*) initWithParameters:(DslCons*)p andBody:(DslCons*)b
 {
   parameters = [p retain];
   body = [b retain];
