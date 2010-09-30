@@ -15,5 +15,6 @@
 
 + (DslSymbol*)withName:(NSString*)name;
 - (DslSymbol*)initWithName:(NSString*)name;
+- (BOOL) isNamed:(NSString*)aName;
 
 @end

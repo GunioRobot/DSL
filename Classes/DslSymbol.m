@@ -56,4 +56,9 @@
 }
 
 
+- (BOOL) isNamed:(NSString*)aName
+{
+  [name isEqualToString:aName];
+}
+
 @end
