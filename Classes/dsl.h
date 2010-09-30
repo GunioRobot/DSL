@@ -18,52 +18,57 @@
 #import "DslFunction.h"
 #import "DslObject.h"
 #import "Functions.h"
+#import "SymbolTable.h"
 
 
 @interface Dsl : NSObject {
   DslParser *parser;
+  SymbolTable *symbolTable;
 }
 
 
 - (Dsl *) init;
 
-- (DslExpression *)parse:(NSString*)codeString;
+- (DslExpression *) parse:(NSString*)codeString;
 
-// symbol functions
+// internal symbol functions
 
-- (DslSymbol *)intern:(NSString *)name;
-- (DslExpression*)bind:(DslSymbol*)symbol to:(DslExpression*)value;
-- (DslExpression*)valueOf:(DslSymbol*)symbol;
+- (DslSymbol *) intern:(NSString *)name;
+- (DslExpression*) bind:(DslSymbol*)symbol to:(DslExpression*)value;
+- (DslExpression*) valueOf:(DslSymbol*)symbol;
+- (void) pushLocalBindings;
+- (void) popLocalBindings;
 
 // function functions
 
-- (DslFunction*)lambdaWithParams:(DslCons*)params andBody:(DslCons*)body;
-- (DslFunction*)defun:(DslSymbol*) withParams:(DslCons*)params andBody:(DslCons*)body;
-- (DslFunction*)defBuiltin:(DslSymbol *) withParams :(DslCons *)params andSelector:(SEL)selector;
-- (DslExpression*)apply:(DslFunction*)function to:(DslCons*)args;
+- (DslFunction*) lambda:(DslCons*)args;
+- (DslFunction*) defun:(DslCons*)args;
+- (DslFunction*) defBuiltin:(DslCons*)args;
+- (DslExpression*) apply:(DslCons*)args;
+- (DslExpression*) let:(DslCons*)args;
 
 // list functions
 
-- (DslCons*)cons:(DslExpression*)head and:(DslExpression*)tail;
+- (DslCons*) cons:(DslCons*)args;
 
-- (DslExpression*)car:(DslCons*)list;
-- (DslExpression*)cdr:(DslCons*)list;
+- (DslExpression*) car:(DslCons*)args;
+- (DslExpression*) cdr:(DslCons*)args;
 
-- (DslExpression*)caar:(DslCons*)list;
-- (DslExpression*)cadr:(DslCons*)list;
-- (DslExpression*)cdar:(DslCons*)list;
-- (DslExpression*)cddr:(DslCons*)list;
+- (DslExpression*) caar:(DslCons*)args;
+- (DslExpression*) cadr:(DslCons*)args;
+- (DslExpression*) cdar:(DslCons*)args;
+- (DslExpression*) cddr:(DslCons*)args;
 
-- (DslExpression*)caaar:(DslCons*)list;
-- (DslExpression*)caadr:(DslCons*)list;
-- (DslExpression*)cadar:(DslCons*)list;
-- (DslExpression*)caddr:(DslCons*)list;
-- (DslExpression*)cdaar:(DslCons*)list;
-- (DslExpression*)cdadr:(DslCons*)list;
-- (DslExpression*)cddar:(DslCons*)list;
-- (DslExpression*)cdddr:(DslCons*)list;
+- (DslExpression*) caaar:(DslCons*)args;
+- (DslExpression*) caadr:(DslCons*)args;
+- (DslExpression*) cadar:(DslCons*)args;
+- (DslExpression*) caddr:(DslCons*)args;
+- (DslExpression*) cdaar:(DslCons*)args;
+- (DslExpression*) cdadr:(DslCons*)args;
+- (DslExpression*) cddar:(DslCons*)args;
+- (DslExpression*) cdddr:(DslCons*)args;
 
-- (DslNumber*)length:(DslCons*)list;
+- (DslNumber*) length:(DslCons*)args;
 
 
 @end
