@@ -11,4 +11,18 @@
 
 @implementation DslBuiltinFunction
 
++ (DslBuiltinFunction*)withSelector:(SEL)pSel
+{
+}
+
+
+- (DslBuiltinFunction*)initWithSelector:(SEL)pSel
+{
+}
+
+
+- (DslExpression*) evalWithArguments:(DslCons*)args andBindings:(DslCons*)bindings
+{
+}
+
 @end

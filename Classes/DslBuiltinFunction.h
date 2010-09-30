@@ -10,7 +10,10 @@
 #import "Dsl.h"
 
 @interface DslBuiltinFunction : DslFunction {
-
+  SEL selector;
 }
+
++ (DslBuiltinFunction*)withSelector:(SEL)pSel;
+- (DslBuiltinFunction*)initWithSelector:(SEL)pSel;
 
 @end
