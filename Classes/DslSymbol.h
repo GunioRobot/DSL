@@ -9,11 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "DslExpression.h"
 
-@interface DslIdentifier : DslExpression {
+@interface DslSymbol : DslExpression {
   NSString *name;
 }
 
-+ (DslIdentifier*)identifierWithName:(NSString*)name;
-- (DslIdentifier*)initWithName:(NSString*)name;
++ (DslSymbol*)withName:(NSString*)name;
+- (DslSymbol*)initWithName:(NSString*)name;
 
 @end

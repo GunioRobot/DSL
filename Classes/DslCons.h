@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "DslExpression.h"
-#import "DslIdentifier.h"
+#import "DslSymbol.h"
 #import "DslNumber.h"
 #import "DslString.h"
 
@@ -39,7 +39,7 @@
 - (DslCons*) append:(DslExpression*)cell;
 - (DslCons*) copyList;
 - (DslCons*) last;
-- (DslExpression*) find:(DslIdentifier*)variableName;
+- (DslExpression*) find:(DslSymbol*)variableName;
 - (DslCons*) evalMap:(DslCons*)bindings;
 - (DslCons*) applyFunction:(DslFunction*)func withBindings:(DslCons*)bindings;
 - (DslCons*) quote:(DslExpression*)sexpr;

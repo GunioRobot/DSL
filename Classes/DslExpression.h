@@ -44,4 +44,6 @@
 
 - (BOOL) compareTo:(DslExpression*)other;
 
+- (BOOL) isNil;
+
 @end

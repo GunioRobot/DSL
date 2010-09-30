@@ -122,4 +122,9 @@ int indentLevel = 0;
 }
 
 
+- (BOOL) isNil
+{
+  return NO;
+}
+
 @end

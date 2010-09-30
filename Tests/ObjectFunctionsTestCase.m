@@ -30,7 +30,7 @@
 - (void) testMethodCallInLisp
 {
   DslObject *obj = [DslObject withObject:[NSNumber numberWithInt:5]];
-  DslCons *bindings = [DslCons withHead:[DslCons withHead:[DslIdentifier identifierWithName:@"obj"] 
+  DslCons *bindings = [DslCons withHead:[DslCons withHead:[DslSymbol withName:@"obj"] 
                                                   andTail:[DslObject withObject:[NSNumber numberWithInt:5]]]];
   DslExpression *result = [[p parseExpression:[InputStream withString:@"(get-integer obj 'intValue)"]] eval:bindings];
 
@@ -42,9 +42,9 @@
 - (void) testMethodCallInSelect
 {
   DslObject *obj = [DslObject withObject:[NSNumber numberWithInt:5]];
-  DslCons *bindings = [DslCons withHead:[DslCons withHead:[DslIdentifier identifierWithName:@"obj1"] 
+  DslCons *bindings = [DslCons withHead:[DslCons withHead:[DslSymbol withName:@"obj1"] 
                                                   andTail:[DslObject withObject:[NSNumber numberWithInt:5]]]
-                                andTail:[DslCons withHead:[DslCons withHead:[DslIdentifier identifierWithName:@"obj2"] 
+                                andTail:[DslCons withHead:[DslCons withHead:[DslSymbol withName:@"obj2"] 
                                                                     andTail:[DslObject withObject:[NSNumber numberWithInt:2]]]]];
   
   DslExpression *result = [[p parseExpression:[InputStream withString:@"(select (lambda (obj) (< (get-integer obj 'intValue) 3)) (list obj1 obj2) )"]] eval:bindings];

@@ -6,19 +6,19 @@
 //  Copyright 2010 Dave Astels. All rights reserved.
 //
 
-#import "DslIdentifier.h"
+#import "DslSymbol.h"
 #import "DslCons.h"
 
 
-@implementation DslIdentifier
+@implementation DslSymbol
 
-+(DslIdentifier*)identifierWithName:(NSString*)n
++(DslSymbol*)withName:(NSString*)n
 {
-  return [[DslIdentifier alloc] initWithName:n];
+  return [[DslSymbol alloc] initWithName:n];
 }
 
 
--(DslIdentifier*)initWithName:(NSString*)n
+-(DslSymbol*)initWithName:(NSString*)n
 {
   name = n;
   return self;

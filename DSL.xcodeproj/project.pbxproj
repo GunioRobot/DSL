@@ -12,7 +12,7 @@
 		1096734812528C3B0004C216 /* DslCons.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A07F12516E1900E0A8C8 /* DslCons.m */; };
 		1096734912528C3B0004C216 /* DslExpression.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A08112516E1900E0A8C8 /* DslExpression.m */; };
 		1096734A12528C3B0004C216 /* DslFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A08312516E1900E0A8C8 /* DslFunction.m */; };
-		1096734B12528C3B0004C216 /* DslIdentifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A08512516E1900E0A8C8 /* DslIdentifier.m */; };
+		1096734B12528C3B0004C216 /* DslSymbol.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A08512516E1900E0A8C8 /* DslSymbol.m */; };
 		1096734C12528C3B0004C216 /* DslNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A08712516E1900E0A8C8 /* DslNumber.m */; };
 		1096734D12528C3B0004C216 /* DslObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A08912516E1900E0A8C8 /* DslObject.m */; };
 		1096734E12528C3B0004C216 /* DslParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A08B12516E1900E0A8C8 /* DslParser.m */; };
@@ -21,7 +21,6 @@
 		1096735112528C3B0004C216 /* InputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A09112516E1900E0A8C8 /* InputStream.m */; };
 		1096743C1252BB940004C216 /* Tester.m in Sources */ = {isa = PBXBuildFile; fileRef = 1096743B1252BB940004C216 /* Tester.m */; };
 		109675001252E6E80004C216 /* cond.test in Resources */ = {isa = PBXBuildFile; fileRef = 109674FF1252E6E80004C216 /* cond.test */; };
-		10A8A09212516E1900E0A8C8 /* dsl.h in Headers */ = {isa = PBXBuildFile; fileRef = 10A8A07B12516E1900E0A8C8 /* dsl.h */; };
 		10A8A09312516E1900E0A8C8 /* DslBoolean.h in Headers */ = {isa = PBXBuildFile; fileRef = 10A8A07C12516E1900E0A8C8 /* DslBoolean.h */; };
 		10A8A09412516E1900E0A8C8 /* DslBoolean.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A07D12516E1900E0A8C8 /* DslBoolean.m */; };
 		10A8A09512516E1900E0A8C8 /* DslCons.h in Headers */ = {isa = PBXBuildFile; fileRef = 10A8A07E12516E1900E0A8C8 /* DslCons.h */; };
@@ -30,8 +29,8 @@
 		10A8A09812516E1900E0A8C8 /* DslExpression.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A08112516E1900E0A8C8 /* DslExpression.m */; };
 		10A8A09912516E1900E0A8C8 /* DslFunction.h in Headers */ = {isa = PBXBuildFile; fileRef = 10A8A08212516E1900E0A8C8 /* DslFunction.h */; };
 		10A8A09A12516E1900E0A8C8 /* DslFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A08312516E1900E0A8C8 /* DslFunction.m */; };
-		10A8A09B12516E1900E0A8C8 /* DslIdentifier.h in Headers */ = {isa = PBXBuildFile; fileRef = 10A8A08412516E1900E0A8C8 /* DslIdentifier.h */; };
-		10A8A09C12516E1900E0A8C8 /* DslIdentifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A08512516E1900E0A8C8 /* DslIdentifier.m */; };
+		10A8A09B12516E1900E0A8C8 /* DslSymbol.h in Headers */ = {isa = PBXBuildFile; fileRef = 10A8A08412516E1900E0A8C8 /* DslSymbol.h */; };
+		10A8A09C12516E1900E0A8C8 /* DslSymbol.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A08512516E1900E0A8C8 /* DslSymbol.m */; };
 		10A8A09D12516E1900E0A8C8 /* DslNumber.h in Headers */ = {isa = PBXBuildFile; fileRef = 10A8A08612516E1900E0A8C8 /* DslNumber.h */; };
 		10A8A09E12516E1900E0A8C8 /* DslNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A08712516E1900E0A8C8 /* DslNumber.m */; };
 		10A8A09F12516E1900E0A8C8 /* DslObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 10A8A08812516E1900E0A8C8 /* DslObject.h */; };
@@ -48,7 +47,7 @@
 		10A8A0AA12516E1900E0A8C8 /* DslCons.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A07F12516E1900E0A8C8 /* DslCons.m */; };
 		10A8A0AB12516E1900E0A8C8 /* DslExpression.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A08112516E1900E0A8C8 /* DslExpression.m */; };
 		10A8A0AC12516E1900E0A8C8 /* DslFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A08312516E1900E0A8C8 /* DslFunction.m */; };
-		10A8A0AD12516E1900E0A8C8 /* DslIdentifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A08512516E1900E0A8C8 /* DslIdentifier.m */; };
+		10A8A0AD12516E1900E0A8C8 /* DslSymbol.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A08512516E1900E0A8C8 /* DslSymbol.m */; };
 		10A8A0AE12516E1900E0A8C8 /* DslNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A08712516E1900E0A8C8 /* DslNumber.m */; };
 		10A8A0AF12516E1900E0A8C8 /* DslObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A08912516E1900E0A8C8 /* DslObject.m */; };
 		10A8A0B012516E1900E0A8C8 /* DslParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A08B12516E1900E0A8C8 /* DslParser.m */; };
@@ -71,6 +70,22 @@
 		10A8A0DE12516E2600E0A8C8 /* StringParsingTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A0D012516E2600E0A8C8 /* StringParsingTestCase.m */; };
 		10B1A8B71253E0FA00BD2E8C /* TestReporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B1A8B61253E0FA00BD2E8C /* TestReporter.m */; };
 		10B1A8BA1253E42600BD2E8C /* FailureReport.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B1A8B91253E42600BD2E8C /* FailureReport.m */; };
+		10B1A970125410C100BD2E8C /* Dsl.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B1A96F125410C100BD2E8C /* Dsl.m */; };
+		10B1A971125410C100BD2E8C /* Dsl.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B1A96F125410C100BD2E8C /* Dsl.m */; };
+		10B1A972125410C100BD2E8C /* Dsl.h in Headers */ = {isa = PBXBuildFile; fileRef = 10B1A96E125410C100BD2E8C /* Dsl.h */; };
+		10B1A973125410C100BD2E8C /* Dsl.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B1A96F125410C100BD2E8C /* Dsl.m */; };
+		10B1A996125418B300BD2E8C /* DslNil.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B1A995125418B300BD2E8C /* DslNil.m */; };
+		10B1A997125418B300BD2E8C /* DslNil.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B1A995125418B300BD2E8C /* DslNil.m */; };
+		10B1A998125418B300BD2E8C /* DslNil.h in Headers */ = {isa = PBXBuildFile; fileRef = 10B1A994125418B300BD2E8C /* DslNil.h */; };
+		10B1A999125418B300BD2E8C /* DslNil.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B1A995125418B300BD2E8C /* DslNil.m */; };
+		10B1A9AC12541AFC00BD2E8C /* DslBuiltinFunction.h in Headers */ = {isa = PBXBuildFile; fileRef = 10B1A9AA12541AFC00BD2E8C /* DslBuiltinFunction.h */; };
+		10B1A9AD12541AFC00BD2E8C /* DslBuiltinFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B1A9AB12541AFC00BD2E8C /* DslBuiltinFunction.m */; };
+		10B1A9AE12541AFC00BD2E8C /* DslBuiltinFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B1A9AB12541AFC00BD2E8C /* DslBuiltinFunction.m */; };
+		10B1A9AF12541AFC00BD2E8C /* DslBuiltinFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B1A9AB12541AFC00BD2E8C /* DslBuiltinFunction.m */; };
+		10B1A9B212541B5900BD2E8C /* DslDefinedFunction.h in Headers */ = {isa = PBXBuildFile; fileRef = 10B1A9B012541B5900BD2E8C /* DslDefinedFunction.h */; };
+		10B1A9B312541B5900BD2E8C /* DslDefinedFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B1A9B112541B5900BD2E8C /* DslDefinedFunction.m */; };
+		10B1A9B412541B5900BD2E8C /* DslDefinedFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B1A9B112541B5900BD2E8C /* DslDefinedFunction.m */; };
+		10B1A9B512541B5900BD2E8C /* DslDefinedFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B1A9B112541B5900BD2E8C /* DslDefinedFunction.m */; };
 		10F7FF8912530137007A402F /* eval.test in Resources */ = {isa = PBXBuildFile; fileRef = 10F7FF801252FB8A007A402F /* eval.test */; };
 		10F7FFA5125302A9007A402F /* lambda.test in Resources */ = {isa = PBXBuildFile; fileRef = 10F7FFA112530248007A402F /* lambda.test */; };
 		10F7FFB31253040E007A402F /* list.test in Resources */ = {isa = PBXBuildFile; fileRef = 10F7FFB212530403007A402F /* list.test */; };
@@ -88,7 +103,6 @@
 		109674FF1252E6E80004C216 /* cond.test */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cond.test; sourceTree = "<group>"; };
 		10A8A07412516DEA00E0A8C8 /* UnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		10A8A07512516DEA00E0A8C8 /* UnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UnitTests-Info.plist"; sourceTree = "<group>"; };
-		10A8A07B12516E1900E0A8C8 /* dsl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dsl.h; sourceTree = "<group>"; };
 		10A8A07C12516E1900E0A8C8 /* DslBoolean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DslBoolean.h; sourceTree = "<group>"; };
 		10A8A07D12516E1900E0A8C8 /* DslBoolean.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DslBoolean.m; sourceTree = "<group>"; };
 		10A8A07E12516E1900E0A8C8 /* DslCons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DslCons.h; sourceTree = "<group>"; };
@@ -97,8 +111,8 @@
 		10A8A08112516E1900E0A8C8 /* DslExpression.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DslExpression.m; sourceTree = "<group>"; };
 		10A8A08212516E1900E0A8C8 /* DslFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DslFunction.h; sourceTree = "<group>"; };
 		10A8A08312516E1900E0A8C8 /* DslFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DslFunction.m; sourceTree = "<group>"; };
-		10A8A08412516E1900E0A8C8 /* DslIdentifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DslIdentifier.h; sourceTree = "<group>"; };
-		10A8A08512516E1900E0A8C8 /* DslIdentifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DslIdentifier.m; sourceTree = "<group>"; };
+		10A8A08412516E1900E0A8C8 /* DslSymbol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DslSymbol.h; sourceTree = "<group>"; };
+		10A8A08512516E1900E0A8C8 /* DslSymbol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DslSymbol.m; sourceTree = "<group>"; };
 		10A8A08612516E1900E0A8C8 /* DslNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DslNumber.h; sourceTree = "<group>"; };
 		10A8A08712516E1900E0A8C8 /* DslNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DslNumber.m; sourceTree = "<group>"; };
 		10A8A08812516E1900E0A8C8 /* DslObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DslObject.h; sourceTree = "<group>"; };
@@ -143,6 +157,14 @@
 		10B1A8B61253E0FA00BD2E8C /* TestReporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestReporter.m; sourceTree = "<group>"; };
 		10B1A8B81253E42600BD2E8C /* FailureReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FailureReport.h; sourceTree = "<group>"; };
 		10B1A8B91253E42600BD2E8C /* FailureReport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FailureReport.m; sourceTree = "<group>"; };
+		10B1A96E125410C100BD2E8C /* Dsl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dsl.h; sourceTree = "<group>"; };
+		10B1A96F125410C100BD2E8C /* Dsl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dsl.m; sourceTree = "<group>"; };
+		10B1A994125418B300BD2E8C /* DslNil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DslNil.h; sourceTree = "<group>"; };
+		10B1A995125418B300BD2E8C /* DslNil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DslNil.m; sourceTree = "<group>"; };
+		10B1A9AA12541AFC00BD2E8C /* DslBuiltinFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DslBuiltinFunction.h; sourceTree = "<group>"; };
+		10B1A9AB12541AFC00BD2E8C /* DslBuiltinFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DslBuiltinFunction.m; sourceTree = "<group>"; };
+		10B1A9B012541B5900BD2E8C /* DslDefinedFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DslDefinedFunction.h; sourceTree = "<group>"; };
+		10B1A9B112541B5900BD2E8C /* DslDefinedFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DslDefinedFunction.m; sourceTree = "<group>"; };
 		10F7FF801252FB8A007A402F /* eval.test */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = eval.test; sourceTree = "<group>"; };
 		10F7FFA112530248007A402F /* lambda.test */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lambda.test; sourceTree = "<group>"; };
 		10F7FFAC125302D8007A402F /* let.test */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = let.test; sourceTree = "<group>"; };
@@ -226,7 +248,6 @@
 		10A8A07A12516E1900E0A8C8 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				10A8A07B12516E1900E0A8C8 /* dsl.h */,
 				10A8A07C12516E1900E0A8C8 /* DslBoolean.h */,
 				10A8A07D12516E1900E0A8C8 /* DslBoolean.m */,
 				10A8A07E12516E1900E0A8C8 /* DslCons.h */,
@@ -235,8 +256,8 @@
 				10A8A08112516E1900E0A8C8 /* DslExpression.m */,
 				10A8A08212516E1900E0A8C8 /* DslFunction.h */,
 				10A8A08312516E1900E0A8C8 /* DslFunction.m */,
-				10A8A08412516E1900E0A8C8 /* DslIdentifier.h */,
-				10A8A08512516E1900E0A8C8 /* DslIdentifier.m */,
+				10A8A08412516E1900E0A8C8 /* DslSymbol.h */,
+				10A8A08512516E1900E0A8C8 /* DslSymbol.m */,
 				10A8A08612516E1900E0A8C8 /* DslNumber.h */,
 				10A8A08712516E1900E0A8C8 /* DslNumber.m */,
 				10A8A08812516E1900E0A8C8 /* DslObject.h */,
@@ -249,6 +270,14 @@
 				10A8A08F12516E1900E0A8C8 /* Functions.m */,
 				10A8A09012516E1900E0A8C8 /* InputStream.h */,
 				10A8A09112516E1900E0A8C8 /* InputStream.m */,
+				10B1A96E125410C100BD2E8C /* Dsl.h */,
+				10B1A96F125410C100BD2E8C /* Dsl.m */,
+				10B1A994125418B300BD2E8C /* DslNil.h */,
+				10B1A995125418B300BD2E8C /* DslNil.m */,
+				10B1A9AA12541AFC00BD2E8C /* DslBuiltinFunction.h */,
+				10B1A9AB12541AFC00BD2E8C /* DslBuiltinFunction.m */,
+				10B1A9B012541B5900BD2E8C /* DslDefinedFunction.h */,
+				10B1A9B112541B5900BD2E8C /* DslDefinedFunction.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -311,18 +340,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA747D9F0F9514B9006C5449 /* DSL_Prefix.pch in Headers */,
-				10A8A09212516E1900E0A8C8 /* dsl.h in Headers */,
 				10A8A09312516E1900E0A8C8 /* DslBoolean.h in Headers */,
 				10A8A09512516E1900E0A8C8 /* DslCons.h in Headers */,
 				10A8A09712516E1900E0A8C8 /* DslExpression.h in Headers */,
 				10A8A09912516E1900E0A8C8 /* DslFunction.h in Headers */,
-				10A8A09B12516E1900E0A8C8 /* DslIdentifier.h in Headers */,
+				10A8A09B12516E1900E0A8C8 /* DslSymbol.h in Headers */,
 				10A8A09D12516E1900E0A8C8 /* DslNumber.h in Headers */,
 				10A8A09F12516E1900E0A8C8 /* DslObject.h in Headers */,
 				10A8A0A112516E1900E0A8C8 /* DslParser.h in Headers */,
 				10A8A0A312516E1900E0A8C8 /* DslString.h in Headers */,
 				10A8A0A512516E1900E0A8C8 /* Functions.h in Headers */,
 				10A8A0A712516E1900E0A8C8 /* InputStream.h in Headers */,
+				10B1A972125410C100BD2E8C /* Dsl.h in Headers */,
+				10B1A998125418B300BD2E8C /* DslNil.h in Headers */,
+				10B1A9AC12541AFC00BD2E8C /* DslBuiltinFunction.h in Headers */,
+				10B1A9B212541B5900BD2E8C /* DslDefinedFunction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -449,7 +481,7 @@
 				1096734812528C3B0004C216 /* DslCons.m in Sources */,
 				1096734912528C3B0004C216 /* DslExpression.m in Sources */,
 				1096734A12528C3B0004C216 /* DslFunction.m in Sources */,
-				1096734B12528C3B0004C216 /* DslIdentifier.m in Sources */,
+				1096734B12528C3B0004C216 /* DslSymbol.m in Sources */,
 				1096734C12528C3B0004C216 /* DslNumber.m in Sources */,
 				1096734D12528C3B0004C216 /* DslObject.m in Sources */,
 				1096734E12528C3B0004C216 /* DslParser.m in Sources */,
@@ -459,6 +491,10 @@
 				1096743C1252BB940004C216 /* Tester.m in Sources */,
 				10B1A8B71253E0FA00BD2E8C /* TestReporter.m in Sources */,
 				10B1A8BA1253E42600BD2E8C /* FailureReport.m in Sources */,
+				10B1A970125410C100BD2E8C /* Dsl.m in Sources */,
+				10B1A996125418B300BD2E8C /* DslNil.m in Sources */,
+				10B1A9AE12541AFC00BD2E8C /* DslBuiltinFunction.m in Sources */,
+				10B1A9B412541B5900BD2E8C /* DslDefinedFunction.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,7 +506,7 @@
 				10A8A0AA12516E1900E0A8C8 /* DslCons.m in Sources */,
 				10A8A0AB12516E1900E0A8C8 /* DslExpression.m in Sources */,
 				10A8A0AC12516E1900E0A8C8 /* DslFunction.m in Sources */,
-				10A8A0AD12516E1900E0A8C8 /* DslIdentifier.m in Sources */,
+				10A8A0AD12516E1900E0A8C8 /* DslSymbol.m in Sources */,
 				10A8A0AE12516E1900E0A8C8 /* DslNumber.m in Sources */,
 				10A8A0AF12516E1900E0A8C8 /* DslObject.m in Sources */,
 				10A8A0B012516E1900E0A8C8 /* DslParser.m in Sources */,
@@ -491,6 +527,10 @@
 				10A8A0DC12516E2600E0A8C8 /* ObjectFunctionsTestCase.m in Sources */,
 				10A8A0DD12516E2600E0A8C8 /* OperatorFunctionTest.m in Sources */,
 				10A8A0DE12516E2600E0A8C8 /* StringParsingTestCase.m in Sources */,
+				10B1A971125410C100BD2E8C /* Dsl.m in Sources */,
+				10B1A997125418B300BD2E8C /* DslNil.m in Sources */,
+				10B1A9AF12541AFC00BD2E8C /* DslBuiltinFunction.m in Sources */,
+				10B1A9B512541B5900BD2E8C /* DslDefinedFunction.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -502,13 +542,17 @@
 				10A8A09612516E1900E0A8C8 /* DslCons.m in Sources */,
 				10A8A09812516E1900E0A8C8 /* DslExpression.m in Sources */,
 				10A8A09A12516E1900E0A8C8 /* DslFunction.m in Sources */,
-				10A8A09C12516E1900E0A8C8 /* DslIdentifier.m in Sources */,
+				10A8A09C12516E1900E0A8C8 /* DslSymbol.m in Sources */,
 				10A8A09E12516E1900E0A8C8 /* DslNumber.m in Sources */,
 				10A8A0A012516E1900E0A8C8 /* DslObject.m in Sources */,
 				10A8A0A212516E1900E0A8C8 /* DslParser.m in Sources */,
 				10A8A0A412516E1900E0A8C8 /* DslString.m in Sources */,
 				10A8A0A612516E1900E0A8C8 /* Functions.m in Sources */,
 				10A8A0A812516E1900E0A8C8 /* InputStream.m in Sources */,
+				10B1A973125410C100BD2E8C /* Dsl.m in Sources */,
+				10B1A999125418B300BD2E8C /* DslNil.m in Sources */,
+				10B1A9AD12541AFC00BD2E8C /* DslBuiltinFunction.m in Sources */,
+				10B1A9B312541B5900BD2E8C /* DslDefinedFunction.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,7 +12,7 @@
 #import "DslNumber.h"
 #import "DslString.h"
 #import "DslBoolean.h"
-#import "DslIdentifier.h"
+#import "DslSymbol.h"
 #import "DslCons.h"
 
 @interface DslParser : NSObject {

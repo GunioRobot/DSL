@@ -8,9 +8,10 @@
 
 #import "DslCons.h"
 #import "DslNumber.h"
-#import "DslIdentifier.h"
+#import "DslSymbol.h"
 #import "DslString.h"
 #import "DslFunction.h"
+#import "DslDefinedFunction.h"
 #import "Functions.h"
 
 
@@ -30,7 +31,7 @@
 
 + (DslCons*) quote:(DslExpression*)expr
 {
-  return [DslCons withHead:[DslIdentifier identifierWithName:@"quote"] andTail:[DslCons withHead:expr]];
+  return [DslCons withHead:[DslSymbol withName:@"quote"] andTail:[DslCons withHead:expr]];
 }
 
 
@@ -122,7 +123,7 @@
 - (DslNumber*) fetchInteger:(DslCons*)bindings
 {
   DslObject *obj = (DslObject*)[[self car] eval:bindings];
-  DslIdentifier *sel = (DslIdentifier*)[[self cadr] eval:bindings];
+  DslSymbol *sel = (DslSymbol*)[[self cadr] eval:bindings];
   return [obj getInteger:[sel identifierValue]];
 }
 
@@ -130,7 +131,7 @@
 - (DslBoolean*) fetchBoolean:(DslCons*)bindings
 {
   DslObject *obj = (DslObject*)[[self car] eval:bindings];
-  DslIdentifier *sel = (DslIdentifier*)[[self cadr] eval:bindings];
+  DslSymbol *sel = (DslSymbol*)[[self cadr] eval:bindings];
   return [obj getBoolean:[sel identifierValue]];
 }
 
@@ -138,7 +139,7 @@
 - (DslString*) fetchString:(DslCons*)bindings
 {
   DslObject *obj = (DslObject*)[head eval:bindings];
-  DslIdentifier *sel = (DslIdentifier*)[[self cadr] eval:bindings];
+  DslSymbol *sel = (DslSymbol*)[[self cadr] eval:bindings];
   return [obj getString:[sel identifierValue]];
 }
 
@@ -216,7 +217,7 @@
 
 - (DslCons*) quote:(DslExpression*)sexpr
 {
-  return [DslCons withHead:[DslIdentifier identifierWithName:@"quote"] andTail:[DslCons withHead:sexpr]];
+  return [DslCons withHead:[DslSymbol withName:@"quote"] andTail:[DslCons withHead:sexpr]];
 }
 
 
@@ -346,7 +347,7 @@
 }
             
 
-- (DslExpression*) find:(DslIdentifier*)variableName
+- (DslExpression*) find:(DslSymbol*)variableName
 {
   if ([self car] && [[[self caar] identifierValue] isEqualToString:[variableName identifierValue]]) {
     return [self cdar];
@@ -467,7 +468,7 @@
     BOOL rval = [[[self caddr] eval:bindings] booleanValue];
     return [self logResult:[DslBoolean booleanWith:(lval || rval)] ];    
   } else if ([procName isEqualToString:@"lambda"]) {
-    return [self logResult:[DslFunction withParameters:(DslCons*)[self cadr] andBody:(DslCons*)[self cddr]] ];
+    return [self logResult:[DslDefinedFunction withParameters:(DslCons*)[self cadr] andBody:(DslCons*)[self cddr]] ];
   } else if ([procName isEqualToString:@"get-string"]) {
     return [self logResult:[(DslCons*)[self cdr] fetchString:bindings] ];
   } else if ([procName isEqualToString:@"get-integer"]) {

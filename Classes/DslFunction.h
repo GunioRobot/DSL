@@ -12,13 +12,8 @@
 
 
 @interface DslFunction : DslExpression {
-  DslCons *parameters;
-  DslCons *body;
 }
 
-+ (DslFunction*) withParameters:(DslCons*)p andBody:(DslCons*)b;
-- (DslFunction*) init;
-- (DslFunction*) initWithParameters:(DslCons*)p andBody:(DslCons*)b;
 - (DslExpression*) evalWithArguments:(DslCons*)args andBindings:(DslCons*)bindings;
 
 @end

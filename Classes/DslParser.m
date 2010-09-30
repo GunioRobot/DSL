@@ -73,7 +73,7 @@
     [input rollback];
   }
   NSString *value = [input extract];
-  return [DslIdentifier identifierWithName:value];
+  return [DslSymbol withName:value];
 }
 
 
@@ -82,15 +82,15 @@
   unichar nextChar = [input nextChar];
   switch (nextChar) {
     case '+':
-      return [DslIdentifier identifierWithName:@"+"];
+      return [DslSymbol withName:@"+"];
     case '-':
-      return [DslIdentifier identifierWithName:@"-"];
+      return [DslSymbol withName:@"-"];
     case '<':
-      return [DslIdentifier identifierWithName:@"<"];
+      return [DslSymbol withName:@"<"];
     case '>':
-      return [DslIdentifier identifierWithName:@">"];
+      return [DslSymbol withName:@">"];
     case '=':
-      return [DslIdentifier identifierWithName:@"="];
+      return [DslSymbol withName:@"="];
     default:
       return nil;
   }
@@ -125,7 +125,7 @@
   if (nextChar == '(') {
     return [self parseCons:input];
   } else if (nextChar == '\'') {
-    return [DslCons withHead:[DslIdentifier identifierWithName:@"quote"] andTail:[DslCons withHead:[self parseExpression:input]]];
+    return [DslCons withHead:[DslSymbol withName:@"quote"] andTail:[DslCons withHead:[self parseExpression:input]]];
   } else {
     [input rollback];
     return [self parseAtomicExpression:input];
