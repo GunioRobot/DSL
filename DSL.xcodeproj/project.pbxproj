@@ -86,6 +86,16 @@
 		10B1A9B312541B5900BD2E8C /* DslDefinedFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B1A9B112541B5900BD2E8C /* DslDefinedFunction.m */; };
 		10B1A9B412541B5900BD2E8C /* DslDefinedFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B1A9B112541B5900BD2E8C /* DslDefinedFunction.m */; };
 		10B1A9B512541B5900BD2E8C /* DslDefinedFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B1A9B112541B5900BD2E8C /* DslDefinedFunction.m */; };
+		10DE503312542D8C0054676F /* number-functions.test in Resources */ = {isa = PBXBuildFile; fileRef = 10DE502A12542CAA0054676F /* number-functions.test */; };
+		10DE504812542E8F0054676F /* logic-functions.test in Resources */ = {isa = PBXBuildFile; fileRef = 10DE504712542E8B0054676F /* logic-functions.test */; };
+		10DE5052125433F10054676F /* SymbolTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 10DE5051125433F10054676F /* SymbolTable.m */; };
+		10DE5053125433F10054676F /* SymbolTable.h in Headers */ = {isa = PBXBuildFile; fileRef = 10DE5050125433F10054676F /* SymbolTable.h */; };
+		10DE5054125433F10054676F /* SymbolTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 10DE5051125433F10054676F /* SymbolTable.m */; };
+		10DE5055125433F10054676F /* SymbolTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 10DE5051125433F10054676F /* SymbolTable.m */; };
+		10DE5058125434DF0054676F /* Binding.m in Sources */ = {isa = PBXBuildFile; fileRef = 10DE5057125434DF0054676F /* Binding.m */; };
+		10DE5059125434DF0054676F /* Binding.m in Sources */ = {isa = PBXBuildFile; fileRef = 10DE5057125434DF0054676F /* Binding.m */; };
+		10DE505A125434DF0054676F /* Binding.h in Headers */ = {isa = PBXBuildFile; fileRef = 10DE5056125434DF0054676F /* Binding.h */; };
+		10DE505B125434DF0054676F /* Binding.m in Sources */ = {isa = PBXBuildFile; fileRef = 10DE5057125434DF0054676F /* Binding.m */; };
 		10F7FF8912530137007A402F /* eval.test in Resources */ = {isa = PBXBuildFile; fileRef = 10F7FF801252FB8A007A402F /* eval.test */; };
 		10F7FFA5125302A9007A402F /* lambda.test in Resources */ = {isa = PBXBuildFile; fileRef = 10F7FFA112530248007A402F /* lambda.test */; };
 		10F7FFB31253040E007A402F /* list.test in Resources */ = {isa = PBXBuildFile; fileRef = 10F7FFB212530403007A402F /* list.test */; };
@@ -165,6 +175,12 @@
 		10B1A9AB12541AFC00BD2E8C /* DslBuiltinFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DslBuiltinFunction.m; sourceTree = "<group>"; };
 		10B1A9B012541B5900BD2E8C /* DslDefinedFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DslDefinedFunction.h; sourceTree = "<group>"; };
 		10B1A9B112541B5900BD2E8C /* DslDefinedFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DslDefinedFunction.m; sourceTree = "<group>"; };
+		10DE502A12542CAA0054676F /* number-functions.test */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "number-functions.test"; sourceTree = "<group>"; };
+		10DE504712542E8B0054676F /* logic-functions.test */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "logic-functions.test"; sourceTree = "<group>"; };
+		10DE5050125433F10054676F /* SymbolTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SymbolTable.h; sourceTree = "<group>"; };
+		10DE5051125433F10054676F /* SymbolTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SymbolTable.m; sourceTree = "<group>"; };
+		10DE5056125434DF0054676F /* Binding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Binding.h; sourceTree = "<group>"; };
+		10DE5057125434DF0054676F /* Binding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Binding.m; sourceTree = "<group>"; };
 		10F7FF801252FB8A007A402F /* eval.test */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = eval.test; sourceTree = "<group>"; };
 		10F7FFA112530248007A402F /* lambda.test */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lambda.test; sourceTree = "<group>"; };
 		10F7FFAC125302D8007A402F /* let.test */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = let.test; sourceTree = "<group>"; };
@@ -241,6 +257,8 @@
 				10F7FFA112530248007A402F /* lambda.test */,
 				10F7FFAC125302D8007A402F /* let.test */,
 				10F7FFB212530403007A402F /* list.test */,
+				10DE502A12542CAA0054676F /* number-functions.test */,
+				10DE504712542E8B0054676F /* logic-functions.test */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -278,6 +296,10 @@
 				10B1A9AB12541AFC00BD2E8C /* DslBuiltinFunction.m */,
 				10B1A9B012541B5900BD2E8C /* DslDefinedFunction.h */,
 				10B1A9B112541B5900BD2E8C /* DslDefinedFunction.m */,
+				10DE5050125433F10054676F /* SymbolTable.h */,
+				10DE5051125433F10054676F /* SymbolTable.m */,
+				10DE5056125434DF0054676F /* Binding.h */,
+				10DE5057125434DF0054676F /* Binding.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -355,6 +377,8 @@
 				10B1A998125418B300BD2E8C /* DslNil.h in Headers */,
 				10B1A9AC12541AFC00BD2E8C /* DslBuiltinFunction.h in Headers */,
 				10B1A9B212541B5900BD2E8C /* DslDefinedFunction.h in Headers */,
+				10DE5053125433F10054676F /* SymbolTable.h in Headers */,
+				10DE505A125434DF0054676F /* Binding.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -443,6 +467,8 @@
 				10F7FFA5125302A9007A402F /* lambda.test in Resources */,
 				10F7FFB31253040E007A402F /* list.test in Resources */,
 				10F7FFDC125324BD007A402F /* let.test in Resources */,
+				10DE503312542D8C0054676F /* number-functions.test in Resources */,
+				10DE504812542E8F0054676F /* logic-functions.test in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -495,6 +521,8 @@
 				10B1A996125418B300BD2E8C /* DslNil.m in Sources */,
 				10B1A9AE12541AFC00BD2E8C /* DslBuiltinFunction.m in Sources */,
 				10B1A9B412541B5900BD2E8C /* DslDefinedFunction.m in Sources */,
+				10DE5052125433F10054676F /* SymbolTable.m in Sources */,
+				10DE5059125434DF0054676F /* Binding.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -531,6 +559,8 @@
 				10B1A997125418B300BD2E8C /* DslNil.m in Sources */,
 				10B1A9AF12541AFC00BD2E8C /* DslBuiltinFunction.m in Sources */,
 				10B1A9B512541B5900BD2E8C /* DslDefinedFunction.m in Sources */,
+				10DE5055125433F10054676F /* SymbolTable.m in Sources */,
+				10DE5058125434DF0054676F /* Binding.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -553,6 +583,8 @@
 				10B1A999125418B300BD2E8C /* DslNil.m in Sources */,
 				10B1A9AD12541AFC00BD2E8C /* DslBuiltinFunction.m in Sources */,
 				10B1A9B312541B5900BD2E8C /* DslDefinedFunction.m in Sources */,
+				10DE5054125433F10054676F /* SymbolTable.m in Sources */,
+				10DE505B125434DF0054676F /* Binding.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
