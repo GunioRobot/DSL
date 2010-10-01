@@ -9,13 +9,10 @@
 #import "DslExpression.h"
 
 
-@class DslNil;
-static DslNil *instance;
-
 @interface DslNil : DslExpression {
 
 }
 
-+ (DslNil*) NIL;
++ (void) initialize;
 
 @end

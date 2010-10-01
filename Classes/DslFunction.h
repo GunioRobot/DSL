@@ -15,5 +15,6 @@
 }
 
 - (DslExpression*) evalWithArguments:(DslCons*)args andBindings:(DslCons*)bindings;
+- (DslExpression*) evalWithArguments:(DslCons*)args;
 
 @end

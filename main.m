@@ -14,6 +14,7 @@ int main(int argc, char *argv[]) {
     
   @try {
     NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+    [Dsl initialize];
     Tester *t = [[Tester alloc]init];
     [t runTests];
     [pool release];

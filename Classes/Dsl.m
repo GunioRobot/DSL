@@ -11,6 +11,14 @@
 
 @implementation Dsl
 
+
++ (void) initialize
+{
+  DSL = [[Dsl alloc] init];
+  NIL = [DslNil alloc];
+}
+
+
 - (Dsl *) init
 {
   parser = [[DslParser alloc] init];
@@ -52,6 +60,16 @@
 - (void) popLocalBindings
 {
   [symbolTable popLocalBindings];
+}
+
+- (DslExpression*) apply:(DslFunction*)func to:(DslCons*)args
+{
+  [func evalWithArguments:args];
+}
+
+
+- (DslExpression*) eval:(DslExpression*)sexp
+{
 }
 
 
@@ -176,10 +194,10 @@
 {
   if (args == nil) return [DslNumber numberWith:0];
 
-  DslCons *arg = args.head;
+  DslCons *arg = (DslCons*)args.head;
   int len = 0;
   while (![arg isNil]) {
-    arg = arg.tail;
+    arg = (DslCons*)arg.tail;
     len++;
   }
   return [DslNumber numberWith:len];
@@ -188,21 +206,82 @@
 
 - (DslCons*) map:(DslCons*)args
 {
+  if (args == nil) return [DslCons empty];
+  if ([[self length:args] intValue] != 2) return [DslCons empty];
+  
+  DslFunction *function = (DslFunction*)[self eval:args.head];
+  DslCons *data = [self eval:(DslCons*)args.tail.head];
+  DslCons *result = [DslCons empty];
+  DslCons *trailingCell = result;
+  
+  while (![data isNil]) {
+    trailingCell.tail = [DslCons withHead:[self apply:function to:data.head]];
+    trailingCell = (DslCons*)trailingCell.tail;
+    data = data.tail;
+  }
+  trailingCell = (DslCons*)result.tail;
+  result.tail = nil;
+  [result release];
+  return trailingCell;
 }
 
 
 - (DslCons*) select:(DslCons*)args
 {
+  if (args == nil) return [DslCons empty];
+  if ([[self length:args] intValue] != 2) return [DslCons empty];
+  
+  DslFunction *predicate = (DslFunction*)[self eval:args.head];
+  DslCons *data = [self eval:(DslCons*)args.tail.head];
+  DslCons *result = [DslCons empty];
+  DslCons *trailingCell = result;
+  
+  while (![data isNil]) {
+    if ([[self apply:predicate to:data.head] boolValue]) {
+      trailingCell.tail = [DslCons withHead:data.head];
+      trailingCell = trailingCell.tail;
+    }
+    data = data.tail;
+  }
+  if ([result.tail isNil]) {
+    return result;
+  } else {
+    trailingCell = result.tail;
+    result.tail = nil;
+    [result release];
+    return trailingCell;
+  }
 }
 
 
 - (DslCons*) any:(DslCons*)args
 {
+  if (args == nil) return [DslBoolean withFalse];
+  if ([[self length:args] intValue] != 2) return [DslBoolean withFalse];
+  
+  DslFunction *predicate = (DslFunction*)[self eval:args.head];
+  DslCons *data = [self eval:(DslCons*)args.tail.head];
+  
+  while (![data isNil]) {
+    DslBoolean *result = [self apply:predicate to:data.head];
+    if ([result booleanValue]) return result;
+    data = data.tail;
+  }
+  return [DslBoolean withFalse];    
 }
 
 
 - (DslCons*) cond:(DslCons*)args
 {
+  if (args == nil) return [DslNil NIL];
+  
+  DslCons *pairs = args;
+  while (![pairs isNil]) {
+    if ([[self eval:pairs.head] boolValue]) {
+      return [self eval:pairs.tail.head];
+    }
+    pairs = pairs.tail;
+  }
 }
 
 

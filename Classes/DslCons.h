@@ -24,11 +24,11 @@
 @property (assign, nonatomic) DslExpression *tail;
 
 + (DslCons*) quote:(DslExpression*)sexpr;
++ (DslCons*) empty;
 + (DslCons*) withHead:(DslExpression*)h;
 + (DslCons*) withHead:(DslExpression*)h andTail:(DslExpression*)t;
 
 - (DslCons*) init;
-- (DslCons*) initWithHead:(DslExpression*)h;
 - (DslCons*) initWithHead:(DslExpression*)h andTail:(DslExpression*)t;
 
 - (void) setHead:(DslExpression*)h;

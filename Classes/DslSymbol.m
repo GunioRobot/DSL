@@ -7,7 +7,7 @@
 //
 
 #import "DslSymbol.h"
-#import "DslCons.h"
+#import "Dsl.h"
 
 
 @implementation DslSymbol
@@ -37,10 +37,10 @@
 }
 
 
-- (DslExpression*) eval:(DslCons*)bindings
+- (DslExpression*) eval
 {
   [self logEval:self];
-  return [self logResult:[bindings find:self]];
+  return [self logResult:[DSL valueOf:self]];
 }
 
 

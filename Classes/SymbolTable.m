@@ -8,7 +8,7 @@
 
 #import "SymbolTable.h"
 #import "Binding.h"
-#import "DslNil.h"
+#import "Dsl.h"
 
 
 @implementation SymbolTable
@@ -62,7 +62,9 @@
 {
   DslSymbol *found = [self findSymbol:name];
   if (found == nil) {
-    return [DslSymbol withName:name];
+    DslSymbol *sym = [DslSymbol withName:name];
+    [self bind:sym to:NIL];
+    return sym;
   } else {
     return found;
   }

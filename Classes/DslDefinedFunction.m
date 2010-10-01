@@ -31,25 +31,30 @@
 }
 
 
-- (DslExpression*) evalWithArguments:(DslCons*)args andBindings:(DslCons*)bindings
+- (DslExpression*) evalWithArguments:(DslCons*)args
 {
-  //  NSLog(@"Entering anon function with args: %@ and bindings: %@", [args toString], [bindings toString]);
-  // bind arguments
+  [DSL pushLocalBindings];
+  
   DslCons *p = parameters;
   DslCons *a = args;
-  DslCons *localBindings = [bindings copy];
   while ([p car] && [a car]) {
-    DslCons *newBinding = [DslCons withHead:[p car] andTail:[a car]];
-    [localBindings append:[DslCons withHead:newBinding]];
-    p = (DslCons*)[p cdr];
-    a = (DslCons*)[a cdr];
+    [DSL bind:(DslSymbol*)p.head to:a.head];
+    p = (DslCons*)p.tail;
+    a = (DslCons*)a.tail;
   }
   
   if (body == nil || [body length] == 0) {
-    return nil;
+    [DSL popLocalBindings];
+    return [DslNil NIL];
   } else {
-    //    NSLog(@"Executing anon function with args: %@ and bindings: %@", [args toString], [localBindings toString]);
-    return [body evalEach:localBindings];
+    DslExpression *result = [DslNil NIL];
+    DslCons *code = body;
+    while (![code isNil]) {
+      result = [DSL eval:code.head];
+      code = (DslCons*)code.tail;
+    }
+    [DSL popLocalBindings];
+    return result;
   }
 }
 

@@ -17,8 +17,13 @@
 #import "DslCons.h"
 #import "DslFunction.h"
 #import "DslObject.h"
+#import "DslNil.h"
 #import "Functions.h"
 #import "SymbolTable.h"
+
+@class Dsl;
+static Dsl *DSL = nil;
+static DslNil *NIL = nil;
 
 
 @interface Dsl : NSObject {
@@ -26,6 +31,7 @@
   SymbolTable *symbolTable;
 }
 
++ (Dsl*) dsl;
 
 - (Dsl *) init;
 
@@ -38,6 +44,9 @@
 - (DslExpression*) valueOf:(DslSymbol*)symbol;
 - (void) pushLocalBindings;
 - (void) popLocalBindings;
+
+- (DslExpression*) apply:(DslFunction*)func to:(DslCons*)args;
+- (DslExpression*) eval:(DslExpression*)sexp;
 
 // function functions
 

@@ -11,14 +11,6 @@
 
 @implementation DslNil
 
-+(DslNil*) NIL
-{
-  if (instance == nil) {
-    instance = [DslNil alloc];
-  }
-  return instance;
-}
-
 
 - (BOOL) booleanValue
 {

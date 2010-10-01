@@ -10,10 +10,11 @@
 #import "Dsl.h"
 
 @interface DslBuiltinFunction : DslFunction {
+  id target;
   SEL selector;
 }
 
-+ (DslBuiltinFunction*)withSelector:(SEL)pSel;
-- (DslBuiltinFunction*)initWithSelector:(SEL)pSel;
++ (DslBuiltinFunction*)withTarget:(id)pTarget andSelector:(SEL)pSelector;
+- (DslBuiltinFunction*)initWithTarget:(id)pTarget andSelector:(SEL)pSelector;
 
 @end

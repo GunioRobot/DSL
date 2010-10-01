@@ -11,18 +11,23 @@
 
 @implementation DslBuiltinFunction
 
-+ (DslBuiltinFunction*)withSelector:(SEL)pSel
++ (DslBuiltinFunction*)withTarget:(id)pTarget andSelector:(SEL)pSelector
 {
+  return [[DslBuiltinFunction alloc] initWithTarget:pTarget andSelector:pSelector];
 }
 
 
-- (DslBuiltinFunction*)initWithSelector:(SEL)pSel
+- (DslBuiltinFunction*)initWithTarget:(id)pTarget andSelector:(SEL)pSelector
 {
+  target = pTarget;
+  selector = pSelector;
+  return self;
 }
 
 
-- (DslExpression*) evalWithArguments:(DslCons*)args andBindings:(DslCons*)bindings
+- (DslExpression*) evalWithArguments:(DslCons*)args
 {
+  [target performSelector:selector withObject:args];
 }
 
 @end

@@ -21,7 +21,7 @@
 - (DslExpression*)head;
 - (DslExpression*)tail;
 - (DslExpression*) length;
-- (DslExpression*) eval:(DslCons*)bindings;
+- (DslExpression*) eval;
 - (DslExpression*) evalEach:(DslCons*)bindings;
 
 - (DslExpression*) car;

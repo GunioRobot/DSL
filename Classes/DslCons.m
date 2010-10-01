@@ -13,14 +13,21 @@
 #import "DslFunction.h"
 #import "DslDefinedFunction.h"
 #import "Functions.h"
+#import "DslNil.h"
 
 
 @implementation DslCons
 
 
++ (DslCons*) empty
+{
+  return [[DslCons alloc] initWithHead:[DslNil NIL] andTail:[DslNil NIL]];
+}
+
+
 + (DslCons*) withHead:(DslExpression*)h
 {
-  return [[DslCons alloc] initWithHead:h];
+  return [[DslCons alloc] initWithHead:h andTail:[DslNil NIL]];
 }
 
 
@@ -32,22 +39,6 @@
 + (DslCons*) quote:(DslExpression*)expr
 {
   return [DslCons withHead:[DslSymbol withName:@"quote"] andTail:[DslCons withHead:expr]];
-}
-
-
-- (DslCons*) init
-{
-  head = nil;
-  tail = nil;
-  return self;
-}
-
-
-- (DslCons*) initWithHead:(DslExpression*)h
-{
-  head = h;
-  tail = nil;
-  return self;
 }
 
 

@@ -73,7 +73,7 @@ int indentLevel = 0;
 - (DslExpression*) cdadr  { return nil; }
 
 
-- (DslExpression*) eval:(DslCons*)bindings
+- (DslExpression*) eval
 {
   [self logEval:self];
   return [self logResult:self];
