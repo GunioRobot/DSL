@@ -70,5 +70,20 @@
 
 - (DslNumber*) length:(DslCons*)args;
 
+- (DslCons*) map:(DslCons*)args;
+- (DslCons*) select:(DslCons*)args;
+- (DslCons*) any:(DslCons*)args;
+
+- (DslCons*) cond:(DslCons*)args;
+- (DslCons*) logicalOr:(DslCons*)args;
+- (DslCons*) logicalAnd:(DslCons*)args;
+- (DslCons*) locicalNot:(DslCons*)args;
+
+- (DslCons*) add:(DslCons*)args;
+- (DslCons*) subtract:(DslCons*)args;
+- (DslCons*) multiply:(DslCons*)args;
+- (DslCons*) divide:(DslCons*)args;
+- (DslCons*) modulus:(DslCons*)args;
+
 
 @end
