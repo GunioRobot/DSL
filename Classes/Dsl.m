@@ -62,29 +62,34 @@
   [symbolTable popLocalBindings];
 }
 
+
+- (DslFunction*) defBuiltinNamed:(NSString*)pName withTarget:(id)pTarget andSelector:(SEL)pSelector
+{
+  return [self bind:[self intern:pName] to:[DslBuiltinFunction withTarget:pTarget andSelector:pSelector]];
+}
+
+
 - (DslExpression*) apply:(DslFunction*)func to:(DslCons*)args
 {
-  [func evalWithArguments:args];
+  return [func evalWithArguments:args];
 }
 
 
 - (DslExpression*) eval:(DslExpression*)sexp
 {
+  return [sexp eval];
 }
 
 
 - (DslFunction*) lambda:(DslCons*)args
 {
+  return [DslDefinedFunction withParameters:(DslCons*)args.head andBody:(DslCons*)args.tail];
 }
 
 
 - (DslFunction*) defun:(DslCons*)args
 {
-}
-
-
-- (DslFunction*) defBuiltin:(DslCons*)args
-{
+  return [self bind:(DslSymbol*)args.head to:[self lambda:(DslCons*)args.tail]];
 }
 
 

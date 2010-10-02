@@ -16,6 +16,8 @@
 #import "DslSymbol.h"
 #import "DslCons.h"
 #import "DslFunction.h"
+#import "DslBuiltinFunction.h"
+#import "DslDefinedFunction.h"
 #import "DslObject.h"
 #import "DslNil.h"
 #import "Functions.h"
