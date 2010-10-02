@@ -5,6 +5,7 @@
 //  Created by David Astels on 9/29/10.
 //  Copyright 2010 Dave Astels. All rights reserved.
 //
+// Applying one of these evals all of it's args
 
 #import "DslDefinedFunction.h"
 
@@ -38,16 +39,16 @@
   DslCons *p = parameters;
   DslCons *a = args;
   while ([p car] && [a car]) {
-    [DSL bind:(DslSymbol*)p.head to:a.head];
+    [DSL bind:(DslSymbol*)p.head to:[DSL eval:a.head]];
     p = (DslCons*)p.tail;
     a = (DslCons*)a.tail;
   }
   
   if (body == nil || [body length] == 0) {
     [DSL popLocalBindings];
-    return [DslNil NIL];
+    return NIL;
   } else {
-    DslExpression *result = [DslNil NIL];
+    DslExpression *result = NIL;
     DslCons *code = body;
     while (![code isNil]) {
       result = [DSL eval:code.head];

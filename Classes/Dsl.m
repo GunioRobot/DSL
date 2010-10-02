@@ -62,34 +62,41 @@
   [symbolTable popLocalBindings];
 }
 
+
+- (DslFunction*) defBuiltinNamed:(NSString*)pName withTarget:(id)pTarget andSelector:(SEL)pSelector
+{
+  return (DslFunction*)[self bind:[self intern:pName] to:[DslBuiltinFunction withTarget:pTarget andSelector:pSelector]];
+}
+
+
 - (DslExpression*) apply:(DslFunction*)func to:(DslCons*)args
 {
-  [func evalWithArguments:args];
+  return [func evalWithArguments:args];
 }
 
 
 - (DslExpression*) eval:(DslExpression*)sexp
 {
+  return [sexp eval];
 }
 
 
 - (DslFunction*) lambda:(DslCons*)args
 {
+  return [DslDefinedFunction withParameters:(DslCons*)args.head andBody:(DslCons*)args.tail];
 }
 
 
 - (DslFunction*) defun:(DslCons*)args
 {
-}
-
-
-- (DslFunction*) defBuiltin:(DslCons*)args
-{
+  return (DslFunction*)[self bind:(DslSymbol*)args.head to:[self lambda:(DslCons*)args.tail]];
 }
 
 
 - (DslExpression*) apply:(DslCons*)args
 {
+  DslFunction *function = (DslFunction*)[args.head eval];
+  return [self apply:function to:(DslCons*)args.tail];
 }
 
 
@@ -210,14 +217,14 @@
   if ([[self length:args] intValue] != 2) return [DslCons empty];
   
   DslFunction *function = (DslFunction*)[self eval:args.head];
-  DslCons *data = [self eval:(DslCons*)args.tail.head];
+  DslCons *data = (DslCons*)[self eval:(DslCons*)args.tail.head];
   DslCons *result = [DslCons empty];
   DslCons *trailingCell = result;
   
   while (![data isNil]) {
-    trailingCell.tail = [DslCons withHead:[self apply:function to:data.head]];
+    trailingCell.tail = [DslCons withHead:[self apply:function to:(DslCons*)data.head]];
     trailingCell = (DslCons*)trailingCell.tail;
-    data = data.tail;
+    data = (DslCons*)data.tail;
   }
   trailingCell = (DslCons*)result.tail;
   result.tail = nil;
@@ -401,6 +408,19 @@
 }
 
 
+- (DslString*) getString:(DslCons*)args
+{
+}
+
+
+- (DslNumber*) getInteger:(DslCons*)args
+{
+}
+
+
+- (DslBoolean*) getBoolean:(DslCons*)args
+{
+}
 
 
 @end

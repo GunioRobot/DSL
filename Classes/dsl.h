@@ -16,6 +16,8 @@
 #import "DslSymbol.h"
 #import "DslCons.h"
 #import "DslFunction.h"
+#import "DslBuiltinFunction.h"
+#import "DslDefinedFunction.h"
 #import "DslObject.h"
 #import "DslNil.h"
 #import "Functions.h"
@@ -94,5 +96,9 @@ static DslNil *NIL = nil;
 - (DslCons*) divide:(DslCons*)args;
 - (DslCons*) modulus:(DslCons*)args;
 
+- (DslString*) getString:(DslCons*)args;
+- (DslNumber*) getInteger:(DslCons*)args;
+- (DslBoolean*) getBoolean:(DslCons*)args;
+  
 
 @end
