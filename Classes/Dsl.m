@@ -101,6 +101,7 @@
 
 
 - (DslFunction*) defBuiltinNamed:(NSString*)pName withTarget:(id)pTarget andSelector:(SEL)pSelector
+<<<<<<< HEAD:Classes/Dsl.m
 {
   return (DslFunction*)[self bind:[self internal_intern:pName] to:[DslBuiltinFunction withTarget:pTarget andSelector:pSelector]];
 }
@@ -109,23 +110,36 @@
 - (DslExpression*) apply:(DslFunction*)func to:(DslCons*)args
 {
   return [func evalWithArguments:args];
+=======
+{
+  return [self bind:[self intern:pName] to:[DslBuiltinFunction withTarget:pTarget andSelector:pSelector]];
+>>>>>>> 48651727ccac18fc32626d51a529dde1c2948990:Classes/Dsl.m
+}
+
+
+- (DslExpression*) apply:(DslFunction*)func to:(DslCons*)args
+{
+<<<<<<< HEAD:Classes/Dsl.m
+  return [sexp eval];
+=======
+  return [func evalWithArguments:args];
+>>>>>>> 48651727ccac18fc32626d51a529dde1c2948990:Classes/Dsl.m
 }
 
 
 - (DslExpression*) eval:(DslExpression*)sexp
 {
+<<<<<<< HEAD:Classes/Dsl.m
+  return [DslDefinedFunction withParameters:(DslCons*)args.head andBody:(DslCons*)args.tail];
+=======
   return [sexp eval];
+>>>>>>> 48651727ccac18fc32626d51a529dde1c2948990:Classes/Dsl.m
 }
 
 
 - (DslFunction*) lambda:(DslCons*)args
 {
-  return [DslDefinedFunction withParameters:(DslCons*)args.head andBody:(DslCons*)args.tail];
-}
-
-
-- (DslFunction*) defun:(DslCons*)args
-{
+<<<<<<< HEAD:Classes/Dsl.m
   return (DslFunction*)[self bind:(DslSymbol*)args.head to:[self lambda:(DslCons*)args.tail]];
 }
 
@@ -134,6 +148,15 @@
 {
   DslFunction *function = (DslFunction*)[args.head eval];
   return [self apply:function to:(DslCons*)args.tail];
+=======
+  return [DslDefinedFunction withParameters:(DslCons*)args.head andBody:(DslCons*)args.tail];
+}
+
+
+- (DslFunction*) defun:(DslCons*)args
+{
+  return [self bind:(DslSymbol*)args.head to:[self lambda:(DslCons*)args.tail]];
+>>>>>>> 48651727ccac18fc32626d51a529dde1c2948990:Classes/Dsl.m
 }
 
 
