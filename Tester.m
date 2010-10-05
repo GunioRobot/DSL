@@ -24,8 +24,8 @@
 
 - (BOOL) for:(NSString*)name checkThat:(NSString*)code evalsTo:(NSString*)result
 {
-  DslExpression *actual = [[p parseExpression:[InputStream withString:code]] eval:nil];
-  DslExpression *expected = [[p parseExpression:[InputStream withString:result]] eval:nil];
+  DslExpression *actual = [[p parseExpression:[InputStream withString:code]] eval];
+  DslExpression *expected = [[p parseExpression:[InputStream withString:result]] eval];
   BOOL areEqual = [actual compareTo:expected];
   if (areEqual) {
     [reporter pass:name];
@@ -41,7 +41,7 @@
   NSArray *parts = [test componentsSeparatedByString:@"\n\n"];
   int limit = [parts count];
   for (int i = 1; i < limit; i += 2) {
-    [self for:[parts objectAtIndex:0] checkThat:[parts objectAtIndex:i] evalsTo:[parts objectAtIndex:i+1]];
+    [self for:[parts objectAtIndex:0] checkThat:[parts objectAtIndex:i]  evalsTo:[parts objectAtIndex:i+1]];
   }
 }
 

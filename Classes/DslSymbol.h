@@ -9,12 +9,14 @@
 #import <Foundation/Foundation.h>
 #import "DslExpression.h"
 
-@interface DslSymbol : DslExpression {
+@interface DslSymbol : DslExpression <NSCopying> {
   NSString *name;
 }
 
 + (DslSymbol*)withName:(NSString*)name;
 - (DslSymbol*)initWithName:(NSString*)name;
 - (BOOL) isNamed:(NSString*)aName;
+
+- (id)copyWithZone:(NSZone *)zone;
 
 @end

@@ -127,4 +127,9 @@ int indentLevel = 0;
   return NO;
 }
 
+- (BOOL) notNil
+{
+  return YES;
+}
+
 @end

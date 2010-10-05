@@ -41,7 +41,7 @@ static DslNil *NIL = nil;
 
 // internal symbol functions
 
-- (DslSymbol *) intern:(NSString *)name;
+- (DslSymbol *) internal_intern:(NSString *)name;
 - (DslExpression*) bind:(DslSymbol*)symbol to:(DslExpression*)value;
 - (DslExpression*) valueOf:(DslSymbol*)symbol;
 - (void) pushLocalBindings;
@@ -57,6 +57,7 @@ static DslNil *NIL = nil;
 - (DslFunction*) defBuiltin:(DslCons*)args;
 - (DslExpression*) apply:(DslCons*)args;
 - (DslExpression*) let:(DslCons*)args;
+- (DslSymbol *) intern:(DslCons *)args;
 
 // list functions
 
@@ -88,7 +89,7 @@ static DslNil *NIL = nil;
 - (DslCons*) cond:(DslCons*)args;
 - (DslCons*) logicalOr:(DslCons*)args;
 - (DslCons*) logicalAnd:(DslCons*)args;
-- (DslCons*) locicalNot:(DslCons*)args;
+- (DslCons*) logicalNot:(DslCons*)args;
 
 - (DslCons*) add:(DslCons*)args;
 - (DslCons*) subtract:(DslCons*)args;

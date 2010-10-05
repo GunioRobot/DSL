@@ -12,6 +12,7 @@
 
 @implementation DslSymbol
 
+
 +(DslSymbol*)withName:(NSString*)n
 {
   return [[DslSymbol alloc] initWithName:n];
@@ -58,7 +59,14 @@
 
 - (BOOL) isNamed:(NSString*)aName
 {
-  [name isEqualToString:aName];
+  return [name isEqualToString:aName];
 }
+
+
+- (id)copyWithZone:(NSZone *)zone
+{
+  return [[DslSymbol allocWithZone: zone] initWithName:name];
+}
+
 
 @end

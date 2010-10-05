@@ -17,6 +17,7 @@
 - (SymbolTable*) init
 {
   frames = [[NSMutableArray array] retain];
+  [self pushLocalBindings];
   return self;
 }
 
@@ -62,7 +63,7 @@
 {
   DslSymbol *found = [self findSymbol:name];
   if (found == nil) {
-    DslSymbol *sym = [DslSymbol withName:name];
+    DslSymbol *sym = [[DslSymbol withName:name] retain];
     [self bind:sym to:NIL];
     return sym;
   } else {
@@ -76,10 +77,10 @@
 {
   Binding *found = [self findBindingInLocalFrameFor:symbol];
   if (found == nil) {
-    Binding *binding = [[Binding alloc] retain];
-    binding.symbol = symbol;
-    binding.value = value;
-    [[self localFrame] setValue:binding forKey:symbol];
+    Binding *binding = [Binding alloc];
+    binding.symbol = [symbol retain];
+    binding.value = [value retain];
+    [[self localFrame] setObject:binding forKey:symbol];
   } else {
     found.value = value;
   }

@@ -12,6 +12,7 @@
 @interface TestReporter : NSObject {
   NSMutableArray *failures;
   int numberOfPasses;
+  int numberOfTests;
   NSDate *startTime;
 }
 

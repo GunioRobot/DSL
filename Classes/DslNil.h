@@ -8,8 +8,10 @@
 
 #import "DslExpression.h"
 
+#import "DslCons.h"
 
-@interface DslNil : DslExpression {
+
+@interface DslNil : DslCons {
 
 }
 

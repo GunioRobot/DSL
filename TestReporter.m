@@ -16,6 +16,7 @@
 {
   failures = [NSMutableArray array];
   numberOfPasses = 0;
+  numberOfTests = 0;
   return self;
 }
 
@@ -24,6 +25,7 @@
 {
   NSLog(@"PASS: %@", test);
   numberOfPasses++;
+  numberOfTests++;
 }
 
 
@@ -31,6 +33,7 @@
 {
   NSLog(@"FAIL: %@", test);
   [failures addObject:[FailureReport for:test code:code actual:actual expected:expected]];
+  numberOfTests++;
 }
 
 
@@ -51,12 +54,14 @@
 {
   NSTimeInterval duration = -[startTime timeIntervalSinceNow];
   
-  NSLog(@"----");
-  NSLog(@"Time: %f sec, %d Passes, %d Failures\n", duration, numberOfPasses, [failures count]);
-  
+  NSLog(@"------------");
+  NSLog(@"Failures");
   for (FailureReport *fail in failures) {
     [fail report];
   }
+  
+  NSLog(@"------------");
+  NSLog(@"Time: %f sec, %d Tests, %d Passes, %d Failures\n", duration, numberOfTests, numberOfPasses, [failures count]);
 }
 
 

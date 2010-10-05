@@ -21,13 +21,13 @@
 
 + (DslCons*) empty
 {
-  return [[DslCons alloc] initWithHead:[DslNil NIL] andTail:[DslNil NIL]];
+  return [[DslCons alloc] initWithHead:NIL andTail:NIL];
 }
 
 
 + (DslCons*) withHead:(DslExpression*)h
 {
-  return [[DslCons alloc] initWithHead:h andTail:[DslNil NIL]];
+  return [[DslCons alloc] initWithHead:h andTail:NIL];
 }
 
 
@@ -148,7 +148,7 @@
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
 - (DslCons*) filterWith:(DslCons*)mask
 {
-  DslCons *rest = nil;
+  DslCons *rest = NIL;
   if (!mask) {
     return rest;
   }
@@ -168,7 +168,7 @@
   DslExpression *value = [predicate evalWithArguments:[DslCons withHead:[self car]] andBindings:bindings];
   if ([value booleanValue]) {
     return YES;
-  } else if (tail == nil) {
+  } else if ([tail isNil]) {
     return NO;
   } else {
     return [(DslCons*)tail findAny:predicate withBindings:bindings];
@@ -199,7 +199,7 @@
 {
   DslExpression *value = [func evalWithArguments:[DslCons withHead:head] andBindings:bindings];
   DslCons *cell = [DslCons withHead:value];
-  if (tail != nil) {
+  if ([tail notNil]) {
     cell.tail = [(DslCons*)tail applyFunction:func withBindings:bindings];
   }
   return cell;
@@ -216,7 +216,7 @@
 {
   DslCons *newBinding = [DslCons withHead:[self caar] andTail:[[self cadar] eval:initialBindings]];
   [initialBindings append:[DslCons withHead:newBinding]];
-  if (tail != nil) {
+  if ([tail notNil]) {
     [(DslCons*)tail buildBindings:initialBindings];
   }
   return initialBindings;
@@ -242,7 +242,7 @@
   } else if ([self cdr]) {
     return [(DslCons*)[self cdr] evalFirstAppropriatePair:bindings];
   } else {
-    return nil;
+    return NIL;
   }
 }
 
@@ -253,7 +253,7 @@
   if ([self cdr]) {
     return [(DslCons*)[self cdr] evalFirstAppropriatePair:bindings];
   } else {
-    return nil;
+    return NIL;
   }
 }
 
@@ -345,7 +345,7 @@
   } else if ([self cdr]) {
     return [(DslCons*)[self cdr] find:variableName];
   } else {
-    return nil;
+    return NIL;
   }
 }
 
@@ -398,110 +398,119 @@
 }
 
 
-- (DslExpression*) eval:(DslCons*)bindings
+//- (DslExpression*) eval:(DslCons*)bindings
+//{
+//  
+//  [self logEval:self];
+//  
+//  NSString *procName = [head identifierValue];
+//  
+//  if (bindings == nil) {
+//    bindings = [[DslCons alloc] init];
+//  }
+//  if ([procName isEqualToString:@"let"]) {
+//    return [self logResult:[self evalLet:bindings] ];
+//  } else if ([procName isEqualToString:@"apply"]) {
+//    return [self logResult:[self apply:(DslCons*)tail withBindings:bindings]];
+//  } else if ([procName isEqualToString:@"cond"]) {
+//    return [self logResult:[self evalCond:bindings] ];
+//  } else if ([procName isEqualToString:@"map"]) {
+//    return [self logResult:[self evalMap:bindings] ];
+//  } else if ([procName isEqualToString:@"select"]) {
+//    return [self logResult:[self evalSelect:bindings]];
+//  } else if ([procName isEqualToString:@"any?"]) {
+//    return [self logResult:[self evalAny:bindings]];
+//  } else if ([procName isEqualToString:@"+"]) {
+//    if (tail) {
+//      return [self logResult:[DslNumber numberWith:[(DslCons*)[self cdr] addPrim:0 withBindings:bindings]] ];
+//    } else {
+//      return [self logResult:[DslNumber numberWith:0] ];
+//    }
+//  } else if ([procName isEqualToString:@"-"]) {
+//    if (tail) {
+//      return [self logResult:[DslNumber numberWith:[(DslCons*)[self cdr] subtractPrimWithBindings:bindings]] ];
+//    } else {
+//      return [self logResult:[DslNumber numberWith:0] ];
+//    }
+//  } else if ([procName isEqualToString:@"quote"]) {
+//    if (tail) {
+//      return [self logResult:[self cadr] ];
+//    } else {
+//      return [self logResult:nil ];
+//    }
+//  } else if ([procName isEqualToString:@"<"]) {
+//    int lval = [[[self cadr] eval:bindings] intValue];
+//    int rval = [[[self caddr] eval:bindings] intValue];
+//    return [self logResult:[DslBoolean booleanWith:(lval < rval)] ];
+//  } else if ([procName isEqualToString:@">"]) {
+//    int lval = [[[self cadr] eval:bindings] intValue];
+//    int rval = [[[self caddr] eval:bindings] intValue];
+//    return [self logResult:[DslBoolean booleanWith:(lval > rval)] ];
+//  } else if ([procName isEqualToString:@"="]) {
+//    int lval = [[[self cadr] eval:bindings] intValue];
+//    int rval = [[[self caddr] eval:bindings] intValue];
+//    return [self logResult:[DslBoolean booleanWith:(lval == rval)] ];
+//  } else if ([procName isEqualToString:@"str-eq"]){
+//    NSString *lval = [[[self cadr] eval:bindings] stringValue];
+//    NSString *rval = [[[self caddr] eval:bindings] stringValue];
+//    return [self logResult:[DslBoolean booleanWith:[lval isEqualToString:rval]] ];    
+//  } else if ([procName isEqualToString:@"or"]) {
+//    BOOL lval = [[[self cadr] eval:bindings] booleanValue];
+//    BOOL rval = [[[self caddr] eval:bindings] booleanValue];
+//    return [self logResult:[DslBoolean booleanWith:(lval || rval)] ];    
+//  } else if ([procName isEqualToString:@"lambda"]) {
+//    return [self logResult:[DslDefinedFunction withParameters:(DslCons*)[self cadr] andBody:(DslCons*)[self cddr]] ];
+//  } else if ([procName isEqualToString:@"get-string"]) {
+//    return [self logResult:[(DslCons*)[self cdr] fetchString:bindings] ];
+//  } else if ([procName isEqualToString:@"get-integer"]) {
+//    return [self logResult:[(DslCons*)[self cdr] fetchInteger:bindings] ];
+//  } else if ([procName isEqualToString:@"get-boolean"]) {
+//    return [self logResult:[(DslCons*)[self cdr] fetchBoolean:bindings] ];
+//  } else if ([procName isEqualToString:@"list"]) {
+//    return [self logResult:[(DslCons*)[self cdr] makeList:bindings] ];
+//  } else if ([procName isEqualToString:@"car"]) {
+//    return [(DslCons*)[[self cadr] eval:bindings] car];
+//  } else if ([procName isEqualToString:@"cadr"]) {
+//    return [(DslCons*)[[self cadr] eval:bindings] cadr];
+//  } else if ([procName isEqualToSatring:@"caddr"]) {
+//    return [(DslCons*)[[self cadr] eval:bindings] caddr];
+//  } else if ([procName isEqualToString:@"cadar"]) {
+//    return [(DslCons*)[[self cadr] eval:bindings] cadar]; 
+//  } else if ([procName isEqualToString:@"cadddr"]) {
+//    return [(DslCons*)[[self cadr] eval:bindings] cadddr];
+//  } else if ([procName isEqualToString:@"caar"]) {
+//    return [(DslCons*)[[self cadr] eval:bindings] caar];
+//  } else if ([procName isEqualToString:@"caadr"]) {
+//    return [(DslCons*)[[self cadr] eval:bindings] caadr];
+//  } else if ([procName isEqualToString:@"cdr"]) {
+//    return [(DslCons*)[[self cadr] eval:bindings] cdr];
+//  } else if ([procName isEqualToString:@"cddr"]) {
+//    return [(DslCons*)[[self cadr] eval:bindings] cddr];
+//  } else if ([procName isEqualToString:@"cdddr"]) {
+//    return [(DslCons*)[[self cadr] eval:bindings] cdddr];
+//  } else if ([procName isEqualToString:@"cdadr"]) {
+//    return [(DslCons*)[[self cadr] eval:bindings] cdadr];
+//  } else if ([procName isEqualToString:@"cddddr"]) {
+//    return [(DslCons*)[[self cadr] eval:bindings] cddddr];
+//  } else if ([procName isEqualToString:@"cdar"]) {
+//    return [(DslCons*)[[self cadr] eval:bindings] cdar];
+//    
+//  } else {
+//    Functions *f = [Functions alloc];
+//    DslExpression *result = [f eval:procName withArgs:(DslCons*)[self cdr] andBindings:bindings];
+//    [f release];
+//    return [self logResult:result ];
+//  }
+//  
+//}
+
+- (DslExpression*) eval
 {
-  
-  [self logEval:self];
-  
-  NSString *procName = [head identifierValue];
-  
-  if (bindings == nil) {
-    bindings = [[DslCons alloc] init];
-  }
-  if ([procName isEqualToString:@"let"]) {
-    return [self logResult:[self evalLet:bindings] ];
-  } else if ([procName isEqualToString:@"apply"]) {
-    return [self logResult:[self apply:(DslCons*)tail withBindings:bindings]];
-  } else if ([procName isEqualToString:@"cond"]) {
-    return [self logResult:[self evalCond:bindings] ];
-  } else if ([procName isEqualToString:@"map"]) {
-    return [self logResult:[self evalMap:bindings] ];
-  } else if ([procName isEqualToString:@"select"]) {
-    return [self logResult:[self evalSelect:bindings]];
-  } else if ([procName isEqualToString:@"any?"]) {
-    return [self logResult:[self evalAny:bindings]];
-  } else if ([procName isEqualToString:@"+"]) {
-    if (tail) {
-      return [self logResult:[DslNumber numberWith:[(DslCons*)[self cdr] addPrim:0 withBindings:bindings]] ];
-    } else {
-      return [self logResult:[DslNumber numberWith:0] ];
-    }
-  } else if ([procName isEqualToString:@"-"]) {
-    if (tail) {
-      return [self logResult:[DslNumber numberWith:[(DslCons*)[self cdr] subtractPrimWithBindings:bindings]] ];
-    } else {
-      return [self logResult:[DslNumber numberWith:0] ];
-    }
-  } else if ([procName isEqualToString:@"quote"]) {
-    if (tail) {
-      return [self logResult:[self cadr] ];
-    } else {
-      return [self logResult:nil ];
-    }
-  } else if ([procName isEqualToString:@"<"]) {
-    int lval = [[[self cadr] eval:bindings] intValue];
-    int rval = [[[self caddr] eval:bindings] intValue];
-    return [self logResult:[DslBoolean booleanWith:(lval < rval)] ];
-  } else if ([procName isEqualToString:@">"]) {
-    int lval = [[[self cadr] eval:bindings] intValue];
-    int rval = [[[self caddr] eval:bindings] intValue];
-    return [self logResult:[DslBoolean booleanWith:(lval > rval)] ];
-  } else if ([procName isEqualToString:@"="]) {
-    int lval = [[[self cadr] eval:bindings] intValue];
-    int rval = [[[self caddr] eval:bindings] intValue];
-    return [self logResult:[DslBoolean booleanWith:(lval == rval)] ];
-  } else if ([procName isEqualToString:@"str-eq"]){
-    NSString *lval = [[[self cadr] eval:bindings] stringValue];
-    NSString *rval = [[[self caddr] eval:bindings] stringValue];
-    return [self logResult:[DslBoolean booleanWith:[lval isEqualToString:rval]] ];    
-  } else if ([procName isEqualToString:@"or"]) {
-    BOOL lval = [[[self cadr] eval:bindings] booleanValue];
-    BOOL rval = [[[self caddr] eval:bindings] booleanValue];
-    return [self logResult:[DslBoolean booleanWith:(lval || rval)] ];    
-  } else if ([procName isEqualToString:@"lambda"]) {
-    return [self logResult:[DslDefinedFunction withParameters:(DslCons*)[self cadr] andBody:(DslCons*)[self cddr]] ];
-  } else if ([procName isEqualToString:@"get-string"]) {
-    return [self logResult:[(DslCons*)[self cdr] fetchString:bindings] ];
-  } else if ([procName isEqualToString:@"get-integer"]) {
-    return [self logResult:[(DslCons*)[self cdr] fetchInteger:bindings] ];
-  } else if ([procName isEqualToString:@"get-boolean"]) {
-    return [self logResult:[(DslCons*)[self cdr] fetchBoolean:bindings] ];
-  } else if ([procName isEqualToString:@"list"]) {
-    return [self logResult:[(DslCons*)[self cdr] makeList:bindings] ];
-  } else if ([procName isEqualToString:@"car"]) {
-    return [(DslCons*)[[self cadr] eval:bindings] car];
-  } else if ([procName isEqualToString:@"cadr"]) {
-    return [(DslCons*)[[self cadr] eval:bindings] cadr];
-  } else if ([procName isEqualToString:@"caddr"]) {
-    return [(DslCons*)[[self cadr] eval:bindings] caddr];
-  } else if ([procName isEqualToString:@"cadar"]) {
-    return [(DslCons*)[[self cadr] eval:bindings] cadar]; 
-  } else if ([procName isEqualToString:@"cadddr"]) {
-    return [(DslCons*)[[self cadr] eval:bindings] cadddr];
-  } else if ([procName isEqualToString:@"caar"]) {
-    return [(DslCons*)[[self cadr] eval:bindings] caar];
-  } else if ([procName isEqualToString:@"caadr"]) {
-    return [(DslCons*)[[self cadr] eval:bindings] caadr];
-  } else if ([procName isEqualToString:@"cdr"]) {
-    return [(DslCons*)[[self cadr] eval:bindings] cdr];
-  } else if ([procName isEqualToString:@"cddr"]) {
-    return [(DslCons*)[[self cadr] eval:bindings] cddr];
-  } else if ([procName isEqualToString:@"cdddr"]) {
-    return [(DslCons*)[[self cadr] eval:bindings] cdddr];
-  } else if ([procName isEqualToString:@"cdadr"]) {
-    return [(DslCons*)[[self cadr] eval:bindings] cdadr];
-  } else if ([procName isEqualToString:@"cddddr"]) {
-    return [(DslCons*)[[self cadr] eval:bindings] cddddr];
-  } else if ([procName isEqualToString:@"cdar"]) {
-    return [(DslCons*)[[self cadr] eval:bindings] cdar];
-    
-  } else {
-    Functions *f = [Functions alloc];
-    DslExpression *result = [f eval:procName withArgs:(DslCons*)[self cdr] andBindings:bindings];
-    [f release];
-    return [self logResult:result ];
-  }
-  
+  NSString *funcName = [head stringValue];
+  DslSymbol *funcSymbol = [DSL internal_intern:funcName];
+  DslFunction *func = (DslFunction*)[DSL valueOf:funcSymbol];
+//  DslFunction *func = (DslFunction*)[DSL valueOf:[DSL internal_intern:[head stringValue]]];
+  return [func evalWithArguments:(DslCons*)tail];
 }
 
 
@@ -511,7 +520,7 @@
     return NO;
   }
   
-  if ((head == nil && other.head != nil) || (head != nil && other.head == nil)) {
+  if (([head isNil] && [other.head notNil]) || ([head notNil] && [other.head isNil])) {
     return NO;
   }
   
@@ -519,11 +528,11 @@
     return NO;
   }
   
-  if (tail == nil && other.tail == nil) {
+  if ([tail isNil] && [other.tail isNil]) {
     return YES;
   }
   
-  if ((tail == nil && other.tail != nil) || (tail != nil && other.tail == nil)) {
+  if (([tail isNil] && [other.tail notNil]) || ([tail notNil] && [other.tail isNil])) {
     return NO;
   }
   

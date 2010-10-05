@@ -12,9 +12,23 @@
 @implementation DslNil
 
 
+- (DslNil*) initWithHead:(DslExpression*)h andTail:(DslExpression*)t
+{
+  head = self;
+  tail = self;
+  return self;
+}
+
+
 - (BOOL) booleanValue
 {
   return NO;
+}
+
+
+- (NSString*) toString
+{
+  return @"nil";
 }
 
 
@@ -27,6 +41,12 @@
 - (BOOL) isNil
 {
   return YES;
+}
+
+
+- (BOOL) notNil
+{
+  return NO;
 }
 
 
