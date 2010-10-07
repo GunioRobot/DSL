@@ -92,7 +92,7 @@
 {
   Binding *found = [self findBindingFor:symbol];
   if (found == nil) {
-    return [DslNil NIL_CONS];
+    return NIL_CONS;
   } else {
     return found.value;
   }

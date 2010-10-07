@@ -42,6 +42,12 @@
 }
 
 
+- (DslCons*) init
+{
+  return [DslCons empty];
+}
+
+
 - (DslCons*) initWithHead:(DslExpression*)h andTail:(DslExpression*)t
 {
   head = h;
@@ -390,11 +396,14 @@
 
 - (NSString*) toStringHelper
 {
-  if (tail) {
+  if (tail && [tail notNil]) {
     return [NSString stringWithFormat:@"%@ %@", [head toString], [(DslCons*)tail toStringHelper]];;
-  } else {
+  } else if (head && [head notNil]) {
     return [head toString];
+  } else {
+    return @"";
   }
+
 }
 
 
@@ -509,6 +518,10 @@
   NSString *funcName = [head stringValue];
   DslSymbol *funcSymbol = [DSL internal_intern:funcName];
   DslFunction *func = (DslFunction*)[DSL valueOf:funcSymbol];
+  if ([func isNil]) {
+    NSLog(@"Unknown function: %@", funcName);
+    return NIL_CONS;
+  }
 //  DslFunction *func = (DslFunction*)[DSL valueOf:[DSL internal_intern:[head stringValue]]];
   return [func evalWithArguments:(DslCons*)tail];
 }
@@ -543,5 +556,15 @@
   return YES;
 }
 
+
+- (BOOL) isNil
+{
+  return [head isNil] && [tail isNil];
+}
+
+- (BOOL) notNil
+{
+  return [head notNil] || [tail notNil];
+}
 
 @end

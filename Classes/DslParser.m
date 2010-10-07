@@ -7,7 +7,7 @@
 //
 
 #import "DslParser.h"
-
+#import "Dsl.h"
 
 @implementation DslParser
 
@@ -146,7 +146,7 @@
 
 - (DslExpression*)parseCons:(InputStream*)input
 {
-  DslCons *head = [[DslCons alloc] init];
+  DslCons *head = [DslCons empty];
   DslCons *tail = head;
   
   while ([input nextChar] != ')') {
@@ -172,12 +172,13 @@
       [self consumeWhitespace:input];
     }
   }
-  if (head.tail) {
+  if ([head.tail notNil]) {
     DslExpression *result = head.tail;
     [head release];
     return result;
   } else {
-    return head;
+    [head release];
+    return NIL_CONS;
   }
 }
 

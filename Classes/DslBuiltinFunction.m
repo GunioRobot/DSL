@@ -27,7 +27,7 @@
 
 - (DslExpression*) evalWithArguments:(DslCons*)args
 {
-  [target performSelector:selector withObject:args];
+  return [target performSelector:selector withObject:args];
 }
 
 @end

@@ -38,22 +38,17 @@
   
   DslCons *p = parameters;
   DslCons *a = args;
-  while ([p car] && [a car]) {
+  while ([p notNil] && [a notNil]) {
     [DSL bind:(DslSymbol*)p.head to:[DSL eval:a.head]];
     p = (DslCons*)p.tail;
     a = (DslCons*)a.tail;
   }
   
-  if (body == nil || [body length] == 0) {
+  if (body == nil || [body isNil]) {
     [DSL popLocalBindings];
     return NIL_CONS;
   } else {
-    DslExpression *result = NIL_CONS;
-    DslCons *code = body;
-    while (![code isNil]) {
-      result = [DSL eval:code.head];
-      code = (DslCons*)code.tail;
-    }
+    DslExpression *result = [DSL evalEach:body];
     [DSL popLocalBindings];
     return result;
   }

@@ -9,16 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "InputStream.h"
 #import "DslExpression.h"
-#import "DslString.h"
-#import "DslNumber.h"
-#import "DslBoolean.h"
-#import "DslSymbol.h"
-#import "DslCons.h"
-#import "DslFunction.h"
-#import "DslBuiltinFunction.h"
-#import "DslDefinedFunction.h"
-#import "DslObject.h"
-#import "DslNil.h"
 
 @interface DslParser : NSObject {
 

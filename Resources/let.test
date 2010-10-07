@@ -6,7 +6,7 @@ No Bindings And Single Expr Body
 ----
 No Bindings And Multiple Expr Body
 
-(let () (+ 1 2) (+ 3 4) (-6 2))
+(let () (+ 1 2) (+ 3 4) (- 6 2))
 
 4
 ----
