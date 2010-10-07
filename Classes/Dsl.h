@@ -24,8 +24,8 @@
 #import "SymbolTable.h"
 
 @class Dsl;
-static Dsl *DSL = nil;
-static DslNil *NIL = nil;
+extern Dsl *DSL;
+extern DslNil *NIL_CONS;
 
 
 @interface Dsl : NSObject {
@@ -33,7 +33,6 @@ static DslNil *NIL = nil;
   SymbolTable *symbolTable;
 }
 
-+ (Dsl*) dsl;
 
 - (Dsl *) init;
 
@@ -84,18 +83,18 @@ static DslNil *NIL = nil;
 
 - (DslCons*) map:(DslCons*)args;
 - (DslCons*) select:(DslCons*)args;
-- (DslCons*) any:(DslCons*)args;
+- (DslBoolean*) any:(DslCons*)args;
 
-- (DslCons*) cond:(DslCons*)args;
-- (DslCons*) logicalOr:(DslCons*)args;
-- (DslCons*) logicalAnd:(DslCons*)args;
-- (DslCons*) logicalNot:(DslCons*)args;
+- (DslExpression*) cond:(DslCons*)args;
+- (DslBoolean*) logicalOr:(DslCons*)args;
+- (DslBoolean*) logicalAnd:(DslCons*)args;
+- (DslBoolean*) logicalNot:(DslCons*)args;
 
-- (DslCons*) add:(DslCons*)args;
-- (DslCons*) subtract:(DslCons*)args;
-- (DslCons*) multiply:(DslCons*)args;
-- (DslCons*) divide:(DslCons*)args;
-- (DslCons*) modulus:(DslCons*)args;
+- (DslNumber*) add:(DslCons*)args;
+- (DslNumber*) subtract:(DslCons*)args;
+- (DslNumber*) multiply:(DslCons*)args;
+- (DslNumber*) divide:(DslCons*)args;
+- (DslNumber*) modulus:(DslCons*)args;
 
 - (DslString*) getString:(DslCons*)args;
 - (DslNumber*) getInteger:(DslCons*)args;

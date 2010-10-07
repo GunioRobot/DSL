@@ -13,6 +13,8 @@
   NSString *name;
 }
 
+@property (readonly) NSString *name;
+
 + (DslSymbol*)withName:(NSString*)name;
 - (DslSymbol*)initWithName:(NSString*)name;
 - (BOOL) isNamed:(NSString*)aName;

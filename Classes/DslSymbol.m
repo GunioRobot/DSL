@@ -12,6 +12,8 @@
 
 @implementation DslSymbol
 
+@synthesize name;
+
 
 +(DslSymbol*)withName:(NSString*)n
 {

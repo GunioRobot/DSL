@@ -46,9 +46,9 @@
   
   if (body == nil || [body length] == 0) {
     [DSL popLocalBindings];
-    return NIL;
+    return NIL_CONS;
   } else {
-    DslExpression *result = NIL;
+    DslExpression *result = NIL_CONS;
     DslCons *code = body;
     while (![code isNil]) {
       result = [DSL eval:code.head];

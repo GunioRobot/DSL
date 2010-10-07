@@ -151,7 +151,7 @@
   
   while ([input nextChar] != ')') {
     if ([input atEnd]) {
-      return nil;
+      return NIL_CONS;
     }
     [input rollback];
     [self consumeWhitespace:input];
@@ -159,10 +159,10 @@
       if (tail) {
         [self consumeWhitespace:input];
         tail.tail = [self parseExpression:input];
-        tail= nil;
+        tail = nil;
         [self consumeWhitespace:input];
       } else {
-        return nil;
+        return NIL_CONS;
       }
     } else {
       [input rollback];

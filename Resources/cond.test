@@ -24,6 +24,6 @@ Multiple Conditions With Last Passing
 ----
 Multiple Sexp Code Block
 
-(cond (#t (+ 1 2) 3) #f 1)
+(cond (#t (+ 1 2) 3) (#f 1))
 
 3

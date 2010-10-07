@@ -21,13 +21,13 @@
 
 + (DslCons*) empty
 {
-  return [[DslCons alloc] initWithHead:NIL andTail:NIL];
+  return [[DslCons alloc] initWithHead:NIL_CONS andTail:NIL_CONS];
 }
 
 
 + (DslCons*) withHead:(DslExpression*)h
 {
-  return [[DslCons alloc] initWithHead:h andTail:NIL];
+  return [[DslCons alloc] initWithHead:h andTail:NIL_CONS];
 }
 
 
@@ -148,7 +148,7 @@
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
 - (DslCons*) filterWith:(DslCons*)mask
 {
-  DslCons *rest = NIL;
+  DslCons *rest = NIL_CONS;
   if (!mask) {
     return rest;
   }
@@ -242,7 +242,7 @@
   } else if ([self cdr]) {
     return [(DslCons*)[self cdr] evalFirstAppropriatePair:bindings];
   } else {
-    return NIL;
+    return NIL_CONS;
   }
 }
 
@@ -253,7 +253,7 @@
   if ([self cdr]) {
     return [(DslCons*)[self cdr] evalFirstAppropriatePair:bindings];
   } else {
-    return NIL;
+    return NIL_CONS;
   }
 }
 
@@ -345,7 +345,7 @@
   } else if ([self cdr]) {
     return [(DslCons*)[self cdr] find:variableName];
   } else {
-    return NIL;
+    return NIL_CONS;
   }
 }
 

@@ -25,9 +25,9 @@
 - (DslSymbol*) findSymbol:(NSString*)name
 {
   for (NSMutableDictionary *frame in frames) {
-    for (DslSymbol *sym in [frame allKeys]) {
-      if ([sym isNamed:name]) {
-        return sym;
+    for (NSString *symName in [frame allKeys]) {
+      if ([symName isEqualToString:name]) {
+        return ((Binding*)[frame objectForKey:symName]).symbol;
       }
     }
   }
@@ -44,7 +44,7 @@
 - (Binding*)findBindingFor:(DslSymbol*)symbol
 {
   for (NSMutableDictionary *frame in frames) {
-    Binding *binding = [frame objectForKey:symbol];
+    Binding *binding = [frame objectForKey:symbol.name];
     if (binding != nil) {
       return binding;
     }
@@ -55,7 +55,7 @@
 
 - (Binding*)findBindingInLocalFrameFor:(DslSymbol*)symbol
 {
-  return [[self localFrame] objectForKey:symbol];
+  return [[self localFrame] objectForKey:symbol.name];
 }
 
 
@@ -64,7 +64,7 @@
   DslSymbol *found = [self findSymbol:name];
   if (found == nil) {
     DslSymbol *sym = [[DslSymbol withName:name] retain];
-    [self bind:sym to:NIL];
+    [self bind:sym to:NIL_CONS];
     return sym;
   } else {
     return found;
@@ -80,7 +80,7 @@
     Binding *binding = [Binding alloc];
     binding.symbol = [symbol retain];
     binding.value = [value retain];
-    [[self localFrame] setObject:binding forKey:symbol];
+    [[self localFrame] setObject:binding forKey:symbol.name];
   } else {
     found.value = value;
   }
@@ -92,7 +92,7 @@
 {
   Binding *found = [self findBindingFor:symbol];
   if (found == nil) {
-    return [DslNil NIL];
+    return [DslNil NIL_CONS];
   } else {
     return found.value;
   }
@@ -102,7 +102,7 @@
 
 - (void) pushLocalBindings
 {
-  [frames insertObject:[NSMutableDictionary dictionary] atIndex:0];
+  [frames insertObject:[NSMutableDictionary dictionaryWithCapacity:25] atIndex:0];
 }
 
 
