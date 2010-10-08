@@ -147,29 +147,17 @@
 
 - (BOOL) compareTo:(DslExpression*)other
 {
-  if (![super compareTo:other]) {
-    return NO;
-  }
+  if (![super compareTo:other]) return NO;
   
-  if (([head isNil] && [other.head notNil]) || ([head notNil] && [other.head isNil])) {
-    return NO;
-  }
+  if (([head isNil] && [other.head notNil]) || ([head notNil] && [other.head isNil])) return NO;
   
-  if (![head compareTo:other.head]) {
-    return NO;
-  }
+  if (![head compareTo:other.head]) return NO;
   
-  if ([tail isNil] && [other.tail isNil]) {
-    return YES;
-  }
+  if ([tail isNil] && [other.tail isNil]) return YES;
   
-  if (([tail isNil] && [other.tail notNil]) || ([tail notNil] && [other.tail isNil])) {
-    return NO;
-  }
+  if (([tail isNil] && [other.tail notNil]) || ([tail notNil] && [other.tail isNil])) return NO;
   
-  if (![tail compareTo:other.tail]) {
-    return NO;
-  }
+  if (![tail compareTo:other.tail]) return NO;
   
   return YES;
 }
