@@ -48,6 +48,8 @@ extern DslNil *NIL_CONS;
 
 - (DslExpression*) apply:(DslFunction*)func to:(DslCons*)args;
 - (DslExpression*) eval:(DslExpression*)sexp;
+- (DslExpression*) begin:(DslCons*)args;
+
 
 // function functions
 

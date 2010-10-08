@@ -131,6 +131,18 @@
 }
 
 
+- (DslCons*) evalEach:(DslCons*)args
+{
+  DslCons *result = [DslCons empty];
+  DslCons *lastResult = result;
+  while ([args notNil]) {
+    lastResult.tail = [DslCons withHead:[args.head eval]];
+    lastResult = (DslCons*)lastResult.tail;
+    args = (DslCons*)args.tail;
+  }
+  return result.tail;
+}
+
 
 - (DslExpression*) eval
 {
@@ -141,7 +153,13 @@
     NSLog(@"Unknown function: %@", funcName);
     return NIL_CONS;
   }
-  return [func evalWithArguments:(DslCons*)tail];
+  DslCons *args;
+  if ([func preEvalArgs])
+    args = [self evalEach:tail];
+  else 
+    args = tail;
+  
+  return [func evalWithArguments:(args)];
 }
 
 

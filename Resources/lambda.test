@@ -12,8 +12,20 @@ Applying Multiple Argument Lambda
 ----
 Simple Defun
 
-(defun foo ()
-       42)
-(foo)
+(begin 
+  (defun foo ()
+         42)
+  (foo))
 
 42
+----
+More Complex defun
+
+(begin
+  (defun fib (x)
+         (cond ((= x 0) 1)
+               ((= x 1) 1)
+               (#t (+ (fib (- x 1)) (fib (- x 2))))))
+  (list (fib 0) (fib 1) (fib 2) (fib 3) (fib 4) (fib 5) (fib 6)))
+
+'(1 1 2 3 5 8 13)

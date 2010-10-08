@@ -30,4 +30,11 @@
   return [target performSelector:selector withObject:args];
 }
 
+
+- (BOOL) preEvalArgs
+{
+  return NO;
+}
+
+
 @end

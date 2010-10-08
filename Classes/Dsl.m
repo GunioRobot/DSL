@@ -32,6 +32,7 @@ DslNil *NIL_CONS = nil;
   [symbolTable bind:[self internal_intern:@"lambda"]     to:[[DslBuiltinFunction withTarget:self andSelector:@selector(lambda:)] retain]];
   [symbolTable bind:[self internal_intern:@"defun"]      to:[[DslBuiltinFunction withTarget:self andSelector:@selector(defun:)] retain]];
   [symbolTable bind:[self internal_intern:@"apply"]      to:[[DslBuiltinFunction withTarget:self andSelector:@selector(apply:)] retain]];
+  [symbolTable bind:[self internal_intern:@"begin"]      to:[[DslBuiltinFunction withTarget:self andSelector:@selector(begin:)] retain]];
   [symbolTable bind:[self internal_intern:@"let"]        to:[[DslBuiltinFunction withTarget:self andSelector:@selector(let:)] retain]];
   [symbolTable bind:[self internal_intern:@"cons"]       to:[[DslBuiltinFunction withTarget:self andSelector:@selector(cons:)] retain]];
   [symbolTable bind:[self internal_intern:@"list"]       to:[[DslBuiltinFunction withTarget:self andSelector:@selector(list:)] retain]];
@@ -144,6 +145,12 @@ DslNil *NIL_CONS = nil;
     list = (DslCons*)list.tail;
   }
   return result;
+}
+
+
+- (DslExpression*) begin:(DslCons*)args
+{
+  return [self evalEach:args];
 }
 
 

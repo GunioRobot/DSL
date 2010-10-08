@@ -60,4 +60,11 @@
   return [NSString stringWithFormat:@"Anon function with args: %@ and body: %@", [parameters toString], [body toString]];
 }
 
+
+- (BOOL) preEvalArgs
+{
+  return YES;
+}
+
+
 @end
