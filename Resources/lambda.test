@@ -19,6 +19,15 @@ Simple Defun
 
 42
 ----
+Complex defun
+
+(begin
+  (defun plusone (x)
+         (+ x 1))
+  (list (plusone 0) (plusone 1) (plusone 2)))
+
+'(1 2 3)
+----
 More Complex defun
 
 (begin
