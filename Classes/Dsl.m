@@ -433,7 +433,7 @@ DslNil *NIL_CONS = nil;
 }
 
 
-- (DslBoolean*) locicalNot:(DslCons*)args
+- (DslBoolean*) logicalNot:(DslCons*)args
 {
   return [DslBoolean booleanWith:![args.head booleanValue]];
 }
