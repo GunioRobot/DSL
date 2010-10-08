@@ -16,7 +16,7 @@ Binary Or
 
 #t
 ----
-Multiple arg Or
+Multiple Arg Or
 
 (or #f #f #f)
 
@@ -30,6 +30,84 @@ Multiple arg Or
 
 #t
 
+(or #f #t #t)
+
+#t
+
 (or #t #f #f)
+
+#t
+
+(or #t #f #t)
+
+#t
+
+(or #t #t #f)
+
+#t
+
+(or #t #t #t)
+
+#t
+----
+Binary And
+
+(and #f #f)
+
+#f
+
+(and #f #t)
+
+#f
+
+(and #t #f)
+
+#f
+
+(and #t #t)
+
+#t
+----
+Multiple Arg And
+
+(and #f #f #f)
+
+#f
+
+(and #f #f #t)
+
+#f
+
+(and #f #t #f)
+
+#f
+
+(and #f #t #t)
+
+#f
+
+(and #t #f #f)
+
+#f
+
+(and #t #f #t)
+
+#f
+
+(and #t #t #f)
+
+#f
+
+(and #t #t #t)
+
+#t
+----
+Not
+
+(not #t)
+
+#f
+
+(not #f)
 
 #t
