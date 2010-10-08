@@ -50,4 +50,17 @@
 }
 
 
+
+- (DslExpression*) eval
+{
+  [self logEval:self];
+  return [self logResult:self];
+}
+
+
+- (BOOL) compareTo:(DslExpression*)other
+{
+  return [other isMemberOfClass:[DslNil class]];
+}
+
 @end

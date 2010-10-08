@@ -1,35 +1,46 @@
 No Bindings And Single Expr Body
 
-(let () (+ 1 2))
+(let () 
+     (+ 1 2))
 
 3
 ----
 No Bindings And Multiple Expr Body
 
-(let () (+ 1 2) (+ 3 4) (- 6 2))
+(let () 
+     (+ 1 2) 
+     (+ 3 4) 
+     (- 6 2))
 
 4
 ----
 Single Binding
 
-(let ((a 1)) (+ a 2))
+(let ((a 1)) 
+     (+ a 2))
 
 3
 ----
 Multiple Bindings
 
-(let ((a 1) (b 2)) (+ a b))
+(let ((a 1)
+      (b 2)) 
+     (+ a b))
 
 3
 ----
 Cascading Bindings
 
-(let ((a 1) (b (+ a 1))) (+ a b))
+(let ((a 1) 
+      (b (+ a 1))) 
+     (+ a b))
 
 3
 ----
 Nested Lets
 
-(let ((a 1)) (let ((b (+ a 1))) (+ a b)))
+(let ((a 1)) 
+     (let ((b (+ a 1))) 
+          (+ a b)))
 
 3

@@ -187,3 +187,27 @@ Any With Multiple
 (any? (lambda (i) (< i 3)) '(1 4 2))
 
 #t
+----
+List of nothing
+
+(list)
+
+()
+----
+List of One
+
+(list 1)
+
+'(1)
+----
+List of Two
+
+(list 1 2)
+
+'(1 2)
+----
+List of Complex Values
+
+(list (+ 1 2) (* 1 2) #t)
+
+'(3 2 #t)

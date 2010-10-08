@@ -77,23 +77,36 @@
 }
 
 
+- (BOOL) isSpecialIdentifierCharacter:(unichar)nextChar
+{
+  return nextChar == '+' || nextChar == '-' || nextChar == '*' || nextChar == '/' || nextChar == '%'|| nextChar == '<' || nextChar == '>' || nextChar == '=';
+}
+
+
 - (DslExpression*)parseSpecialIdentifier:(InputStream*)input
 {
   unichar nextChar = [input nextChar];
-  switch (nextChar) {
-    case '+':
-      return [DslSymbol withName:@"+"];
-    case '-':
-      return [DslSymbol withName:@"-"];
-    case '<':
-      return [DslSymbol withName:@"<"];
-    case '>':
-      return [DslSymbol withName:@">"];
-    case '=':
-      return [DslSymbol withName:@"="];
-    default:
-      return nil;
-  }
+  return [DslSymbol withName:[NSString stringWithFormat:@"%C", nextChar]];
+//  switch (nextChar) {
+//    case '+':
+//      return [DslSymbol withName:@"+"];
+//    case '-':
+//      return [DslSymbol withName:@"-"];
+//    case '*':
+//      return [DslSymbol withName:@"*"];
+//    case '/':
+//      return [DslSymbol withName:@"/"];
+//    case '%':
+//      return [DslSymbol withName:@"%"];
+//    case '<':
+//      return [DslSymbol withName:@"<"];
+//    case '>':
+//      return [DslSymbol withName:@">"];
+//    case '=':
+//      return [DslSymbol withName:@"="];
+//    default:
+//      return nil;
+//  }
 }
 
 
@@ -106,7 +119,7 @@
   } else if (isalpha(nextChar)) {
     [input rollback];
     return [self parseIdentifier:input];
-  } else if (nextChar == '+' || nextChar == '-' || nextChar == '<' || nextChar == '>' || nextChar == '=') {
+  } else if ([self isSpecialIdentifierCharacter:nextChar]) {
     [input rollback];
     return [self parseSpecialIdentifier:input];
   } else if (nextChar == '#') {
@@ -172,14 +185,9 @@
       [self consumeWhitespace:input];
     }
   }
-  if ([head.tail notNil]) {
-    DslExpression *result = head.tail;
-    [head release];
-    return result;
-  } else {
-    [head release];
-    return NIL_CONS;
-  }
+  DslExpression *result = head.tail;
+  [head release];
+  return result;
 }
 
 @end

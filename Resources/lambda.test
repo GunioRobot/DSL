@@ -9,3 +9,11 @@ Applying Multiple Argument Lambda
 (apply (lambda (x y) (+ x y)) 40 2)
 
 42
+----
+Simple Defun
+
+(defun foo ()
+       42)
+(foo)
+
+42

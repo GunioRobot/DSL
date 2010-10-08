@@ -96,6 +96,11 @@ extern DslNil *NIL_CONS;
 - (DslNumber*) divide:(DslCons*)args;
 - (DslNumber*) modulus:(DslCons*)args;
 
+- (DslBoolean*) lessThan:(DslCons*)args;
+- (DslBoolean*) greaterThan:(DslCons*)args;
+- (DslBoolean*) equalTo:(DslCons*)args;
+
+
 - (DslString*) getString:(DslCons*)args;
 - (DslNumber*) getInteger:(DslCons*)args;
 - (DslBoolean*) getBoolean:(DslCons*)args;

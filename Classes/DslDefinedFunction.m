@@ -39,7 +39,7 @@
   DslCons *p = parameters;
   DslCons *a = args;
   while ([p notNil] && [a notNil]) {
-    [DSL bind:(DslSymbol*)p.head to:[DSL eval:a.head]];
+    [DSL bind:(DslSymbol*)p.head to:a.head];
     p = (DslCons*)p.tail;
     a = (DslCons*)a.tail;
   }

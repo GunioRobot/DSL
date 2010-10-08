@@ -34,6 +34,7 @@ DslNil *NIL_CONS = nil;
   [symbolTable bind:[self internal_intern:@"apply"]      to:[[DslBuiltinFunction withTarget:self andSelector:@selector(apply:)] retain]];
   [symbolTable bind:[self internal_intern:@"let"]        to:[[DslBuiltinFunction withTarget:self andSelector:@selector(let:)] retain]];
   [symbolTable bind:[self internal_intern:@"cons"]       to:[[DslBuiltinFunction withTarget:self andSelector:@selector(cons:)] retain]];
+  [symbolTable bind:[self internal_intern:@"list"]       to:[[DslBuiltinFunction withTarget:self andSelector:@selector(list:)] retain]];
   [symbolTable bind:[self internal_intern:@"car"]        to:[[DslBuiltinFunction withTarget:self andSelector:@selector(car:)] retain]];
   [symbolTable bind:[self internal_intern:@"cdr"]        to:[[DslBuiltinFunction withTarget:self andSelector:@selector(cdr:)] retain]];
   [symbolTable bind:[self internal_intern:@"caar"]       to:[[DslBuiltinFunction withTarget:self andSelector:@selector(caar:)] retain]];
@@ -61,6 +62,9 @@ DslNil *NIL_CONS = nil;
   [symbolTable bind:[self internal_intern:@"*"]          to:[[DslBuiltinFunction withTarget:self andSelector:@selector(multiply:)] retain]];
   [symbolTable bind:[self internal_intern:@"/"]          to:[[DslBuiltinFunction withTarget:self andSelector:@selector(divide:)] retain]];
   [symbolTable bind:[self internal_intern:@"%"]          to:[[DslBuiltinFunction withTarget:self andSelector:@selector(modulus:)] retain]];
+  [symbolTable bind:[self internal_intern:@"<"]          to:[[DslBuiltinFunction withTarget:self andSelector:@selector(lessThan:)] retain]];
+  [symbolTable bind:[self internal_intern:@"="]          to:[[DslBuiltinFunction withTarget:self andSelector:@selector(equalTo:)] retain]];
+  [symbolTable bind:[self internal_intern:@">"]          to:[[DslBuiltinFunction withTarget:self andSelector:@selector(greaterThan:)] retain]];
   [symbolTable bind:[self internal_intern:@"getString"]  to:[[DslBuiltinFunction withTarget:self andSelector:@selector(getString:)] retain]];
   [symbolTable bind:[self internal_intern:@"getInteger"] to:[[DslBuiltinFunction withTarget:self andSelector:@selector(getInteger:)] retain]];
   [symbolTable bind:[self internal_intern:@"getBoolean"] to:[[DslBuiltinFunction withTarget:self andSelector:@selector(getBoolean:)] retain]];
@@ -136,7 +140,6 @@ DslNil *NIL_CONS = nil;
 {
   DslExpression *result = NIL_CONS;
   while ([list notNil]) {
-    NSLog(@"Evaling %@", [list.head toString]);
     result = [list.head eval];
     list = (DslCons*)list.tail;
   }
@@ -190,6 +193,23 @@ DslNil *NIL_CONS = nil;
 - (DslCons*) cons:(DslCons*)args
 {
   return [DslCons withHead:args.head andTail:args.tail.head];
+}
+
+
+- (DslCons*) list:(DslCons*)args
+{
+  if (args == nil) return NIL_CONS;
+  if ([args isNil]) return NIL_CONS;
+  DslCons *result = [DslCons empty];
+  DslCons *tail = result;
+  
+  while ([args notNil]) {
+    tail.tail = [DslCons withHead:[args.head eval]];
+    tail = (DslCons*)tail.tail;
+    args = (DslCons*)args.tail;
+  }
+  
+  return result.tail;
 }
 
 
@@ -281,8 +301,6 @@ DslNil *NIL_CONS = nil;
 
 - (int) internalLength:(DslCons*)list
 {
-  NSLog(@"InternalLength: %@", [list toString]);
-  
   if ([list isNil]) {
     return 0;
   } else if ([list isKindOfClass:[DslCons class]]) {
@@ -300,7 +318,6 @@ DslNil *NIL_CONS = nil;
 
 - (DslNumber*) length:(DslCons*)args
 {
-  NSLog(@"Length: %@", [args toString]);
   if (args == nil) return [DslNumber numberWith:0];
   return [DslNumber numberWith:[self internalLength:(DslCons*)[args.head eval]]];
 }
@@ -317,7 +334,7 @@ DslNil *NIL_CONS = nil;
   DslCons *trailingCell = result;
   
   while (![data isNil]) {
-    trailingCell.tail = [DslCons withHead:[self apply:function to:(DslCons*)data.head]];
+    trailingCell.tail = [DslCons withHead:[self apply:function to:[DslCons withHead:data.head]]];
     trailingCell = (DslCons*)trailingCell.tail;
     data = (DslCons*)data.tail;
   }
@@ -333,26 +350,22 @@ DslNil *NIL_CONS = nil;
   if (args == nil) return [DslCons empty];
   if ([self internalLength:args] != 2) return [DslCons empty];
   
-  DslFunction *predicate = (DslFunction*)[self eval:args.head];
-  DslCons *data = [self eval:(DslCons*)args.tail.head];
+  DslFunction *predicate = (DslFunction*)[args.head eval];
+  DslCons *data = (DslCons*)[args.tail.head eval];
   DslCons *result = [DslCons empty];
   DslCons *trailingCell = result;
   
-  while (![data isNil]) {
-    if ([[self apply:predicate to:(DslCons*)data.head] booleanValue]) {
+  while ([data notNil]) {
+    if ([[self apply:predicate to:[DslCons withHead:data.head]] booleanValue]) {
       trailingCell.tail = [DslCons withHead:data.head];
       trailingCell = (DslCons*)trailingCell.tail;
     }
     data = (DslCons*)data.tail;
   }
-  if ([result.tail isNil]) {
-    return result;
-  } else {
-    trailingCell = (DslCons*)result.tail;
-    result.tail = nil;
-    [result release];
-    return trailingCell;
-  }
+  trailingCell = (DslCons*)result.tail;
+  result.tail = nil;
+  [result release];
+  return trailingCell;
 }
 
 
@@ -360,12 +373,11 @@ DslNil *NIL_CONS = nil;
 {
   if (args == nil) return [DslBoolean withFalse];
   if ([self internalLength:args] != 2) return [DslBoolean withFalse];
-  
+
   DslFunction *predicate = (DslFunction*)[args.head eval];
   DslCons *data = (DslCons*)[args.tail.head eval];
-  
-  while (![data isNil]) {
-    DslBoolean *result = (DslBoolean*)[self apply:predicate to:(DslCons*)data.head];
+  while ([data notNil]) {
+    DslBoolean *result = (DslBoolean*)[self apply:predicate to:[DslCons withHead:data.head]];
     if ([result booleanValue]) return result;
     data = (DslCons*)data.tail;
   }
@@ -500,21 +512,63 @@ DslNil *NIL_CONS = nil;
 }
 
 
+- (DslBoolean*) lessThan:(DslCons*)args
+{
+  if (args == nil) return [DslBoolean withFalse];
+  if ([self internalLength:args] != 2) return [DslBoolean withFalse];
+  
+  DslExpression *lval = [args.head eval];
+  DslExpression *rval = [args.tail.head eval];
+
+  return [DslBoolean booleanWith:([lval intValue] < [rval intValue])];
+}
+
+
+- (DslBoolean*) greaterThan:(DslCons*)args
+{
+  if (args == nil) return [DslBoolean withFalse];
+  if ([self internalLength:args] != 2) return [DslBoolean withFalse];
+  
+  DslExpression *lval = [args.head eval];
+  DslExpression *rval = [args.tail.head eval];
+  
+  return [DslBoolean booleanWith:([lval intValue] > [rval intValue])];
+}
+
+
+- (DslBoolean*) equalTo:(DslCons*)args
+{
+  if (args == nil) return [DslBoolean withFalse];
+  if ([self internalLength:args] != 2) return [DslBoolean withFalse];
+  
+  DslExpression *lval = [args.head eval];
+  DslExpression *rval = [args.tail.head eval];
+  
+  return [DslBoolean booleanWith:([lval intValue] == [rval intValue])];
+}
+
+
 - (DslString*) getString:(DslCons*)args
 {
-  return nil;
+  DslObject *obj = (DslObject*)[args.head eval];
+  DslSymbol *sel = (DslSymbol*)[args.tail.head eval];
+  return [obj getString:[sel identifierValue]];
 }
 
 
 - (DslNumber*) getInteger:(DslCons*)args
 {
-  return nil;
+  DslObject *obj = (DslObject*)[args.head eval];
+  DslSymbol *sel = (DslSymbol*)[args.tail.head eval];
+  return [obj getInteger:[sel identifierValue]];
 }
 
 
 - (DslBoolean*) getBoolean:(DslCons*)args
 {
-  return nil;
+  DslObject *obj = (DslObject*)[args.head eval];
+  DslSymbol *sel = (DslSymbol*)[args.tail.head eval];
+  return [obj getBoolean:[sel identifierValue]];
 }
 
 
