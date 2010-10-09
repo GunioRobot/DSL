@@ -24,8 +24,13 @@
 
 - (BOOL) for:(NSString*)name checkThat:(NSString*)code evalsTo:(NSString*)result
 {
-  DslExpression *actual = [[p parseExpression:[InputStream withString:code]] eval];
-  DslExpression *expected = [[p parseExpression:[InputStream withString:result]] eval];
+  InputStream *codeStream = [InputStream withString:code];
+  InputStream *expectedStream = [InputStream withString:result];
+  DslExpression *actual = [[p parseExpression:codeStream] eval];
+  DslExpression *expected = [[p parseExpression:expectedStream] eval];
+  [codeStream release];
+  [expectedStream release];
+
   BOOL areEqual = [actual compareTo:expected];
   if (areEqual) {
     [reporter pass:name];

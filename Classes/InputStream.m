@@ -63,7 +63,7 @@
 
 - (NSString*)extract
 {
-  return [[contents substringWithRange:(NSMakeRange(bookmark, position - bookmark))] retain];
+  return [contents substringWithRange:(NSMakeRange(bookmark, position - bookmark))];
 }
 
 

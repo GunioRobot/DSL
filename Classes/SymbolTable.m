@@ -81,6 +81,7 @@
     binding.symbol = [symbol retain];
     binding.value = [value retain];
     [[self localFrame] setObject:binding forKey:symbol.name];
+    [binding release];
   } else {
     found.value = value;
   }

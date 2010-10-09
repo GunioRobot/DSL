@@ -109,8 +109,7 @@ int indentLevel = 0;
 
 - (DslExpression*)logResult:(DslExpression*)val
 {
-  NSString *valString = val == nil ? @"nil" : [val toString];
-//  NSLog(@"%@==> %@", [self indentString], valString);
+//  NSLog(@"%@==> %@", [self indentString], val == nil ? @"nil" : [val toString]);
   indentLevel--;
   return val;
 }

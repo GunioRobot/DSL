@@ -186,7 +186,6 @@
     }
   }
   DslExpression *result = head.tail;
-  [head release];
   return result;
 }
 

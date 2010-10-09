@@ -103,10 +103,10 @@
 
 - (DslCons*) copy
 {
-  DslCons *newNode = [[DslCons withHead:head] retain];
+  DslCons *newNode = [DslCons withHead:head];
 
   if (tail) {
-    return [newNode append:[[tail copy] retain]];
+    return [newNode append:[tail copy]];
   } else {
     return newNode;
   }
