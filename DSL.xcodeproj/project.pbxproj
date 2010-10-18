@@ -764,7 +764,7 @@
 					"-ObjC",
 				);
 				PREBINDING = NO;
-				SDKROOT = iphoneos4.0;
+				SDKROOT = iphoneos4.2;
 			};
 			name = Release;
 		};

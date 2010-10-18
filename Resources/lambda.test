@@ -12,7 +12,7 @@ Applying Multiple Argument Lambda
 ----
 Simple Defun
 
-(begin 
+(do 
   (defun foo ()
          42)
   (foo))
@@ -21,7 +21,7 @@ Simple Defun
 ----
 Complex defun
 
-(begin
+(do
   (defun plusone (x)
          (+ x 1))
   (list (plusone 0) (plusone 1) (plusone 2)))
@@ -30,7 +30,7 @@ Complex defun
 ----
 More Complex defun
 
-(begin
+(do
   (defun fib (x)
          (cond ((= x 0) 1)
                ((= x 1) 1)
