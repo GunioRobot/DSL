@@ -1,0 +1,330 @@
+<h2>Overview</h2>
+
+<p>DSL is a simple, interpreted lisp inplementation in ObjectiveC for embedded
+scripting in iOS apps.  </p>
+
+<p>The initial motivation was the need to
+implement rules in a card game at a significantly high level of
+abstraction in a way that wouldn't require recompiling. </p>
+
+<p>The syntax was inspired primarily by Scheme.</p>
+
+<h2>Syntax</h2>
+
+<p>The syntax is basically a simple version of scheme with lexical
+  scoping and a minimal set of builtin special forms.  One notable
+  omission is macro support. Macros may be supported at some later
+  date, if and when they're required.</p>
+
+<h2>Data Types</h2>
+
+<p>DSL has support for a basic set of data types.</p>
+
+<h3>Integer</h3>
+
+<p>DSL supports unsigned integers, in decimal notation.</p>
+
+<h3>String</h3>
+
+<p>Strings in DSL use double quotes, and consist of a sequence of characters other than double quotes.</p>
+
+<h3>Boolean</h3>
+
+<p>While boolean values are used regularly, literals are less common.
+  The most common use is probably in the default clause in
+  a <code>cond</code> form.  When used, <code>#t</code> indicates true
+  and <code>#f</code> indicates false.</p>
+
+<h3>Cons Cell</h3>
+
+<p>As in most, if not all Lisps, the core data type is the cons cell.
+  It is simply a pair of values, traditionally known
+  as <code>car</code> and <code>cdr</code>, or more recently head and
+  tail.  DSL uses the <code>car</code> and <code>cdr</code> notation.</p>
+
+<p>A literal cons cell is made using two values in parentheses,
+  separated by a period.  Otherwise known as a dotted pair:</p>
+
+<pre>
+  (1 . 2)
+</pre>
+
+<p>The constant <code>nil</code> represents an empty, aka NULL cons cell.</p>
+
+<h3>List</h3>
+
+<p>A list is sequence of cons cells, linked through tails, with the
+  final tail being nil.  The standard notation is used, a sequence of
+  values separated by whitespace and enclosed in parentheses: <code>(1 2 3)</code></p>
+
+<p>Internally, the list <code>(1 2 3)</code> is equivalent to <code>(1 . (2 . (3 . nil)))</code>.</p>
+
+<h3>Symbol</h3>
+
+<p>Symbols are the other main building block, the other being the
+  list. A symbol is essentially an interned string.  Notationally,
+  they are a series of characters, without enveloping double quotes.
+  Allowable characters are letters, digits, -, ?, and !. By
+  convention, dash is used as a word seperator to enhance readability,
+  a trailing questionmark indicats a predicate, while a trailing
+  exclaimation mark indicates womething with a side effect. Symbols
+  must start with a letter.  They are case sensitive.</p>
+
+<h2>Integration</h2>
+
+<p>ObjectiveC objects can be wrapped and used from Lisp in two ways:</p>
+
+<ol>
+<li>property manipulation</li>
+<li>message sending</li>
+</ol>
+
+<h2>extension</h2>
+
+-symbol table
+
+-binding
+
+<p>To add your own builtin functions/forms you instantiate a
+DslBuiltinFunction to point to your object/method.  You then must
+  bind it to a name.  For example:</p>
+
+<pre>
+  [DSL bindName:[DSL internal_intern:@"car"] 
+       toFunction:[DslBuiltinFunction withTarget:self 
+                                      andSelector:@selector(car:)]];
+</pre>
+
+<p>When a builtin is evaluated, it's arguments are not automatically
+  evaluated first.  If they should be, the builtin has to do it itself.</p>
+
+-initialization hooks
+
+threading
+
+- run in a separate thread
+
+- send messages to system on main thread
+
+<h2>testing</h2>
+
+test framework reads files containing comments, expressions and the expect result of evading them, separated by blank lines. Each such triplet is separated by a line containing 4 hyphens.
+
+<h2>runtime</h2>
+
+-parser
+
+-interpreting
+
+-symbol table stack
+
+-symbols have a single binding (as opposed to separate value, function, etc. bindings
+
+-symbols looked up in the local scope first, then moving outward
+
+-creating a local scope amounts to pushing a new symbol table onto the stack
+
+- local scope is created on function entry, let entry, and destroyed on the respective exit
+
+<h2>Builtins</h2>
+
+<h3>intern</h3>
+
+<code>(intern <em>STRING</em>)</code> => <code><em>SYMBOL</em></code>
+
+<p>This makes a symbol from a string in the most local symbol table.</p>
+
+<h3>lambda</h3>
+
+<code>(lambda (<em>PARAMS</em>) <em>BODY</em>)</code> => <em>FUNCTION</em>
+
+<pre>
+(lambda (x) (+ 1 x))
+</pre>
+
+<p>Create an anonymous function. This is specifically useful for
+  providing functions to iterator or application functions.  Mostly
+  useful for short functions.</p>
+
+<p>
+<code>(map (lambda (x) (+ x x)) '(1 2 3))</code> => <em>(2 4 6)</em>
+</p>
+
+<h3>defun</h3>
+
+<code>(defun <em>SYMBOL</em> (<em>PARAMS</em>) <em>BODY</em>)</code>
+
+<pre>
+(defun double (x) 
+       (+ x x))
+</pre>
+
+<code>(map double '(1 2 3))</code> => <em>(2 4 6)</em>
+
+<p>Create a named function.</p>
+
+<h3>apply</h3>
+
+<pre>
+(apply <em>FUNCTION</em> <em>ARGUMENTS</em>)
+</pre>
+
+<code>(apply (lambda (x) (+ 1 x)) 2)</code> => <em>3</em>
+
+<pre>(defun add1 (x) (+ 1 x))</pre>
+
+<code>(apply add1 2)</code> => <em>3</em>
+
+<p>
+This applies a function to set of arguments.  This functionallity is
+core to the system, and is used internally a lot.  None the less, it
+is sometimes useful explicitly.
+</p>
+
+<h3>do</h3>
+
+<code>(do <em>BODY</em>)</code>
+
+<code>(do (+ 1 1) (* 1 1))</code> => <em>1</em>
+
+- eval a sequence of expressions, returning the result of the final one
+
+- this is implicit several places: function bodies, let bodies, cond clause bodies.
+
+- sometimes useful to use explicitly
+
+<h3>let</h3>
+
+<code>(let ((<em>NAME</em> <em>VALUE</em>)...) <em>BODY</em>)</code>
+
+<code>(let ((x 5)(y 2)) (+ x y))</code> => <em>7</em>
+
+- create a local scope in which to evaluate BODY (which is an implicit BEGIN)
+
+- values are evaluated and the result bound to the corresponding name in sequence (not in parallel as in some dialects). this means you can have things like:
+
+<code>(let ((a 2)(b (+ a 1)) b)</code> => <em>3</em>
+
+<h3>cons</h3>
+
+<code>(cons 'a 'b)</code> => <em>(a.b)</em>
+
+<code>(cons 'a '(a b))</code> => <em>(a b c)</em>
+
+- create a cons cell with the arguments as it's car and cdr
+
+<h3>list</h3>
+
+<code>(list <em>ITEMS</em>)</code> => (<em>ITEMS</em>)
+
+<code>(list 1 2 3)</code> => <em>(1 2 3)</em>
+
+- create a list from the arguments
+
+<h3>car/cdr</h3>
+
+<code>(car '(a b c))</code> => <em>a</em>
+
+<code>(cdr '(a b c))</code> => <em>(b c)</em>
+
+- car returns the head of the cons cell argument
+
+- cdr returns it's tail
+
+- can be combined in a sequence up to 3 long
+
+cadr 
+
+<code>(cadr a)</code> is the same as <code>(car (cdr a))</code> and so on
+
+<h3>length</h3>
+
+<code>(length <em>LIST</em>)</code> => <em>INTEGER</em>
+
+<code>(length '(a b c d))</code> => <em>4</em>
+
+- get the length of a list
+
+<h3>map</h3>
+
+<code>(map <em>FUNCTION</em> <em>LIST</em>)</code> => <em>LIST</em>
+
+<code>(map (lambda (* 2 x)) '(1 2 3))</code> => <em>(2 4 6)</em>
+
+- apply the function ,to each element of the list, in order, resulting in a list of the results of each application
+
+<h3>select</h3>
+
+<code>(select <em>FUNCTION</em> <em>LIST</em>)</code> => <em>LIST</em>
+
+<code>(select odd? '(1 2 3))</code> => <em>(1 3)</em>
+
+- select all list items that satisfy the predicate function
+
+- apply the function (which is assumed to return a boolean), to each element of the list, in order, resulting in a list of the original items for which the function returns true
+
+<h3>any?</h3>
+
+<code>(any? <em>FUNCTION</em> <em>LIST</em>)</code> => <em>LIST</em>
+
+<code>(any? (lambda odd? '(1 2 3))</code> => <em>#t</em>
+
+- check if any of the list items satisfy the predicate function
+
+- apply the function (which is assumed to return a boolean), to each element of the list, in order, until one returns true. If that happens, return true otherwise false
+
+<h3>if</h3>
+<code>(if <em>BOOLEAN</em> <em>TRUE SEXPR</em> <em>FALSE SEXPR</em>)</code>
+
+<code>(if (= x 5) 'a 'b)</code>
+
+- if the boolean evils to true, the first sexpr is sled, otherwise the second is
+
+<h3>cond</h3>
+
+<code>(cond (<em>BOOLEAN</em> <em>BODY</em>)...)</code>
+
+<pre>
+(cond ((= x 5) 3)
+      ((= x 7) (+ x 6))
+      (#t 0))</pre>
+
+- multi branch conditional
+
+Evaluate the head of each pair in order. for the first that is true, evaluate the corresponding body (as though it was enclosed by a begin)
+
+<h3>or, and, not</h3>
+
+logical functions 
+
+<code>(or x y)</code>
+
+<code>(not x)</code>
+
+or/and take any number of args
+
+<h3>+, -, *, /, %</h3>
+
+arithmetic operators (% is modulus)
+
+other than %, these take any number of arguments
+
+<h3>&lt;, =, &gt;</h3>
+
+relative operators
+
+<code>(< a 5)</code>
+
+<h3>get-string, get-integer, get-boolean</h3>
+
+<code>(get-string <em>OBJECT</em> <em>PROPERTY</em>)</code>
+
+- property access
+
+<h3>quote</h3>
+
+<code>(quote <em>SEXPR</em>)</code>
+
+<code>'<em>SEXPR</em></code>
+
+avoid evaluating the argument
