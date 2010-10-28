@@ -73,7 +73,11 @@
     [input rollback];
   }
   NSString *value = [input extract];
-  return [DslSymbol withName:value];
+  if ([value isEqualToString:@"nil"]) {
+    return NIL_CONS;
+  } else {
+    return [DslSymbol withName:value];
+  }
 }
 
 
