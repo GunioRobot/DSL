@@ -1,0 +1,39 @@
+Nothing
+
+(if)
+
+nil
+----
+Just Condition
+
+(if #t)
+
+nil
+
+(if #f)
+
+nil
+----
+False Condition with No False Clause
+
+(if #f 1)
+
+nil
+----
+True Clause Only
+
+(if #t 1)
+
+1
+----
+True with 2 Clauses
+
+(if #t 1 2)
+
+1
+----
+False with 2 Clauses
+
+(if #f 1 2)
+
+2

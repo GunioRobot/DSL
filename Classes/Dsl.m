@@ -424,6 +424,19 @@ DslNil *NIL_CONS = nil;
 }
 
 
+- (DslExpression*) if:(DslCons*)args
+{
+  if ([args isNil]  || [args.head isNil]) return NIL_CONS;
+  
+  DslExpression *condition = [args.head eval];
+  if ([condition booleanValue]) {
+    return ([args.tail isNil] || [args.tail.head isNil]) ? NIL_CONS : [args.tail.head eval];
+  } else {
+    return ([args.tail isNil] || [args.tail.tail isNil] || [args.tail.tail.head isNil]) ? NIL_CONS : [args.tail.tail.head eval];
+  }
+}
+
+
 - (DslBoolean*) logicalOr:(DslCons*)args
 {
   if (args == nil) return [DslBoolean withFalse];
