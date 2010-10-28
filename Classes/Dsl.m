@@ -8,6 +8,8 @@
 
 #import "Dsl.h"
 #import "SymbolTable.h"
+#import "DslDefinedFunction.h"
+#import "DslBuiltinFunction.h"
 
 Dsl *DSL = nil;
 DslNil *NIL_CONS = nil;
@@ -24,61 +26,72 @@ DslNil *NIL_CONS = nil;
 }
 
 
+- (DslExpression*) bindName:(NSString*)name toTarget:(NSObject*)target andSelector:(SEL)selector
+{
+  return [self bind:[self internal_intern:name] to:[DslBuiltinFunction withTarget:target andSelector:selector]];
+}
+
+
 - (Dsl *) init
 {
   parser = [[DslParser alloc] init];
   symbolTable = [[SymbolTable alloc] init];
-  [self bindName:@"intern"     toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(intern:)]];
-  [self bindName:@"lambda"     toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(lambda:)]];
-  [self bindName:@"defun"      toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(defun:)]];
-  [self bindName:@"apply"      toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(apply:)]];
-  [self bindName:@"do"         toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(doList:)]];
-  [self bindName:@"let"        toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(let:)]];
-  [self bindName:@"cons"       toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(cons:)]];
-  [self bindName:@"list"       toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(list:)]];
-  [self bindName:@"car"        toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(car:)]];
-  [self bindName:@"cdr"        toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(cdr:)]];
-  [self bindName:@"caar"       toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(caar:)]];
-  [self bindName:@"cadr"       toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(cadr:)]];
-  [self bindName:@"cdar"       toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(cdar:)]];
-  [self bindName:@"cddr"       toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(cddr:)]];
-  [self bindName:@"caaar"      toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(caaar:)]];
-  [self bindName:@"caadr"      toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(caadr:)]];
-  [self bindName:@"cadar"      toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(cadar:)]];
-  [self bindName:@"caddr"      toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(caddr:)]];
-  [self bindName:@"cdaar"      toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(cdaar:)]];
-  [self bindName:@"cdadr"      toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(cdadr:)]];
-  [self bindName:@"cddar"      toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(cddar:)]];
-  [self bindName:@"cdddr"      toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(cdddr:)]];
-  [self bindName:@"length"     toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(length:)]];
-  [self bindName:@"map"        toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(map:)]];
-  [self bindName:@"select"     toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(select:)]];
-  [self bindName:@"any?"       toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(any:)]];
-  [self bindName:@"cond"       toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(cond:)]];
-  [self bindName:@"or"         toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(logicalOr:)]];
-  [self bindName:@"and"        toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(logicalAnd:)]];
-  [self bindName:@"not"        toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(logicalNot:)]];
-  [self bindName:@"+"          toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(add:)]];
-  [self bindName:@"-"          toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(subtract:)]];
-  [self bindName:@"*"          toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(multiply:)]];
-  [self bindName:@"/"          toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(divide:)]];
-  [self bindName:@"%"          toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(modulus:)]];
-  [self bindName:@"<"          toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(lessThan:)]];
-  [self bindName:@"="          toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(equalToFunction:)]];
-  [self bindName:@">"          toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(greaterThan:)]];
-  [self bindName:@"getString"  toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(getString:)]];
-  [self bindName:@"getInteger" toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(getInteger:)]];
-  [self bindName:@"getBoolean" toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(getBoolean:)]];
-  [self bindName:@"quote"      toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(quote:)]];
-  [self bindName:@"'"          toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(quote:)]];
+  [self bindName:@"intern"     toTarget:self andSelector:@selector(intern:)];
+  [self bindName:@"lambda"     toTarget:self andSelector:@selector(lambda:)];
+  [self bindName:@"defun"      toTarget:self andSelector:@selector(defun:)];
+  [self bindName:@"apply"      toTarget:self andSelector:@selector(apply:)];
+  [self bindName:@"do"         toTarget:self andSelector:@selector(doList:)];
+  [self bindName:@"let"        toTarget:self andSelector:@selector(let:)];
+  [self bindName:@"cons"       toTarget:self andSelector:@selector(cons:)];
+  [self bindName:@"list"       toTarget:self andSelector:@selector(list:)];
+//  [self bindName:@"first"       toTarget:self andSelector:@selector(first:)];
+//  [self bindName:@"second"       toTarget:self andSelector:@selector(second:)];
+//  [self bindName:@"third"       toTarget:self andSelector:@selector(third:)];
+//  [self bindName:@"fourth"       toTarget:self andSelector:@selector(fourth:)];
+//  [self bindName:@"fifth"       toTarget:self andSelector:@selector(fifth:)];
+//  [self bindName:@"sixth"       toTarget:self andSelector:@selector(sixth:)];
+//  [self bindName:@"seventh"       toTarget:self andSelector:@selector(seventh:)];
+//  [self bindName:@"eigth"       toTarget:self andSelector:@selector(eigth:)];
+//  [self bindName:@"nineth"       toTarget:self andSelector:@selector(ninth:)];
+//  [self bindName:@"tenth"       toTarget:self andSelector:@selector(tenth:)];
+  [self bindName:@"car"        toTarget:self andSelector:@selector(car:)];
+  [self bindName:@"cdr"        toTarget:self andSelector:@selector(cdr:)];
+  [self bindName:@"caar"       toTarget:self andSelector:@selector(caar:)];
+  [self bindName:@"cadr"       toTarget:self andSelector:@selector(cadr:)];
+  [self bindName:@"cdar"       toTarget:self andSelector:@selector(cdar:)];
+  [self bindName:@"cddr"       toTarget:self andSelector:@selector(cddr:)];
+  [self bindName:@"caaar"      toTarget:self andSelector:@selector(caaar:)];
+  [self bindName:@"caadr"      toTarget:self andSelector:@selector(caadr:)];
+  [self bindName:@"cadar"      toTarget:self andSelector:@selector(cadar:)];
+  [self bindName:@"caddr"      toTarget:self andSelector:@selector(caddr:)];
+  [self bindName:@"cdaar"      toTarget:self andSelector:@selector(cdaar:)];
+  [self bindName:@"cdadr"      toTarget:self andSelector:@selector(cdadr:)];
+  [self bindName:@"cddar"      toTarget:self andSelector:@selector(cddar:)];
+  [self bindName:@"cdddr"      toTarget:self andSelector:@selector(cdddr:)];
+  [self bindName:@"length"     toTarget:self andSelector:@selector(length:)];
+  [self bindName:@"map"        toTarget:self andSelector:@selector(map:)];
+  [self bindName:@"select"     toTarget:self andSelector:@selector(select:)];
+  [self bindName:@"any?"       toTarget:self andSelector:@selector(any:)];
+  [self bindName:@"if"         toTarget:self andSelector:@selector(if:)];
+  [self bindName:@"cond"       toTarget:self andSelector:@selector(cond:)];
+  [self bindName:@"or"         toTarget:self andSelector:@selector(logicalOr:)];
+  [self bindName:@"and"        toTarget:self andSelector:@selector(logicalAnd:)];
+  [self bindName:@"not"        toTarget:self andSelector:@selector(logicalNot:)];
+  [self bindName:@"+"          toTarget:self andSelector:@selector(add:)];
+  [self bindName:@"-"          toTarget:self andSelector:@selector(subtract:)];
+  [self bindName:@"*"          toTarget:self andSelector:@selector(multiply:)];
+  [self bindName:@"/"          toTarget:self andSelector:@selector(divide:)];
+  [self bindName:@"%"          toTarget:self andSelector:@selector(modulus:)];
+  [self bindName:@"<"          toTarget:self andSelector:@selector(lessThan:)];
+  [self bindName:@"="          toTarget:self andSelector:@selector(equalTo:)];
+  [self bindName:@">"          toTarget:self andSelector:@selector(greaterThan:)];
+  [self bindName:@"getString"  toTarget:self andSelector:@selector(getString:)];
+  [self bindName:@"getInteger" toTarget:self andSelector:@selector(getInteger:)];
+  [self bindName:@"getBoolean" toTarget:self andSelector:@selector(getBoolean:)];
+  [self bindName:@"quote"      toTarget:self andSelector:@selector(quote:)];
+  [self bindName:@"'"          toTarget:self andSelector:@selector(quote:)];
   
   return self;  
-}
-
-
-- (DslExpression*) bindName:(NSString*)name toFunction:(DslBuiltinFunction*)func
-{
-  return [self bind:[self internal_intern:name] to:func];
 }
 
 

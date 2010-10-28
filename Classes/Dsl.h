@@ -16,12 +16,12 @@
 #import "DslSymbol.h"
 #import "DslCons.h"
 #import "DslFunction.h"
-#import "DslBuiltinFunction.h"
-#import "DslDefinedFunction.h"
 #import "DslObject.h"
 #import "DslNil.h"
 #import "Functions.h"
 #import "SymbolTable.h"
+
+@class DslBuiltinFunction;
 
 @class Dsl;
 extern Dsl *DSL;
@@ -36,11 +36,12 @@ extern DslNil *NIL_CONS;
 
 - (Dsl *) init;
 
-- (DslExpression *) parse:(NSString*)codeString;
+- (DslExpression*) bindName:(NSString*)name toTarget:(NSObject*)target andSelector:(SEL)selector;
+- (DslExpression*) parse:(NSString*)codeString;
 
 // internal symbol functions
 
-- (DslSymbol *) internal_intern:(NSString *)name;
+- (DslSymbol*) internal_intern:(NSString *)name;
 - (DslExpression*) bind:(DslSymbol*)symbol to:(DslExpression*)value;
 - (DslExpression*) valueOf:(DslSymbol*)symbol;
 - (void) pushLocalBindings;
