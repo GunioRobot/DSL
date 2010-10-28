@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		107F25A6127A095300677A1E /* if.test in Resources */ = {isa = PBXBuildFile; fileRef = 107F25A4127A094800677A1E /* if.test */; };
 		1096733E12528B8C0004C216 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1096733D12528B8C0004C216 /* main.m */; };
 		1096734712528C3B0004C216 /* DslBoolean.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A07D12516E1900E0A8C8 /* DslBoolean.m */; };
 		1096734812528C3B0004C216 /* DslCons.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A8A07F12516E1900E0A8C8 /* DslCons.m */; };
@@ -105,6 +106,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		107F25A4127A094800677A1E /* if.test */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = if.test; sourceTree = "<group>"; };
 		1096731E12528B190004C216 /* Repl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Repl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1096732012528B190004C216 /* Repl-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Repl-Info.plist"; sourceTree = "<group>"; };
 		1096733D12528B8C0004C216 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 				10F7FFB212530403007A402F /* list.test */,
 				10DE502A12542CAA0054676F /* number-functions.test */,
 				10DE504712542E8B0054676F /* logic-functions.test */,
+				107F25A4127A094800677A1E /* if.test */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -476,6 +479,7 @@
 				10F7FFDC125324BD007A402F /* let.test in Resources */,
 				10DE503312542D8C0054676F /* number-functions.test in Resources */,
 				10DE504812542E8F0054676F /* logic-functions.test in Resources */,
+				107F25A6127A095300677A1E /* if.test in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
