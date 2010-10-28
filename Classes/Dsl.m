@@ -414,7 +414,7 @@ DslNil *NIL_CONS = nil;
   if (args == nil) return NIL_CONS;
   
   DslCons *pairs = args;
-  while (![pairs isNil]) {
+  while ([pairs notNil]) {
     if ([[self eval:pairs.head.head] booleanValue]) {
       return [self evalEach:(DslCons*)pairs.head.tail];
     }
