@@ -28,51 +28,57 @@ DslNil *NIL_CONS = nil;
 {
   parser = [[DslParser alloc] init];
   symbolTable = [[SymbolTable alloc] init];
-  [symbolTable bind:[self internal_intern:@"intern"]     to:[DslBuiltinFunction withTarget:self andSelector:@selector(intern:)]];
-  [symbolTable bind:[self internal_intern:@"lambda"]     to:[DslBuiltinFunction withTarget:self andSelector:@selector(lambda:)]];
-  [symbolTable bind:[self internal_intern:@"defun"]      to:[DslBuiltinFunction withTarget:self andSelector:@selector(defun:)]];
-  [symbolTable bind:[self internal_intern:@"apply"]      to:[DslBuiltinFunction withTarget:self andSelector:@selector(apply:)]];
-  [symbolTable bind:[self internal_intern:@"do"]         to:[DslBuiltinFunction withTarget:self andSelector:@selector(doList:)]];
-  [symbolTable bind:[self internal_intern:@"let"]        to:[DslBuiltinFunction withTarget:self andSelector:@selector(let:)]];
-  [symbolTable bind:[self internal_intern:@"cons"]       to:[DslBuiltinFunction withTarget:self andSelector:@selector(cons:)]];
-  [symbolTable bind:[self internal_intern:@"list"]       to:[DslBuiltinFunction withTarget:self andSelector:@selector(list:)]];
-  [symbolTable bind:[self internal_intern:@"car"]        to:[DslBuiltinFunction withTarget:self andSelector:@selector(car:)]];
-  [symbolTable bind:[self internal_intern:@"cdr"]        to:[DslBuiltinFunction withTarget:self andSelector:@selector(cdr:)]];
-  [symbolTable bind:[self internal_intern:@"caar"]       to:[DslBuiltinFunction withTarget:self andSelector:@selector(caar:)]];
-  [symbolTable bind:[self internal_intern:@"cadr"]       to:[DslBuiltinFunction withTarget:self andSelector:@selector(cadr:)]];
-  [symbolTable bind:[self internal_intern:@"cdar"]       to:[DslBuiltinFunction withTarget:self andSelector:@selector(cdar:)]];
-  [symbolTable bind:[self internal_intern:@"cddr"]       to:[DslBuiltinFunction withTarget:self andSelector:@selector(cddr:)]];
-  [symbolTable bind:[self internal_intern:@"caaar"]      to:[DslBuiltinFunction withTarget:self andSelector:@selector(caaar:)]];
-  [symbolTable bind:[self internal_intern:@"caadr"]      to:[DslBuiltinFunction withTarget:self andSelector:@selector(caadr:)]];
-  [symbolTable bind:[self internal_intern:@"cadar"]      to:[DslBuiltinFunction withTarget:self andSelector:@selector(cadar:)]];
-  [symbolTable bind:[self internal_intern:@"caddr"]      to:[DslBuiltinFunction withTarget:self andSelector:@selector(caddr:)]];
-  [symbolTable bind:[self internal_intern:@"cdaar"]      to:[DslBuiltinFunction withTarget:self andSelector:@selector(cdaar:)]];
-  [symbolTable bind:[self internal_intern:@"cdadr"]      to:[DslBuiltinFunction withTarget:self andSelector:@selector(cdadr:)]];
-  [symbolTable bind:[self internal_intern:@"cddar"]      to:[DslBuiltinFunction withTarget:self andSelector:@selector(cddar:)]];
-  [symbolTable bind:[self internal_intern:@"cdddr"]      to:[DslBuiltinFunction withTarget:self andSelector:@selector(cdddr:)]];
-  [symbolTable bind:[self internal_intern:@"length"]     to:[DslBuiltinFunction withTarget:self andSelector:@selector(length:)]];
-  [symbolTable bind:[self internal_intern:@"map"]        to:[DslBuiltinFunction withTarget:self andSelector:@selector(map:)]];
-  [symbolTable bind:[self internal_intern:@"select"]     to:[DslBuiltinFunction withTarget:self andSelector:@selector(select:)]];
-  [symbolTable bind:[self internal_intern:@"any?"]       to:[DslBuiltinFunction withTarget:self andSelector:@selector(any:)]];
-  [symbolTable bind:[self internal_intern:@"cond"]       to:[DslBuiltinFunction withTarget:self andSelector:@selector(cond:)]];
-  [symbolTable bind:[self internal_intern:@"or"]         to:[DslBuiltinFunction withTarget:self andSelector:@selector(logicalOr:)]];
-  [symbolTable bind:[self internal_intern:@"and"]        to:[DslBuiltinFunction withTarget:self andSelector:@selector(logicalAnd:)]];
-  [symbolTable bind:[self internal_intern:@"not"]        to:[DslBuiltinFunction withTarget:self andSelector:@selector(logicalNot:)]];
-  [symbolTable bind:[self internal_intern:@"+"]          to:[DslBuiltinFunction withTarget:self andSelector:@selector(add:)]];
-  [symbolTable bind:[self internal_intern:@"-"]          to:[DslBuiltinFunction withTarget:self andSelector:@selector(subtract:)]];
-  [symbolTable bind:[self internal_intern:@"*"]          to:[DslBuiltinFunction withTarget:self andSelector:@selector(multiply:)]];
-  [symbolTable bind:[self internal_intern:@"/"]          to:[DslBuiltinFunction withTarget:self andSelector:@selector(divide:)]];
-  [symbolTable bind:[self internal_intern:@"%"]          to:[DslBuiltinFunction withTarget:self andSelector:@selector(modulus:)]];
-  [symbolTable bind:[self internal_intern:@"<"]          to:[DslBuiltinFunction withTarget:self andSelector:@selector(lessThan:)]];
-  [symbolTable bind:[self internal_intern:@"="]          to:[DslBuiltinFunction withTarget:self andSelector:@selector(equalTo:)]];
-  [symbolTable bind:[self internal_intern:@">"]          to:[DslBuiltinFunction withTarget:self andSelector:@selector(greaterThan:)]];
-  [symbolTable bind:[self internal_intern:@"getString"]  to:[DslBuiltinFunction withTarget:self andSelector:@selector(getString:)]];
-  [symbolTable bind:[self internal_intern:@"getInteger"] to:[DslBuiltinFunction withTarget:self andSelector:@selector(getInteger:)]];
-  [symbolTable bind:[self internal_intern:@"getBoolean"] to:[DslBuiltinFunction withTarget:self andSelector:@selector(getBoolean:)]];
-  [symbolTable bind:[self internal_intern:@"quote"]      to:[DslBuiltinFunction withTarget:self andSelector:@selector(quote:)]];
-  [symbolTable bind:[self internal_intern:@"'"]          to:[DslBuiltinFunction withTarget:self andSelector:@selector(quote:)]];
+  [self bindName:@"intern"     toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(intern:)]];
+  [self bindName:@"lambda"     toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(lambda:)]];
+  [self bindName:@"defun"      toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(defun:)]];
+  [self bindName:@"apply"      toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(apply:)]];
+  [self bindName:@"do"         toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(doList:)]];
+  [self bindName:@"let"        toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(let:)]];
+  [self bindName:@"cons"       toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(cons:)]];
+  [self bindName:@"list"       toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(list:)]];
+  [self bindName:@"car"        toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(car:)]];
+  [self bindName:@"cdr"        toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(cdr:)]];
+  [self bindName:@"caar"       toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(caar:)]];
+  [self bindName:@"cadr"       toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(cadr:)]];
+  [self bindName:@"cdar"       toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(cdar:)]];
+  [self bindName:@"cddr"       toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(cddr:)]];
+  [self bindName:@"caaar"      toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(caaar:)]];
+  [self bindName:@"caadr"      toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(caadr:)]];
+  [self bindName:@"cadar"      toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(cadar:)]];
+  [self bindName:@"caddr"      toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(caddr:)]];
+  [self bindName:@"cdaar"      toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(cdaar:)]];
+  [self bindName:@"cdadr"      toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(cdadr:)]];
+  [self bindName:@"cddar"      toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(cddar:)]];
+  [self bindName:@"cdddr"      toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(cdddr:)]];
+  [self bindName:@"length"     toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(length:)]];
+  [self bindName:@"map"        toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(map:)]];
+  [self bindName:@"select"     toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(select:)]];
+  [self bindName:@"any?"       toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(any:)]];
+  [self bindName:@"cond"       toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(cond:)]];
+  [self bindName:@"or"         toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(logicalOr:)]];
+  [self bindName:@"and"        toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(logicalAnd:)]];
+  [self bindName:@"not"        toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(logicalNot:)]];
+  [self bindName:@"+"          toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(add:)]];
+  [self bindName:@"-"          toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(subtract:)]];
+  [self bindName:@"*"          toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(multiply:)]];
+  [self bindName:@"/"          toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(divide:)]];
+  [self bindName:@"%"          toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(modulus:)]];
+  [self bindName:@"<"          toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(lessThan:)]];
+  [self bindName:@"="          toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(equalToFunction:)]];
+  [self bindName:@">"          toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(greaterThan:)]];
+  [self bindName:@"getString"  toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(getString:)]];
+  [self bindName:@"getInteger" toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(getInteger:)]];
+  [self bindName:@"getBoolean" toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(getBoolean:)]];
+  [self bindName:@"quote"      toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(quote:)]];
+  [self bindName:@"'"          toFunction:[DslBuiltinFunction withTarget:self andSelector:@selector(quote:)]];
   
   return self;  
+}
+
+
+- (DslExpression*) bindName:(NSString*)name toFunction:(DslBuiltinFunction*)func
+{
+  return [self bind:[self internal_intern:name] to:func];
 }
 
 
