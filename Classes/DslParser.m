@@ -87,26 +87,6 @@
 {
   unichar nextChar = [input nextChar];
   return [DslSymbol withName:[NSString stringWithFormat:@"%C", nextChar]];
-//  switch (nextChar) {
-//    case '+':
-//      return [DslSymbol withName:@"+"];
-//    case '-':
-//      return [DslSymbol withName:@"-"];
-//    case '*':
-//      return [DslSymbol withName:@"*"];
-//    case '/':
-//      return [DslSymbol withName:@"/"];
-//    case '%':
-//      return [DslSymbol withName:@"%"];
-//    case '<':
-//      return [DslSymbol withName:@"<"];
-//    case '>':
-//      return [DslSymbol withName:@">"];
-//    case '=':
-//      return [DslSymbol withName:@"="];
-//    default:
-//      return nil;
-//  }
 }
 
 
