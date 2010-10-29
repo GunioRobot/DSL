@@ -20,6 +20,28 @@
 }
 
 
+
+- (void) setHead:(DslExpression*)h
+{
+}
+
+
+- (void) setTail:(DslExpression*)t
+{
+}
+
+- (DslExpression*)head
+{
+  return self;
+}
+
+
+- (DslExpression*)tail
+{
+  return self;
+}
+
+
 - (BOOL) booleanValue
 {
   return NO;
