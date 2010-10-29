@@ -183,12 +183,14 @@
 
 - (BOOL) isNil
 {
-  return [head isNil] && [tail isNil];
+  return ((head == nil) || [head isNil]) && ((tail == nil) || [tail isNil]);
 }
+
 
 - (BOOL) notNil
 {
-  return [head notNil] || [tail notNil];
+  return ![self isNil];
 }
+
 
 @end

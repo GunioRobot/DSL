@@ -60,7 +60,7 @@
 
 - (BOOL) compareTo:(DslExpression*)other
 {
-  return [other isMemberOfClass:[DslNil class]];
+  return [other isNil];
 }
 
 @end
