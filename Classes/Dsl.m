@@ -44,16 +44,16 @@ DslNil *NIL_CONS = nil;
   [self bindName:@"let"        toTarget:self andSelector:@selector(let:)];
   [self bindName:@"cons"       toTarget:self andSelector:@selector(cons:)];
   [self bindName:@"list"       toTarget:self andSelector:@selector(list:)];
-//  [self bindName:@"first"       toTarget:self andSelector:@selector(first:)];
-//  [self bindName:@"second"       toTarget:self andSelector:@selector(second:)];
-//  [self bindName:@"third"       toTarget:self andSelector:@selector(third:)];
-//  [self bindName:@"fourth"       toTarget:self andSelector:@selector(fourth:)];
-//  [self bindName:@"fifth"       toTarget:self andSelector:@selector(fifth:)];
-//  [self bindName:@"sixth"       toTarget:self andSelector:@selector(sixth:)];
-//  [self bindName:@"seventh"       toTarget:self andSelector:@selector(seventh:)];
-//  [self bindName:@"eigth"       toTarget:self andSelector:@selector(eigth:)];
-//  [self bindName:@"nineth"       toTarget:self andSelector:@selector(ninth:)];
-//  [self bindName:@"tenth"       toTarget:self andSelector:@selector(tenth:)];
+  [self bindName:@"first"      toTarget:self andSelector:@selector(first:)];
+  [self bindName:@"second"     toTarget:self andSelector:@selector(second:)];
+  [self bindName:@"third"      toTarget:self andSelector:@selector(third:)];
+  [self bindName:@"fourth"     toTarget:self andSelector:@selector(fourth:)];
+  [self bindName:@"fifth"      toTarget:self andSelector:@selector(fifth:)];
+  [self bindName:@"sixth"      toTarget:self andSelector:@selector(sixth:)];
+  [self bindName:@"seventh"    toTarget:self andSelector:@selector(seventh:)];
+  [self bindName:@"eigth"      toTarget:self andSelector:@selector(eigth:)];
+  [self bindName:@"nineth"     toTarget:self andSelector:@selector(ninth:)];
+  [self bindName:@"tenth"      toTarget:self andSelector:@selector(tenth:)];
   [self bindName:@"car"        toTarget:self andSelector:@selector(car:)];
   [self bindName:@"cdr"        toTarget:self andSelector:@selector(cdr:)];
   [self bindName:@"caar"       toTarget:self andSelector:@selector(caar:)];
@@ -236,6 +236,12 @@ DslNil *NIL_CONS = nil;
   }
   
   return result.tail;
+}
+
+
+- (DslExpression*) first:(DslCons*)args
+{
+  return [args.head eval].head;
 }
 
 

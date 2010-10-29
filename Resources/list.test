@@ -211,3 +211,17 @@ List of Complex Values
 (list (+ 1 2) (* 1 2) #t)
 
 '(3 2 #t)
+----
+First
+
+(first '())
+
+nil
+
+(first '(1))
+
+1
+
+(first '(1 2))
+
+1
