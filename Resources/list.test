@@ -212,16 +212,266 @@ List of Complex Values
 
 '(3 2 #t)
 ----
-First
+First with no args
+
+(first)
+
+nil
+----
+First with empty list
 
 (first '())
 
 nil
+----
+First with one item list
 
 (first '(1))
 
 1
+----
+First with big list
 
-(first '(1 2))
+(first '(1 2 3 4 5 6 7 8 9 10 11 12 13))
 
 1
+----
+Second with no args
+
+(second)
+
+nil
+----
+Second with empty list
+
+(second '())
+
+nil
+----
+Second with short list
+
+(second '(1))
+
+nil
+----
+Second with long list
+
+(second '(1 2 3 4 5 6 7 8 9 10 11 12 13))
+
+2
+----
+Third with no args
+
+(third)
+
+nil
+----
+Third with empty list
+
+(third '())
+
+nil
+----
+Third with short list
+
+(third '(1 2))
+
+nil
+----
+Third with long list
+
+(third '(1 2 3 4 5 6 7 8 9 10 11 12 13))
+
+3
+----
+Fourth with no args
+
+(fourth)
+
+nil
+----
+Fourth with empty list
+
+(fourth '())
+
+nil
+----
+Fourth with short list
+
+(fourth '(1 2))
+
+nil
+----
+Fourth with long list
+
+(fourth '(1 2 3 4 5 6 7 8 9 10 11 12 13))
+
+4
+----
+Fifth with no args
+
+(fifth)
+
+nil
+----
+Fifth with empty list
+
+(fifth '())
+
+nil
+----
+Fifth with short list
+
+(fifth '(1 2))
+
+nil
+----
+Fifth with long list
+
+(fifth '(1 2 3 4 5 6 7 8 9 10 11 12 13))
+
+5
+----
+Sixth with no args
+
+(sixth)
+
+nil
+----
+Sixth with empty list
+
+(sixth '())
+
+nil
+----
+Sixth with short list
+
+(sixth '(1 2))
+
+nil
+----
+Sixth with long list
+
+(sixth '(1 2 3 4 5 6 7 8 9 10 11 12 13))
+
+6
+----
+Seventh with no args
+
+(seventh)
+
+nil
+----
+Seventh with empty list
+
+(seventh '())
+
+nil
+----
+Seventh with short list
+
+(seventh '(1 2))
+
+nil
+----
+Seventh with long list
+
+(seventh '(1 2 3 4 5 6 7 8 9 10 11 12 13))
+
+7
+----
+Eighth with no args
+
+(eighth)
+
+nil
+----
+Eighth with empty list
+
+(eighth '())
+
+nil
+----
+Eighth with short list
+
+(eighth '(1 2))
+
+nil
+----
+Eighth with long list
+
+(eighth '(1 2 3 4 5 6 7 8 9 10 11 12 13))
+
+8
+----
+Ninth with no args
+
+(ninth)
+
+nil
+----
+Ninth with empty list
+
+(ninth '())
+
+nil
+----
+Ninth with short list
+
+(ninth '(1 2))
+
+nil
+----
+Ninth with long list
+
+(ninth '(1 2 3 4 5 6 7 8 9 10 11 12 13))
+
+9
+----
+Tenth with no args
+
+(tenth)
+
+nil
+----
+Tenth with empty list
+
+(tenth '())
+
+nil
+----
+Tenth with short list
+
+(tenth '(1 2))
+
+nil
+----
+Tenth with long list
+
+(tenth '(1 2 3 4 5 6 7 8 9 10 11 12 13))
+
+10
+----
+Nth with no args
+
+(nth)
+
+nil
+----
+Nth with empty list
+
+(nth 1 '())
+
+nil
+----
+Nth with short list
+
+(nth 5 '(1 2))
+
+nil
+----
+Nth with long list
+
+(nth 5 '(1 2 3 4 5 6 7 8 9 10 11 12 13))
+
+5

@@ -51,9 +51,10 @@ DslNil *NIL_CONS = nil;
   [self bindName:@"fifth"      toTarget:self andSelector:@selector(fifth:)];
   [self bindName:@"sixth"      toTarget:self andSelector:@selector(sixth:)];
   [self bindName:@"seventh"    toTarget:self andSelector:@selector(seventh:)];
-  [self bindName:@"eigth"      toTarget:self andSelector:@selector(eigth:)];
-  [self bindName:@"nineth"     toTarget:self andSelector:@selector(ninth:)];
+  [self bindName:@"eighth"     toTarget:self andSelector:@selector(eighth:)];
+  [self bindName:@"ninth"      toTarget:self andSelector:@selector(ninth:)];
   [self bindName:@"tenth"      toTarget:self andSelector:@selector(tenth:)];
+  [self bindName:@"nth"        toTarget:self andSelector:@selector(nth:)];
   [self bindName:@"car"        toTarget:self andSelector:@selector(car:)];
   [self bindName:@"cdr"        toTarget:self andSelector:@selector(cdr:)];
   [self bindName:@"caar"       toTarget:self andSelector:@selector(caar:)];
@@ -235,13 +236,85 @@ DslNil *NIL_CONS = nil;
     args = (DslCons*)args.tail;
   }
   
-  return result.tail;
+  return (DslCons*)result.tail;
+}
+
+
+- (DslExpression*) getNth:(int)n from:(DslCons*)list
+{
+  DslCons *pointer = list;
+  for (int i = 1; i < n; i++) {
+    pointer = (DslCons*)pointer.tail;
+  }
+  return pointer.head;
+}
+
+
+- (DslExpression*) nth:(DslCons*)args
+{
+  int index = [[args.head eval] intValue];
+  DslCons *list = (DslCons*)[args.tail.head eval];
+  return [self getNth:index from:list];
 }
 
 
 - (DslExpression*) first:(DslCons*)args
 {
-  return [args.head eval].head;
+  return [self getNth:1 from:(DslCons*)[args.head eval]];
+}
+
+
+- (DslExpression*) second:(DslCons*)args
+{
+  return [self getNth:2 from:(DslCons*)[args.head eval]];
+}
+
+
+- (DslExpression*) third:(DslCons*)args
+{
+  return [self getNth:3 from:(DslCons*)[args.head eval]];
+}
+
+
+- (DslExpression*) fourth:(DslCons*)args
+{
+  return [self getNth:4 from:(DslCons*)[args.head eval]];
+}
+
+
+- (DslExpression*) fifth:(DslCons*)args
+{
+  return [self getNth:5 from:(DslCons*)[args.head eval]];
+}
+
+
+- (DslExpression*) sixth:(DslCons*)args
+{
+  return [self getNth:6 from:(DslCons*)[args.head eval]];
+}
+
+
+- (DslExpression*) seventh:(DslCons*)args
+{
+  return [self getNth:7 from:(DslCons*)[args.head eval]];
+}
+
+
+- (DslExpression*) eighth:(DslCons*)args
+{
+  return [self getNth:8 from:(DslCons*)[args.head eval]];
+}
+
+
+- (DslExpression*) ninth:(DslCons*)args
+{
+  return [self getNth:9 from:(DslCons*)[args.head eval]];
+}
+
+
+- (DslExpression*) tenth:(DslCons*)args
+{
+  return [self getNth:10 from:(DslCons*)[args.head eval]];
 }
 
 
