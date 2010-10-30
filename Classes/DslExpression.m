@@ -122,6 +122,12 @@ int indentLevel = 0;
 }
 
 
+- (NSString*) toStringHelper
+{
+  return [self toString];
+}
+
+
 - (BOOL) isNil
 {
   return NO;

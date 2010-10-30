@@ -39,6 +39,8 @@
 - (DslExpression*) cdadr;
 
 - (NSString*) toString;
+- (NSString*) toStringHelper;
+
 - (DslExpression*)logEval:(DslExpression*)sexpr;
 - (DslExpression*)logResult:(DslExpression*)val;
 
