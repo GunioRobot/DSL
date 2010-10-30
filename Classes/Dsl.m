@@ -90,7 +90,10 @@ DslNil *NIL_CONS = nil;
   [self bindName:@"getInteger" toTarget:self andSelector:@selector(getInteger:)];
   [self bindName:@"getBoolean" toTarget:self andSelector:@selector(getBoolean:)];
   [self bindName:@"quote"      toTarget:self andSelector:@selector(quote:)];
-  [self bindName:@"'"          toTarget:self andSelector:@selector(quote:)];
+  [self bindName:@"acons"      toTarget:self andSelector:@selector(acons:)];
+  [self bindName:@"pairlis"    toTarget:self andSelector:@selector(pairlis:)];
+  [self bindName:@"assoc"      toTarget:self andSelector:@selector(assoc:)];
+  [self bindName:@"rassoc"     toTarget:self andSelector:@selector(rassoc:)];
   
   return self;  
 }
@@ -685,6 +688,63 @@ DslNil *NIL_CONS = nil;
   DslObject *obj = (DslObject*)[args.head eval];
   DslSymbol *sel = (DslSymbol*)[args.tail.head eval];
   return [obj getBoolean:[sel identifierValue]];
+}
+
+
+- (DslCons*) acons:(DslCons*)args
+{
+  DslExpression *key = [args.head eval];
+  DslExpression *value = [args.tail.head eval];
+  DslCons *list = (DslCons*)[args.tail.tail.head eval];
+  DslCons *pair = [DslCons withHead:key andTail:value];
+  return [DslCons withHead:pair andTail:list];
+}
+
+
+- (DslCons*) pairlis:(DslCons*)args
+{
+  DslCons *keys = (DslCons*)[args.head eval];
+  DslCons *values = (DslCons*)[args.tail.head eval];
+  NSMutableArray *temp = [NSMutableArray arrayWithCapacity:5];
+  while ([keys notNil] && [values notNil]) {
+    DslCons *pair = [DslCons withHead:keys.head andTail:values.head];
+    [temp insertObject:pair atIndex:0];
+    keys = (DslCons*)keys.tail;
+    values = (DslCons*)values.tail;
+  }
+  DslCons *result = NIL_CONS;
+  for (DslCons *pair in temp) {
+    result = [DslCons withHead:pair andTail:result];
+  }
+  return result;
+}
+
+
+- (DslCons*) assoc:(DslCons*)args
+{
+  DslExpression *key = [args.head eval];
+  DslCons *list = (DslCons*)[args.tail.head eval];
+  while ([list notNil]) {
+    if ([list.head.head compareTo:key]) {
+      return (DslCons*)list.head;
+    }
+    list = (DslCons*)list.tail;
+  }
+  return NIL_CONS;
+}
+
+
+- (DslCons*) rassoc:(DslCons*)args
+{
+  DslExpression *value = [args.head eval];
+  DslCons *list = (DslCons*)[args.tail.head eval];
+  while ([list notNil]) {
+    if ([list.head.tail compareTo:value]) {
+      return (DslCons*)list.head;
+    }
+    list = (DslCons*)list.tail;
+  }
+  return NIL_CONS;
 }
 
 

@@ -1,0 +1,41 @@
+Acons with empty list
+
+(acons 'a 1 '())
+
+'((a.1))
+----
+Acons onto a list
+
+(acons 'a 1 '((b.2)))
+
+'((a.1)(b.2))
+----
+Pairlis all good
+
+(pairlis '(a b c) '(1 2 3))
+
+'((a.1)(b.2)(c.3))
+----
+Pairlis with short key list
+
+(pairlis '(a b) '(1 2 3))
+
+'((a.1)(b.2))
+----
+Pairlis with short value list
+
+(pairlis '(a b c) '(1 2))
+
+'((a.1)(b.2))
+----
+Assoc
+
+(assoc 'r '((a . b) (c . d) (r . x) (s . y) (r . z)))
+
+'(r . x)
+----
+Rassoc
+
+(rassoc 'x '((a . b) (c . d) (r . x) (s . x) (r . z)))
+
+'(r . x)
