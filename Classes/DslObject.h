@@ -21,8 +21,11 @@
 
 - (id) objectValue;
 
-- (DslNumber*) getInteger:(NSString*)selector;
-- (DslString*) getString:(NSString*)selector;
-- (DslBoolean*) getBoolean:(NSString*)selector;
+- (DslNumber*) getInteger:(NSString*)property;
+- (DslString*) getString:(NSString*)property;
+- (DslBoolean*) getBoolean:(NSString*)property;
+- (DslNumber*) setInteger:(NSString*)property to:(DslNumber*)value;
+- (DslString*) setString:(NSString*)property to:(DslString*)value;
+- (DslBoolean*) setBoolean:(NSString*)property to:(DslBoolean*)value;
 
 @end

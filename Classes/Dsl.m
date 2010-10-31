@@ -89,6 +89,9 @@ DslNil *NIL_CONS = nil;
   [self bindName:@"getString"  toTarget:self andSelector:@selector(getString:)];
   [self bindName:@"getInteger" toTarget:self andSelector:@selector(getInteger:)];
   [self bindName:@"getBoolean" toTarget:self andSelector:@selector(getBoolean:)];
+  [self bindName:@"setString"  toTarget:self andSelector:@selector(setString:)];
+  [self bindName:@"setInteger" toTarget:self andSelector:@selector(setInteger:)];
+  [self bindName:@"setBoolean" toTarget:self andSelector:@selector(setBoolean:)];
   [self bindName:@"quote"      toTarget:self andSelector:@selector(quote:)];
   [self bindName:@"acons"      toTarget:self andSelector:@selector(acons:)];
   [self bindName:@"pairlis"    toTarget:self andSelector:@selector(pairlis:)];
@@ -688,6 +691,30 @@ DslNil *NIL_CONS = nil;
   DslObject *obj = (DslObject*)[args.head eval];
   DslSymbol *sel = (DslSymbol*)[args.tail.head eval];
   return [obj getBoolean:[sel identifierValue]];
+}
+
+
+- (DslString*) setString:(DslCons*)args
+{
+  DslObject *obj = (DslObject*)[args.head eval];
+  DslSymbol *sel = (DslSymbol*)[args.tail.head eval];
+  return [obj setString:[sel identifierValue]];
+}
+
+
+- (DslNumber*) setInteger:(DslCons*)args
+{
+  DslObject *obj = (DslObject*)[args.head eval];
+  DslSymbol *sel = (DslSymbol*)[args.tail.head eval];
+  return [obj setInteger:[sel identifierValue]];
+}
+
+
+- (DslBoolean*) setBoolean:(DslCons*)args
+{
+  DslObject *obj = (DslObject*)[args.head eval];
+  DslSymbol *sel = (DslSymbol*)[args.tail.head eval];
+  return [obj setBoolean:[sel identifierValue]];
 }
 
 
