@@ -85,14 +85,28 @@ characters other than double quotes.</p>
   . "Dave") (language . "Lisp"))</code>.  Use of association lists are
   covered later in the section on builtins.</p>
 
+<h2>runtime</h2>
+
+<p>Your interface to DSL is though strings containing source
+code. These string get parsed into sexpressions which are then evaluated.</p>
+
+<p>Symbols are stored in a symbol table.  Symbol tables are managed in
+  a stack.  Local scopes are created by pushing a new stmbol table
+  onto the stack.  New bindings are placed in the top table in this
+  stack.  When the value of a symbol is looked up, the search starts
+  with the top table and if it is not found there, the stack is
+  traversed back to the global symbol table.  If no value is found by
+  then, the symbol is unbound.  A new local scope is created upon the
+  entry to functions and lets, and destroyed on the respective exit.</p>
+
+<p>Unlike some modern lisps, in DSL symbols have a single binding (as
+opposed to separate value, function, etc. bindings).</p>
+
 <h2>Integration</h2>
 
-<p>ObjectiveC objects can be wrapped and used from Lisp in two ways:</p>
-
-<ol>
-<li>property manipulation</li>
-<li>message sending</li>
-</ol>
+<p>ObjectiveC objects can be wrapped and their properties can be read
+  and writted (depending on the property definition).  The functions
+  for doing that are described below.</p>
 
 <p>In ObjC, you wrap an object simply using the DslObject class:</p>
 
@@ -103,7 +117,7 @@ characters other than double quotes.</p>
 <p>For example:</p>
 
 <pre>
-[DslObject withObject:anObject]
+[DslObject withObject:user]
 </pre>
 
 <p>You can then use the functions described later to use this object
@@ -137,6 +151,87 @@ DslBuiltinFunction to point to your object/method.  You then must
 </pre></blockquote>
 
 <p>-initialization hooks ... still need to figure this out</p>
+
+<p>The class <code>Dsl<code> provides many functions that you will
+need when writing your own builtins.
+
+<h3><code>- (DslExpression*) parse:(NSString*)codeString</code></h3>
+
+<p>This takes the lisp code in <code>codeString</code>, which is assumed
+to contain a single sexpression, and parses it. The resulting
+sexpression is returned.</p>
+
+ <blockquote><pre>
+DslExpression *sexpr = [DSL parse:code];
+if (sexpr) {
+  [DSL eval:sexpr];
+}
+</pre></blockquote>
+
+<h3><code>- (DslExpression*) eval:(DslExpression*)sexp</code></h3>
+
+<p>This function evaluates the provided sexpression and returns the result. You can see an
+example in the previous section.</p>
+
+<h3><code>- (DslSymbol*) internal_intern:(NSString *)name</code></h3>
+
+<p>This is how you can convert an <code>NSString*</code> into a symbol.
+The main use for this is to set up bindings using the next function.</p>
+
+<h3><code>- (DslExpression*) bind:(DslSymbol*)symbol to:(DslExpression*)value</code></h3>
+
+<p>Bind a value to a symbol in the most local scope.  You can use this
+(in conjunction with <code>internal_intern</code>
+and <code>DslObject</code>) to make objects from your system available
+in lisp. 
+
+<h3><code>- (DslExpression*) valueOf:(DslSymbol*)symbol</code></h3>
+
+<p>Look up the value of a symbol, starting in the most local scope and
+  proceeding back to the global scope until a binding for the symbol
+  is found, or the options are exhausted.</p>
+
+<p>You can use this and the previous functions in a fashion similar to:</p>
+
+<blockquote><pre>
+DslSymbol *gameName = [<b>[DSL internal_intern:@"game"]</b> retain];
+DslObject *gameObject = [<b>[DslObject withObject:game]</b> retain];
+if (<b>[DSL valueOf:gameName]</b> == nil) {
+  <b>[DSL bind:gameName to:gameObject]</b>;
+}
+</pre></blockquote>
+
+<h3><code>- (DslCons*) makeList:(DslExpression*)firstObject,
+    ...</code></h3>
+
+<p>Creates a list containing the arguments.  Note that the arguments
+  need to be terminated by nil.</p>
+
+<p>Consider this snippet from the definition
+  of <code>reduce</code>:</p>
+
+<blockquote><pre>
+while ([data notNil]) {
+  result = [self apply:function to:<b>[self makeList:result, data.head, nil]</b>];
+  data = (DslCons*)data.tail;
+}
+</pre></blockquote>
+
+<h3><code>- (DslExpression*) apply:(DslFunction*)func
+    to:(DslCons*)args</code></h3>
+
+<p>Very simply, invoke the given function, passing it the provided
+  list as it's arguments. This can be seen in the example for <code>makelist:</code>.</p>
+
+<h3><code>- (DslExpression*) getNth:(int)n
+    from:(DslCons*)list</code></h3>
+
+<p>Retrieve the nth item in a list.</p>
+
+<h3><code>- (int) internalLength:(DslCons*)list</code></h3>
+
+<p>Get the length if a list, returned as an <code>int</code> rather
+  than as a lisp integer object.</p>
 
 <h2>testing</h2>
 
@@ -213,24 +308,6 @@ Finally, a summary is logged:
 <blockquote><pre>
 2010-10-31 16:39:05.660 Repl[79801:207] Time: 0.093374 sec, 187 Tests, 186 Passes, 1 Failures
 </pre></blockquote>
-
-
-<h2>runtime</h2>
-
-<p>Your interface to DSL is though strings containing source
-code. These string get parsed into sexpressions which are then evaluated.</p>
-
-<p>Symbols are stored in a symbol table.  Symbol tables are managed in
-  a stack.  Local scopes are created by pushing a new stmbol table
-  onto the stack.  New bindings are placed in the top table in this
-  stack.  When the value of a symbol is looked up, the search starts
-  with the top table and if it is not found there, the stack is
-  traversed back to the global symbol table.  If no value is found by
-  then, the symbol is unbound.  A new local scope is created upon the
-  entry to functions and lets, and destroyed on the respective exit.</p>
-
-<p>Unlike some modern lisps, in DSL symbols have a single binding (as
-opposed to separate value, function, etc. bindings).</p>
 
 
 <h2>Builtins</h2>
