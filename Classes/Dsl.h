@@ -39,8 +39,7 @@ extern DslNil *NIL_CONS;
 - (DslExpression*) bindName:(NSString*)name toTarget:(NSObject*)target andSelector:(SEL)selector;
 - (DslExpression*) parse:(NSString*)codeString;
 
-// internal symbol functions
-
+- (DslCons*) makeList:(DslExpression*)first, ...;
 - (DslSymbol*) internal_intern:(NSString *)name;
 - (DslExpression*) bind:(DslSymbol*)symbol to:(DslExpression*)value;
 - (DslExpression*) valueOf:(DslSymbol*)symbol;

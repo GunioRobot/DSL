@@ -70,9 +70,15 @@ DslNil *NIL_CONS = nil;
   [self bindName:@"cddar"      toTarget:self andSelector:@selector(cddar:)];
   [self bindName:@"cdddr"      toTarget:self andSelector:@selector(cdddr:)];
   [self bindName:@"length"     toTarget:self andSelector:@selector(length:)];
-  [self bindName:@"map"        toTarget:self andSelector:@selector(map:)];
+  [self bindName:@"map"        toTarget:self andSelector:@selector(collect:)];
+  [self bindName:@"collect"    toTarget:self andSelector:@selector(collect:)];
   [self bindName:@"select"     toTarget:self andSelector:@selector(select:)];
+  [self bindName:@"filter"     toTarget:self andSelector:@selector(select:)];
+  [self bindName:@"reduce"     toTarget:self andSelector:@selector(inject:)];
+  [self bindName:@"inject"     toTarget:self andSelector:@selector(inject:)];
   [self bindName:@"any?"       toTarget:self andSelector:@selector(any:)];
+  [self bindName:@"detect"     toTarget:self andSelector:@selector(any:)];
+  [self bindName:@"all?"       toTarget:self andSelector:@selector(all:)];
   [self bindName:@"if"         toTarget:self andSelector:@selector(if:)];
   [self bindName:@"cond"       toTarget:self andSelector:@selector(cond:)];
   [self bindName:@"or"         toTarget:self andSelector:@selector(logicalOr:)];
@@ -114,6 +120,22 @@ DslNil *NIL_CONS = nil;
 }
 
 
+- (DslCons*) makeList:(DslExpression*)firstObject, ...
+{
+  va_list argumentList;
+  DslExpression *eachObject;
+  DslCons *list = [DslCons withHead:firstObject];
+  DslCons *tail = list;
+  
+  va_start(argumentList, firstObject);
+  while (eachObject = va_arg(argumentList, DslExpression*)) {
+    tail.tail = [DslCons withHead:eachObject];
+    tail = (DslCons*)tail.tail;
+  }
+  va_end(argumentList);
+  return list;
+}
+
 - (DslExpression*) bind:(DslSymbol*)symbol to:(DslExpression*)value
 {
   return [symbolTable bind:symbol to:value];
@@ -135,12 +157,6 @@ DslNil *NIL_CONS = nil;
 - (void) popLocalBindings
 {
   [symbolTable popLocalBindings];
-}
-
-
-- (DslFunction*) defBuiltinNamed:(NSString*)pName withTarget:(id)pTarget andSelector:(SEL)pSelector
-{
-  return (DslFunction*)[self bind:[self internal_intern:pName] to:[DslBuiltinFunction withTarget:pTarget andSelector:pSelector]];
 }
 
 
@@ -434,7 +450,7 @@ DslNil *NIL_CONS = nil;
 }
 
 
-- (DslCons*) map:(DslCons*)args
+- (DslCons*) collect:(DslCons*)args
 {
   if (args == nil) return [DslCons empty];
   if ([self internalLength:args] != 2) return [DslCons empty];
@@ -478,9 +494,40 @@ DslNil *NIL_CONS = nil;
 }
 
 
+- (DslExpression*) inject:(DslCons*)args
+{
+  if ([args isNil]) return NIL_CONS;
+  if ([self internalLength:args] == 1) return NIL_CONS;
+  
+
+  DslFunction *function = (DslFunction*)[self eval:args.head];
+  DslExpression *seed = [self eval:args.tail.head];
+  DslCons *data;
+  
+  if ([self internalLength:args] == 2) {
+    if ([seed isList]) {
+      data = seed.tail;
+      seed = seed.head;
+    } else {
+      return seed;
+    }
+  } else {
+    data = (DslCons*)[self eval:(DslCons*)args.tail.tail.head];
+  }
+  
+  DslExpression *result = seed;
+  
+  while ([data notNil]) {
+    result = [self apply:function to:[self makeList:result, data.head, nil]];
+    data = (DslCons*)data.tail;
+  }
+  return result;
+}
+
+
 - (DslBoolean*) any:(DslCons*)args
 {
-  if (args == nil) return [DslBoolean withFalse];
+  if ([args isNil]) return [DslBoolean withFalse];
   if ([self internalLength:args] != 2) return [DslBoolean withFalse];
 
   DslFunction *predicate = (DslFunction*)[args.head eval];
@@ -491,6 +538,22 @@ DslNil *NIL_CONS = nil;
     data = (DslCons*)data.tail;
   }
   return [DslBoolean withFalse];    
+}
+
+
+- (DslBoolean*) all:(DslCons*)args
+{
+  if ([args isNil]) return [DslBoolean withTrue];
+  if ([self internalLength:args] != 2) return [DslBoolean withFalse];
+  
+  DslFunction *predicate = (DslFunction*)[args.head eval];
+  DslCons *data = (DslCons*)[args.tail.head eval];
+  while ([data notNil]) {
+    DslBoolean *result = (DslBoolean*)[self apply:predicate to:[DslCons withHead:data.head]];
+    if (![result booleanValue]) return result;
+    data = (DslCons*)data.tail;
+  }
+  return [DslBoolean withTrue];    
 }
 
 
@@ -550,7 +613,7 @@ DslNil *NIL_CONS = nil;
 
 - (DslBoolean*) logicalNot:(DslCons*)args
 {
-  return [DslBoolean booleanWith:![args.head booleanValue]];
+  return [DslBoolean booleanWith:![[args.head eval] booleanValue]];
 }
 
 
