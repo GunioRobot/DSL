@@ -170,6 +170,72 @@ Select Out Of Order
 
 '((1) (2 2))
 ----
+Inject With No Args
+
+(inject)
+
+nil
+----
+Inject With Just Function
+
+(inject +)
+
+nil
+----
+Inject With No List
+
+(inject + 0)
+
+0
+----
+Inject with Empty List
+
+(inject + 0 '())
+
+0
+----
+Inject Adding
+
+(inject + 0 '( 1 2 3))
+
+6
+----
+Inject multiplying
+
+(inject * 1 '(2 3 4))
+
+24
+----
+Inject Without a Seed
+
+(inject + '(1 2 3 4))
+
+10
+----
+Inject example: min
+
+(inject (lambda (a b) (if (< a b) a b)) '(7 2 8 4 2 9))
+
+2
+----
+Inject example: max
+
+(inject (lambda (a b) (if (> a b) a b)) '(7 2 8 4 2 9))
+
+9
+----
+Any With No Args
+
+(any?)
+
+#f
+----
+Any With Empty List
+
+(any? (lambda (i) (< i 3)) '())
+
+#f
+----
 Any With None
 
 (any? (lambda (i) (< i 3)) '(3 4 5))
@@ -185,6 +251,42 @@ Any With One
 Any With Multiple
 
 (any? (lambda (i) (< i 3)) '(1 4 2))
+
+#t
+----
+All With No Args
+
+(all?)
+
+#t
+----
+All With Empty List
+
+(all? (lambda (i) (< i 3)) '())
+
+#t
+----
+All With None
+
+(all? (lambda (i) (< i 3)) '(6 4 5))
+
+#f
+----
+All With One
+
+(all? (lambda (i) (< i 3)) '(1 4 5))
+
+#f
+----
+All With Multiple
+
+(all? (lambda (i) (< i 3)) '(1 4 2))
+
+#f
+----
+All With all
+
+(all? (lambda (i) (< i 5)) '(1 4 2))
 
 #t
 ----
