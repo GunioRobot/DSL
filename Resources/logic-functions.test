@@ -1,3 +1,19 @@
+Or with no args
+
+(or)
+
+#f
+----
+Or with one args
+
+(or #f)
+
+#f
+
+(or #t)
+
+#t
+----
 Binary Or
 
 (or #f #f)
@@ -47,6 +63,22 @@ Multiple Arg Or
 #t
 
 (or #t #t #t)
+
+#t
+----
+And with no args
+
+(and)
+
+#t
+----
+And with one args
+
+(and #f)
+
+#f
+
+(and #t)
 
 #t
 ----
