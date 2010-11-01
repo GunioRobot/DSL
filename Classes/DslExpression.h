@@ -48,5 +48,6 @@
 
 - (BOOL) isNil;
 - (BOOL) notNil;
+- (BOOL) isList;
 
 @end

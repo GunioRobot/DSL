@@ -133,9 +133,17 @@ int indentLevel = 0;
   return NO;
 }
 
+
 - (BOOL) notNil
 {
   return YES;
 }
+
+
+- (BOOL) isList
+{
+  return NO;
+}
+
 
 @end

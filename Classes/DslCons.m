@@ -193,4 +193,10 @@
 }
 
 
+- (BOOL) isList
+{
+  return YES;
+}
+
+
 @end
