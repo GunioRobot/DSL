@@ -173,7 +173,7 @@ if (sexpr) {
 <p>This function evaluates the provided sexpression and returns the result. You can see an
 example in the previous section.</p>
 
-<h3><code>- (DslSymbol*) internal_intern:(NSString *)name</code></h3>
+<h3><code>- (DslSymbol*) internalIntern:(NSString *)name</code></h3>
 
 <p>This is how you can convert an <code>NSString*</code> into a symbol.
 The main use for this is to set up bindings using the next function.</p>
@@ -181,7 +181,7 @@ The main use for this is to set up bindings using the next function.</p>
 <h3><code>- (DslExpression*) bind:(DslSymbol*)symbol to:(DslExpression*)value</code></h3>
 
 <p>Bind a value to a symbol in the most local scope.  You can use this
-(in conjunction with <code>internal_intern</code>
+(in conjunction with <code>internalIntern</code>
 and <code>DslObject</code>) to make objects from your system available
 in lisp. 
 
@@ -194,7 +194,7 @@ in lisp.
 <p>You can use this and the previous functions in a fashion similar to:</p>
 
 <blockquote><pre>
-DslSymbol *gameName = [<b>[DSL internal_intern:@"game"]</b> retain];
+DslSymbol *gameName = [<b>[DSL internalIntern:@"game"]</b> retain];
 DslObject *gameObject = [<b>[DslObject withObject:game]</b> retain];
 if (<b>[DSL valueOf:gameName]</b> == nil) {
   <b>[DSL bind:gameName to:gameObject]</b>;
@@ -446,7 +446,7 @@ caaar/caadr/cadar/caddr/cdaar/cdadr/cddar/cddr</code></h3>
 
 <p>The longer forms combine <code>car</code> and <code>cdr</code>, for
   example: <code>(caddr a)</code> is the same as <code>(car (cdr (cdr
-  a)))</code> and so on.</p> 
+  a)))</code> and so on.</p>
 
 <h3><code>length</code></h3>
 
