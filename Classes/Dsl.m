@@ -28,7 +28,7 @@ DslNil *NIL_CONS = nil;
 
 - (DslExpression*) bindName:(NSString*)name toTarget:(NSObject*)target andSelector:(SEL)selector
 {
-  return [self bind:[self internal_intern:name] to:[DslBuiltinFunction withTarget:target andSelector:selector]];
+  return [self bind:[self internalIntern:name] to:[DslBuiltinFunction withTarget:target andSelector:selector]];
 }
 
 
@@ -114,7 +114,7 @@ DslNil *NIL_CONS = nil;
 }
 
 
-- (DslSymbol*) internal_intern:(NSString *)name
+- (DslSymbol*) internalIntern:(NSString *)name
 {
   return [symbolTable intern:name];
 }

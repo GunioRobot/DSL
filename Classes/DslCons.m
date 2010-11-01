@@ -147,7 +147,7 @@
 - (DslExpression*) eval
 {
   NSString *funcName = [head stringValue];
-  DslSymbol *funcSymbol = [DSL internal_intern:funcName];
+  DslSymbol *funcSymbol = [DSL internalIntern:funcName];
   DslFunction *func = (DslFunction*)[DSL valueOf:funcSymbol];
   if ([func isNil]) {
     NSLog(@"Unknown function: %@", funcName);

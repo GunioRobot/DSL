@@ -40,7 +40,7 @@ extern DslNil *NIL_CONS;
 - (DslExpression*) parse:(NSString*)codeString;
 
 - (DslCons*) makeList:(DslExpression*)first, ...;
-- (DslSymbol*) internal_intern:(NSString *)name;
+- (DslSymbol*) internalIntern:(NSString *)name;
 - (DslExpression*) bind:(DslSymbol*)symbol to:(DslExpression*)value;
 - (DslExpression*) valueOf:(DslSymbol*)symbol;
 - (void) pushLocalBindings;
