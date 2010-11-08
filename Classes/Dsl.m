@@ -120,6 +120,21 @@ DslNil *NIL_CONS = nil;
 }
 
 
+- (DslCons*) arrayToList:(NSArray*)anArray
+{
+  DslCons *list = [DslCons withHead:[anArray objectAtIndex:0]];
+  DslCons *tail = list;
+  int limit = [anArray count];
+  
+  for (int index = 1; index < limit; index++) {
+    tail.tail = [DslCons withHead:[anArray objectAtIndex:index]];
+    tail = (DslCons*)tail.tail;
+  }
+  
+  return list;
+}
+
+
 - (DslCons*) makeList:(DslExpression*)firstObject, ...
 {
   va_list argumentList;
@@ -135,6 +150,7 @@ DslNil *NIL_CONS = nil;
   va_end(argumentList);
   return list;
 }
+
 
 - (DslExpression*) bind:(DslSymbol*)symbol to:(DslExpression*)value
 {

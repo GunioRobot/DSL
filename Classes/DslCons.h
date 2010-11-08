@@ -38,20 +38,7 @@
 - (DslCons*) copyList;
 - (DslCons*) last;
 - (DslExpression*) find:(DslSymbol*)variableName;
-- (DslCons*) evalMap:(DslCons*)bindings;
-- (DslCons*) applyFunction:(DslFunction*)func withBindings:(DslCons*)bindings;
-- (DslCons*) quote:(DslExpression*)sexpr;
-- (DslExpression*) evalLet:(DslCons*)bindings;
-- (DslExpression*) evalCond:(DslCons*)bindings;
-
-- (int) subtractPrim2:(int)start withBindings:(DslCons*)bindings;
-- (int) addPrim:(int)start withBindings:(DslCons*)bindings;
-- (int) subtractPrimWithBindings:(DslCons*)bindings;
 
 - (DslCons*) copy;
-- (DslCons*) makeList:(DslCons*)bindings;
-- (DslNumber*) fetchInteger:(DslCons*)bindings;
-- (DslString*) fetchString:(DslCons*)bindings;
-- (DslCons*) filterWith:(DslCons*)mask;
 
 @end

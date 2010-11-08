@@ -49,8 +49,8 @@
 
 - (DslCons*) initWithHead:(DslExpression*)h andTail:(DslExpression*)t
 {
-  head = h;
-  tail = t;
+  head = [h retain];
+  tail = [t retain];
   return self;
 }
 
@@ -69,29 +69,25 @@
 
 - (void) setHead:(DslExpression*)h
 {
-  head = h;
+  head = [h retain];
 }
 
 
 - (void) setTail:(DslExpression*)t
 {
-  tail = t;
+  tail = [t retain];
 }
 
 
-- (DslCons*) makeList:(DslCons*)bindings
-{
-  DslCons *cell = [DslCons withHead:[[self car] eval:bindings]];
-  if ([self cdr]) {
-    cell.tail = [(DslCons*)[self cdr] makeList:bindings];
-  }
-  return cell;
-}
-
-
-
-
-
+//- (DslCons*) makeList:(DslCons*)bindings
+//{
+//  DslCons *cell = [DslCons withHead:[[self car] eval:bindings]];
+//  if ([self cdr]) {
+//    cell.tail = [(DslCons*)[self cdr] makeList:bindings];
+//  }
+//  return cell;
+//}
+//
 
 
 - (BOOL) booleanValue

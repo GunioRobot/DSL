@@ -23,5 +23,6 @@
 - (DslExpression*)parseAtomicExpression:(InputStream*)input;
 - (DslExpression*)parseCons:(InputStream*)input;
 - (DslExpression*)parseExpression:(InputStream *)input;
+- (DslCons*) parse:(InputStream *)input;
 
 @end

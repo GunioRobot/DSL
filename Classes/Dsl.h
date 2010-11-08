@@ -33,11 +33,12 @@ extern DslNil *NIL_CONS;
 }
 
 
-- (Dsl *) init;
+- (Dsl*) init;
 
 - (DslExpression*) bindName:(NSString*)name toTarget:(NSObject*)target andSelector:(SEL)selector;
 - (DslExpression*) parse:(NSString*)codeString;
 
+- (DslCons*) arrayToList:(NSArray*)anArray;
 - (DslCons*) makeList:(DslExpression*)first, ...;
 - (DslSymbol*) internalIntern:(NSString *)name;
 - (DslExpression*) bind:(DslSymbol*)symbol to:(DslExpression*)value;
@@ -47,7 +48,7 @@ extern DslNil *NIL_CONS;
 
 - (DslExpression*) apply:(DslFunction*)func to:(DslCons*)args;
 - (DslExpression*) eval:(DslExpression*)sexp;
-- (DslExpression*) begin:(DslCons*)args;
+- (DslExpression*) doList:(DslCons*)args;
 
 
 // function functions

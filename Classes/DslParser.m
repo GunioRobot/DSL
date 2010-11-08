@@ -83,7 +83,14 @@
 
 - (BOOL) isSpecialIdentifierCharacter:(unichar)nextChar
 {
-  return nextChar == '+' || nextChar == '-' || nextChar == '*' || nextChar == '/' || nextChar == '%'|| nextChar == '<' || nextChar == '>' || nextChar == '=';
+  return nextChar == '+' || 
+         nextChar == '-' || 
+         nextChar == '*' || 
+         nextChar == '/' || 
+         nextChar == '%' || 
+         nextChar == '<' || 
+         nextChar == '>' || 
+         nextChar == '=';
 }
 
 
@@ -112,20 +119,6 @@
     return [self parseString:input];
   } else {
     return nil;
-  }
-}
-
-
-- (DslExpression*)parseExpression:(InputStream*)input
-{
-  unichar nextChar = [input nextChar];
-  if (nextChar == '(') {
-    return [self parseCons:input];
-  } else if (nextChar == '\'') {
-    return [DslCons withHead:[DslSymbol withName:@"quote"] andTail:[DslCons withHead:[self parseExpression:input]]];
-  } else {
-    [input rollback];
-    return [self parseAtomicExpression:input];
   }
 }
 
@@ -172,5 +165,34 @@
   DslExpression *result = head.tail;
   return result;
 }
+
+
+- (DslExpression*)parseExpression:(InputStream*)input
+{
+  unichar nextChar = [input nextChar];
+  if (nextChar == '(') {
+    return [self parseCons:input];
+  } else if (nextChar == '\'') {
+    return [DslCons withHead:[DslSymbol withName:@"quote"] andTail:[DslCons withHead:[self parseExpression:input]]];
+  } else {
+    [input rollback];
+    return [self parseAtomicExpression:input];
+  }
+}
+
+
+- (DslCons*) parse:(InputStream *)input
+{
+  NSMutableArray *resultSexprs = [NSMutableArray arrayWithCapacity:2];
+  
+  DslExpression *nextSexpr = [self parseExpression:input];
+  while (nextSexpr != nil) {
+    [resultSexprs addObject:nextSexpr];
+    nextSexpr = [self parseExpression:input];
+  }
+  
+  return [DSL arrayToList:resultSexprs];
+}
+
 
 @end
