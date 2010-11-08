@@ -18,7 +18,6 @@
 #import "DslFunction.h"
 #import "DslObject.h"
 #import "DslNil.h"
-#import "Functions.h"
 #import "SymbolTable.h"
 
 @class DslBuiltinFunction;
