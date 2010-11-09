@@ -12,6 +12,19 @@
 @implementation InputStream
 
 
++ (InputStream*) withFile:(NSString*)filename
+{
+  NSFileHandle *readHandle = [NSFileHandle fileHandleForReadingAtPath:path];
+  if (readHandle) {
+    NSString *testString = [[NSString alloc] initWithData: [readHandle readDataToEndOfFile] encoding:NSUTF8StringEncoding];
+    [reporter startFile:[self testNameFromPath:path]];
+    [self process:testString];
+    [testString release];
+    [readHandle closeFile];
+  }
+  
+}
+
 + (InputStream*) withString:(NSString*)str
 {
   return [[InputStream alloc] initWithString:str];

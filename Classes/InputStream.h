@@ -15,6 +15,7 @@
   int bookmark;
 }
 
++ (InputStream*) withFile:(NSString*)filename;
 + (InputStream*) withString:(NSString*)str;
 - (InputStream*) initWithString:(NSString*)str;
 - (unichar) nextChar;
