@@ -105,12 +105,14 @@
 /* Begin PBXFileReference section */
 		107F25A4127A094800677A1E /* if.test */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = if.test; sourceTree = "<group>"; };
 		109598C3127C0C9B00263EE3 /* alist.test */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = alist.test; sourceTree = "<group>"; };
-		1096731E12528B190004C216 /* Repl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Repl.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1096731E12528B190004C216 /* Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Test.app; path = "build/Debug-iphonesimulator/Test.app"; sourceTree = "<group>"; };
 		1096732012528B190004C216 /* Repl-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Repl-Info.plist"; sourceTree = "<group>"; };
 		1096733D12528B8C0004C216 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1096743A1252BB940004C216 /* Tester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tester.h; sourceTree = "<group>"; };
 		1096743B1252BB940004C216 /* Tester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tester.m; sourceTree = "<group>"; };
 		109674FF1252E6E80004C216 /* cond.test */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cond.test; sourceTree = "<group>"; };
+		109EE1A3128A99AE008F0315 /* file.test */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = file.test; sourceTree = "<group>"; };
+		109EE1A4128A9A06008F0315 /* simple-test.lsp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "simple-test.lsp"; sourceTree = "<group>"; };
 		10A8A07412516DEA00E0A8C8 /* UnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		10A8A07512516DEA00E0A8C8 /* UnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UnitTests-Info.plist"; sourceTree = "<group>"; };
 		10A8A07C12516E1900E0A8C8 /* DslBoolean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DslBoolean.h; sourceTree = "<group>"; };
@@ -196,6 +198,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		109EE19B128A9860008F0315 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		10A8A07112516DEA00E0A8C8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -219,7 +228,7 @@
 			children = (
 				D2AAC07E0554694100DB518D /* libDSL.a */,
 				10A8A07412516DEA00E0A8C8 /* UnitTests.octest */,
-				1096731E12528B190004C216 /* Repl.app */,
+				1096731E12528B190004C216 /* Test.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -259,6 +268,8 @@
 				10DE504712542E8B0054676F /* logic-functions.test */,
 				107F25A4127A094800677A1E /* if.test */,
 				109598C3127C0C9B00263EE3 /* alist.test */,
+				109EE1A3128A99AE008F0315 /* file.test */,
+				109EE1A4128A9A06008F0315 /* simple-test.lsp */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -382,9 +393,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		1096731D12528B190004C216 /* Repl */ = {
+		1096731D12528B190004C216 /* Test */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1096732312528B1A0004C216 /* Build configuration list for PBXNativeTarget "Repl" */;
+			buildConfigurationList = 1096732312528B1A0004C216 /* Build configuration list for PBXNativeTarget "Test" */;
 			buildPhases = (
 				1096731A12528B190004C216 /* Resources */,
 				1096731B12528B190004C216 /* Sources */,
@@ -394,10 +405,25 @@
 			);
 			dependencies = (
 			);
-			name = Repl;
+			name = Test;
 			productName = Repl;
-			productReference = 1096731E12528B190004C216 /* Repl.app */;
+			productReference = 1096731E12528B190004C216 /* Test.app */;
 			productType = "com.apple.product-type.application";
+		};
+		109EE19C128A9860008F0315 /* repl */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 109EE19F128A987E008F0315 /* Build configuration list for PBXNativeTarget "repl" */;
+			buildPhases = (
+				109EE19A128A9860008F0315 /* Sources */,
+				109EE19B128A9860008F0315 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = repl;
+			productName = repl;
+			productType = "com.apple.product-type.tool";
 		};
 		10A8A07312516DEA00E0A8C8 /* UnitTests */ = {
 			isa = PBXNativeTarget;
@@ -456,7 +482,8 @@
 			targets = (
 				D2AAC07D0554694100DB518D /* DSL */,
 				10A8A07312516DEA00E0A8C8 /* UnitTests */,
-				1096731D12528B190004C216 /* Repl */,
+				1096731D12528B190004C216 /* Test */,
+				109EE19C128A9860008F0315 /* repl */,
 			);
 		};
 /* End PBXProject section */
@@ -528,6 +555,13 @@
 				10B1A9B412541B5900BD2E8C /* DslDefinedFunction.m in Sources */,
 				10DE5052125433F10054676F /* SymbolTable.m in Sources */,
 				10DE5059125434DF0054676F /* Binding.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		109EE19A128A9860008F0315 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -639,6 +673,52 @@
 				PREBINDING = NO;
 				PRODUCT_NAME = Repl;
 				SDKROOT = iphoneos4.0;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		109EE19D128A9860008F0315 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INSTALL_PATH = /usr/local/bin;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = repl;
+			};
+			name = Debug;
+		};
+		109EE19E128A9860008F0315 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INSTALL_PATH = /usr/local/bin;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = repl;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -768,11 +848,20 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1096732312528B1A0004C216 /* Build configuration list for PBXNativeTarget "Repl" */ = {
+		1096732312528B1A0004C216 /* Build configuration list for PBXNativeTarget "Test" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1096732112528B1A0004C216 /* Debug */,
 				1096732212528B1A0004C216 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		109EE19F128A987E008F0315 /* Build configuration list for PBXNativeTarget "repl" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				109EE19D128A9860008F0315 /* Debug */,
+				109EE19E128A9860008F0315 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

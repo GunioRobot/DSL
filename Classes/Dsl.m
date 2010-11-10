@@ -103,6 +103,7 @@ DslNil *NIL_CONS = nil;
   [self bindName:@"pairlis"    toTarget:self andSelector:@selector(pairlis:)];
   [self bindName:@"assoc"      toTarget:self andSelector:@selector(assoc:)];
   [self bindName:@"rassoc"     toTarget:self andSelector:@selector(rassoc:)];
+  [self bindName:@"load"       toTarget:self andSelector:@selector(load:)];
   
   return self;  
 }
@@ -851,6 +852,15 @@ DslNil *NIL_CONS = nil;
     list = (DslCons*)list.tail;
   }
   return NIL_CONS;
+}
+
+
+- (DslExpression*) load:(DslCons*)args
+{
+  DslString *filename = [args.head eval];
+  InputStream *input = [input withFile:[filename stringValue]];
+  DslCons *sexprs = [parser parse:input];
+  return [self evalEach:sexprs];
 }
 
 

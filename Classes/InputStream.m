@@ -14,13 +14,15 @@
 
 + (InputStream*) withFile:(NSString*)filename
 {
-  NSFileHandle *readHandle = [NSFileHandle fileHandleForReadingAtPath:path];
+  NSFileHandle *readHandle = [NSFileHandle fileHandleForReadingAtPath:filename];
   if (readHandle) {
-    NSString *testString = [[NSString alloc] initWithData: [readHandle readDataToEndOfFile] encoding:NSUTF8StringEncoding];
-    [reporter startFile:[self testNameFromPath:path]];
-    [self process:testString];
-    [testString release];
+    NSString *stuff = [[[NSString alloc] initWithData: [readHandle readDataToEndOfFile] encoding:NSUTF8StringEncoding] retain];
     [readHandle closeFile];
+    InputStream *ins = [[InputStream alloc] initWithString:stuff];
+    [stuff release];
+    return ins;
+  } else {
+    return nil;
   }
   
 }
