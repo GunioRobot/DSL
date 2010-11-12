@@ -105,7 +105,7 @@
 /* Begin PBXFileReference section */
 		107F25A4127A094800677A1E /* if.test */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = if.test; sourceTree = "<group>"; };
 		109598C3127C0C9B00263EE3 /* alist.test */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = alist.test; sourceTree = "<group>"; };
-		1096731E12528B190004C216 /* Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Test.app; path = "build/Debug-iphonesimulator/Test.app"; sourceTree = "<group>"; };
+		1096731E12528B190004C216 /* Repl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Repl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1096732012528B190004C216 /* Repl-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Repl-Info.plist"; sourceTree = "<group>"; };
 		1096733D12528B8C0004C216 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1096743A1252BB940004C216 /* Tester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tester.h; sourceTree = "<group>"; };
@@ -228,7 +228,7 @@
 			children = (
 				D2AAC07E0554694100DB518D /* libDSL.a */,
 				10A8A07412516DEA00E0A8C8 /* UnitTests.octest */,
-				1096731E12528B190004C216 /* Test.app */,
+				1096731E12528B190004C216 /* Repl.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -407,7 +407,7 @@
 			);
 			name = Test;
 			productName = Repl;
-			productReference = 1096731E12528B190004C216 /* Test.app */;
+			productReference = 1096731E12528B190004C216 /* Repl.app */;
 			productType = "com.apple.product-type.application";
 		};
 		109EE19C128A9860008F0315 /* repl */ = {
