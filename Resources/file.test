@@ -1,8 +1,7 @@
 Simple single sexpr file
 
 (do 
-  (load 'simple-test.lsp)
+  (load "simple-test")
   (x))
-  
-42
 
+42
