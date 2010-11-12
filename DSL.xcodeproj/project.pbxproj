@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		101752A1128D2025000D58F4 /* file.test in Resources */ = {isa = PBXBuildFile; fileRef = 109EE1A3128A99AE008F0315 /* file.test */; };
+		101752A2128D2031000D58F4 /* simple-test.lsp in Resources */ = {isa = PBXBuildFile; fileRef = 109EE1A4128A9A06008F0315 /* simple-test.lsp */; };
 		107F25A6127A095300677A1E /* if.test in Resources */ = {isa = PBXBuildFile; fileRef = 107F25A4127A094800677A1E /* if.test */; };
 		109598D6127C109F00263EE3 /* alist.test in Resources */ = {isa = PBXBuildFile; fileRef = 109598C3127C0C9B00263EE3 /* alist.test */; };
 		1096733E12528B8C0004C216 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1096733D12528B8C0004C216 /* main.m */; };
@@ -502,6 +504,8 @@
 				10DE504812542E8F0054676F /* logic-functions.test in Resources */,
 				107F25A6127A095300677A1E /* if.test in Resources */,
 				109598D6127C109F00263EE3 /* alist.test in Resources */,
+				101752A1128D2025000D58F4 /* file.test in Resources */,
+				101752A2128D2031000D58F4 /* simple-test.lsp in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
