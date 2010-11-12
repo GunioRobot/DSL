@@ -858,9 +858,14 @@ DslNil *NIL_CONS = nil;
 - (DslExpression*) load:(DslCons*)args
 {
   DslString *filename = [args.head eval];
-  InputStream *input = [input withFile:[filename stringValue]];
-  DslCons *sexprs = [parser parse:input];
-  return [self evalEach:sexprs];
+  NSString *pathName = [[NSBundle mainBundle] pathForResource:[filename stringValue] ofType:@"lsp" inDirectory:nil];
+  InputStream *input = [InputStream withFile:pathName];
+  if (input != nil) {
+    DslCons *sexprs = [parser parse:input];
+    return [self evalEach:sexprs];
+  } else {
+    return NIL_CONS;
+  }
 }
 
 
