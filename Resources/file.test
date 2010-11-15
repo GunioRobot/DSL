@@ -5,3 +5,11 @@ Simple single sexpr file
   (x))
 
 42
+----
+Using a symbol for filename
+
+(do 
+  (load 'simple-test)
+  (x))
+
+42
