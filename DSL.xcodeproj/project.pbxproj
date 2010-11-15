@@ -107,8 +107,8 @@
 /* Begin PBXFileReference section */
 		107F25A4127A094800677A1E /* if.test */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = if.test; sourceTree = "<group>"; };
 		109598C3127C0C9B00263EE3 /* alist.test */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = alist.test; sourceTree = "<group>"; };
-		1096731E12528B190004C216 /* Repl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Repl.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1096732012528B190004C216 /* Repl-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Repl-Info.plist"; sourceTree = "<group>"; };
+		1096731E12528B190004C216 /* Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1096732012528B190004C216 /* Test-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Test-Info.plist"; sourceTree = "<group>"; };
 		1096733D12528B8C0004C216 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1096743A1252BB940004C216 /* Tester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tester.h; sourceTree = "<group>"; };
 		1096743B1252BB940004C216 /* Tester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tester.m; sourceTree = "<group>"; };
@@ -230,7 +230,7 @@
 			children = (
 				D2AAC07E0554694100DB518D /* libDSL.a */,
 				10A8A07412516DEA00E0A8C8 /* UnitTests.octest */,
-				1096731E12528B190004C216 /* Repl.app */,
+				1096731E12528B190004C216 /* Test.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -245,7 +245,7 @@
 				0867D69AFE84028FC02AAC07 /* Frameworks */,
 				034768DFFF38A50411DB9C8B /* Products */,
 				10A8A07512516DEA00E0A8C8 /* UnitTests-Info.plist */,
-				1096732012528B190004C216 /* Repl-Info.plist */,
+				1096732012528B190004C216 /* Test-Info.plist */,
 			);
 			name = DSL;
 			sourceTree = "<group>";
@@ -409,7 +409,7 @@
 			);
 			name = Test;
 			productName = Repl;
-			productReference = 1096731E12528B190004C216 /* Repl.app */;
+			productReference = 1096731E12528B190004C216 /* Test.app */;
 			productType = "com.apple.product-type.application";
 		};
 		109EE19C128A9860008F0315 /* repl */ = {
@@ -642,7 +642,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
-				INFOPLIST_FILE = "Repl-Info.plist";
+				INFOPLIST_FILE = "Test-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -651,7 +651,7 @@
 					UIKit,
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = Repl;
+				PRODUCT_NAME = Test;
 				SDKROOT = iphoneos4.2;
 			};
 			name = Debug;
@@ -666,7 +666,7 @@
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
-				INFOPLIST_FILE = "Repl-Info.plist";
+				INFOPLIST_FILE = "Test-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
