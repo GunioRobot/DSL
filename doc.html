@@ -1,7 +1,18 @@
+<html>
+<title>DSL: Dave's Simple Lisp</title>
+<head>
+</head>
+
+<body>
+
+<h1>DSL: Dave's Simple Lisp</h1>
+
 <h2>Overview</h2>
 
 <p>DSL is a simple, interpreted, scheme inspired lisp inplementation
-in ObjectiveC for embedded scripting in iOS apps.</p>
+in ObjectiveC for embedded scripting in iOS apps, although it is
+  equally applicable in OSX apps. There is no reliance on Cocoa or
+  CocoaTouch, just <code>foundation</code>.</p>
 
 <p>The primary motivation was the need to implement rules in a card
 game at a significantly high level of abstraction in a way that
@@ -684,3 +695,6 @@ all evaluate to boolean value.</p>
   project resource. It is located using:</p>
 
 <blockquote><code>[[NSBundle mainBundle] pathForResource:filebasename ofType:@"lsp" inDirectory:nil]</code></blockquote>
+
+</body>
+</html>
