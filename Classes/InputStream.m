@@ -20,6 +20,7 @@
     [readHandle closeFile];
     InputStream *ins = [[InputStream alloc] initWithString:stuff];
     [stuff release];
+    [readHandle closeFile];
     return ins;
   } else {
     return nil;
