@@ -9,6 +9,10 @@
 
 <h2>Overview</h2>
 
+<p>This is a preliminary description of this language/system.  The doc.html file in the repo will always be the most up to date.</p>
+
+<p>You can get the code to play with at <a href="http://github.com/dastels/DSL" target="_blank"><code>github.com/dastels/DSL</code></a>.
+
 <p>DSL is a simple, interpreted, scheme inspired lisp inplementation
 in ObjectiveC for embedded scripting in iOS apps, although it is
   equally applicable in OSX apps. There is no reliance on Cocoa or
@@ -71,11 +75,13 @@ characters other than double quotes.</p>
 
 <p>A list is sequence of cons cells, linked through tails, with the
   final tail being nil.  The standard notation is used, a sequence of
-  values separated by whitespace and enclosed in parentheses: <code>(1
-  2 3)</code></p>
+  values separated by whitespace and enclosed in parentheses: </p>
 
-<p>Internally, the list <code>(1 2 3)</code> is equivalent to <code>(1
-. (2 . (3 . nil)))</code>.</p>
+<pre>(1  2 3)</pre>
+
+<p>Internally, the list <code>(1 2 3)</code> is equivalent to:</p>
+
+<pre>(1 . (2 . (3 . nil)))</pre>
 
 <h3>Symbol</h3>
 
@@ -91,10 +97,11 @@ characters other than double quotes.</p>
 
 <h3>Association List</h3>
 
-<p>DSL supports association lists, which are much like dictionaries.
-  They are implimented as a list of dotted pairs, e.g. <code>((name
-  . "Dave") (language . "Lisp"))</code>.  Use of association lists are
-  covered later in the section on builtins.</p>
+<p>DSL supports association lists, which are much like dictionaries.  They are implimented as a list of dotted pairs, e.g. </p>
+
+<pre>((name . "Dave") (language . "Lisp"))</pre>
+
+<p>Use of association lists are covered later in the section on builtins.</p>
 
 <h2>Runtime</h2>
 
@@ -213,8 +220,7 @@ if (<b>[DSL valueOf:gameName]</b> == nil) {
 }
 </pre></blockquote>
 
-<h3><code>- (DslCons*) makeList:(DslExpression*)firstObject,
-    ...</code></h3>
+<h3><code>- (DslCons*) makeList:(DslExpression*)firstObject, ...</code></h3>
 
 <p>Creates a list containing the arguments.  Note that the arguments
   need to be terminated by nil.</p>
@@ -229,14 +235,12 @@ while ([data notNil]) {
 }
 </pre></blockquote>
 
-<h3><code>- (DslExpression*) apply:(DslFunction*)func
-    to:(DslCons*)args</code></h3>
+<h3><code>- (DslExpression*) apply:(DslFunction*)func to:(DslCons*)args</code></h3>
 
 <p>Very simply, invoke the given function, passing it the provided
   list as it's arguments. This can be seen in the example for <code>makelist:</code>.</p>
 
-<h3><code>- (DslExpression*) getNth:(int)n
-    from:(DslCons*)list</code></h3>
+<h3><code>- (DslExpression*) getNth:(int)n from:(DslCons*)list</code></h3>
 
 <p>Retrieve the nth item in a list.</p>
 
@@ -245,8 +249,7 @@ while ([data notNil]) {
 <p>Get the length if a list, returned as an <code>int</code> rather
   than as a lisp integer object.</p>
 
-<h3><code>- (DslExpression*)
-    loadFile:(NSString*)filebasename</code></h3>
+<h3><code>- (DslExpression*) loadFile:(NSString*)filebasename</code></h3>
 
 <p>Load a file of lisp code.  This is an ObjectiveC access point to
   the <code>load</code> function described below.</p>
@@ -506,13 +509,17 @@ defined/builtin function of a lambda.</p>
 
 <h3> <code>reduce</code> aka <code>inject</code></h3>
 
-<p><code>(reduce <em>FUNCTION</em> <em>SEED</em> <em>LIST</em>)</code>
-  => <code><em>VALUE</em></code></p>
+<p><code>(reduce <em>FUNCTION</em> <em>SEED</em> <em>LIST</em>)</code> => <code <em>VALUE</em></code></p>
+
+<p><code>(reduce <em>FUNCTION</em> <em>LIST</em>)</code> => <code <em>VALUE</em></code></p>
 
 <p><code>(reduce + 0 '(1 2 3 4))</code> => <code><em>10</em></code><br/>
 <code>(reduce + '(1 2 3 4))</code> => <code><em>10</em></code><br/>
 <code>(reduce (lambda (a b) (if (< a b) a b)) '(7 2 8 4 2 9))</code> => <code><em>2</em></code></p>
 
+<p>The second form uses the first element of the list as it's seed value.  I.e. it is equivalent to:</p>
+
+<p><code>(reduce <em>FUNCTION</em> (car <em>LIST</em>) (cdr <em>LIST</em>))</code> => <code <em>VALUE</em></code></p>
 
 <h3><code>any?</code> aka <code>detect</code></h3>
 
@@ -694,7 +701,12 @@ all evaluate to boolean value.</p>
 <p>The file must have the extension of <code>lsp</code> and be a
   project resource. It is located using:</p>
 
-<blockquote><code>[[NSBundle mainBundle] pathForResource:filebasename ofType:@"lsp" inDirectory:nil]</code></blockquote>
+<blockquote><pre>
+[[NSBundle mainBundle] 
+    pathForResource:filebasename 
+    ofType:@"lsp" 
+    inDirectory:nil]
+</pre></blockquote>
 
 </body>
 </html>
