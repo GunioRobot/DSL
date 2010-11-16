@@ -856,10 +856,8 @@ DslNil *NIL_CONS = nil;
 }
 
 
-- (DslExpression*) loadFile:(NSString*)filebasename
+- (DslExpression*) loadString:(InputStream*)input
 {
-  NSString *pathName = [[NSBundle mainBundle] pathForResource:filebasename ofType:@"lsp" inDirectory:nil];
-  InputStream *input = [InputStream withFile:pathName];
   if (input != nil) {
     DslCons *sexprs = [parser parse:input];
     return [self evalEach:sexprs];
@@ -869,12 +867,25 @@ DslNil *NIL_CONS = nil;
 }
 
 
+- (DslExpression*) loadFile:(NSString*)filebasename
+{
+  NSString *pathName = [[NSBundle mainBundle] pathForResource:filebasename ofType:@"lsp" inDirectory:nil];
+  InputStream *input = [InputStream withFile:pathName];
+  return [self loadString:input];
+}
+
+
 - (DslExpression*) load:(DslCons*)args
 {
   DslString *filename = [args.head eval];
   return [self loadFile:[filename stringValue]];
 }
 
+
+- (DslExpression*) exec:(NSString*)code
+{
+  return [self loadString:[InputStream withString:code]];
+}
 
 
 @end

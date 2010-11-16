@@ -32,7 +32,7 @@ extern DslNil *NIL_CONS;
   SymbolTable *symbolTable;
 }
 
-
++ (void) initialize;
 - (Dsl*) init;
 
 - (DslExpression*) bindName:(NSString*)name toTarget:(NSObject*)target andSelector:(SEL)selector;
@@ -108,5 +108,5 @@ extern DslNil *NIL_CONS;
 - (DslBoolean*) getBoolean:(DslCons*)args;
   
 - (DslExpression*) loadFile:(NSString*)filebasename;
-
+- (DslExpression*) exec:(NSString*)code;
 @end
