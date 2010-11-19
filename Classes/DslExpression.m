@@ -57,22 +57,6 @@ int indentLevel = 0;
 }
 
 
-
-- (DslExpression*) car    { return nil; }
-- (DslExpression*) cadr   { return nil; }
-- (DslExpression*) caddr  { return nil; }
-- (DslExpression*) cadar  { return nil; }
-- (DslExpression*) cadddr { return nil; }
-- (DslExpression*) caar   { return nil; }
-- (DslExpression*) caadr  { return nil; }
-- (DslExpression*) cdr    { return nil; }
-- (DslExpression*) cddr   { return nil; }
-- (DslExpression*) cdddr  { return nil; }
-- (DslExpression*) cddddr { return nil; }
-- (DslExpression*) cdar   { return nil; }
-- (DslExpression*) cdadr  { return nil; }
-
-
 - (DslExpression*) eval
 {
   [self logEval:self];

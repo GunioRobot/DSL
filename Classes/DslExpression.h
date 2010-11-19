@@ -24,20 +24,6 @@
 - (DslExpression*) eval;
 - (DslExpression*) evalEach:(DslCons*)bindings;
 
-- (DslExpression*) car;
-- (DslExpression*) cadr;
-- (DslExpression*) caddr;
-- (DslExpression*) cadar;
-- (DslExpression*) cadddr;
-- (DslExpression*) caar;
-- (DslExpression*) caadr;
-- (DslExpression*) cdr;
-- (DslExpression*) cddr;
-- (DslExpression*) cdddr;
-- (DslExpression*) cddddr;
-- (DslExpression*) cdar;
-- (DslExpression*) cdadr;
-
 - (NSString*) toString;
 - (NSString*) toStringHelper;
 
