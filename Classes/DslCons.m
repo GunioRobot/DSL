@@ -79,17 +79,6 @@
 }
 
 
-//- (DslCons*) makeList:(DslCons*)bindings
-//{
-//  DslCons *cell = [DslCons withHead:[[self car] eval:bindings]];
-//  if ([self cdr]) {
-//    cell.tail = [(DslCons*)[self cdr] makeList:bindings];
-//  }
-//  return cell;
-//}
-//
-
-
 - (BOOL) booleanValue
 {
   return YES;
