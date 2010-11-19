@@ -137,6 +137,21 @@ DslNil *NIL_CONS = nil;
 }
 
 
+- (DslCons*) arrayToBoxedList:(NSArray*)anArray
+{
+  DslCons *list = [DslCons withHead:[DslObject withObject:[anArray objectAtIndex:0]]];
+  DslCons *tail = list;
+  int limit = [anArray count];
+  
+  for (int index = 1; index < limit; index++) {
+    tail.tail = [DslCons withHead:[DslObject withObject:[anArray objectAtIndex:index]]];
+    tail = (DslCons*)tail.tail;
+  }
+  
+  return list;
+}
+
+
 - (DslCons*) makeList:(DslExpression*)firstObject, ...
 {
   va_list argumentList;

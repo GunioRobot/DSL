@@ -39,6 +39,7 @@ extern DslNil *NIL_CONS;
 - (DslExpression*) parse:(NSString*)codeString;
 
 - (DslCons*) arrayToList:(NSArray*)anArray;
+- (DslCons*) arrayToBoxedList:(NSArray*)anArray;
 - (DslCons*) makeList:(DslExpression*)first, ...;
 - (DslSymbol*) internalIntern:(NSString *)name;
 - (DslExpression*) bind:(DslSymbol*)symbol to:(DslExpression*)value;
