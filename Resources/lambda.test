@@ -12,7 +12,7 @@ Applying Multiple Argument Lambda
 ----
 Simple Defun
 
-(do 
+(do
   (defun foo ()
          42)
   (foo))

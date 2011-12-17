@@ -14,14 +14,14 @@
 
 - (void) setUp
 {
-  p = [[DslParser alloc] init];  
+  p = [[DslParser alloc] init];
 }
 
 - (void) testNumber
 {
   DslExpression *e = [p parseAtomicExpression:[InputStream withString:@"0"]];
   STAssertTrue([e isMemberOfClass:[DslNumber class]], @"expected a DslNumber");
-  
+
 }
 
 

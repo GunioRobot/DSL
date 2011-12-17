@@ -13,7 +13,7 @@
 
 - (void) setUp
 {
-  p = [[DslParser alloc] init];  
+  p = [[DslParser alloc] init];
 }
 
 
@@ -21,13 +21,13 @@
 - (void) testEmptyString {
   DslExpression *e = [p parseString:[InputStream withString:@"\""]];
   STAssertTrue([e isMemberOfClass:[DslString class]], @"expected a DslString");
-  STAssertEqualObjects([e stringValue], @"", nil);  
+  STAssertEqualObjects([e stringValue], @"", nil);
 }
 
 
 - (void) testNonEmptyString {
   DslExpression *e = [p parseString:[InputStream withString:@"Testing\""]];
-  STAssertEqualObjects([e stringValue], @"Testing", nil);  
+  STAssertEqualObjects([e stringValue], @"Testing", nil);
 }
 
 

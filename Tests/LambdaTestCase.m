@@ -13,7 +13,7 @@
 
 - (void) setUp
 {
-  p = [[DslParser alloc] init];  
+  p = [[DslParser alloc] init];
 }
 
 
@@ -78,7 +78,7 @@
   STAssertNotNil(result, nil);
   STAssertTrue([result isKindOfClass:[DslNumber class]], nil);
   STAssertEquals([result intValue], 42, nil);
-}  
+}
 
 
 - (void) testApplyingMultipleArgumentLambda
@@ -87,7 +87,7 @@
   STAssertNotNil(result, nil);
   STAssertTrue([result isKindOfClass:[DslNumber class]], nil);
   STAssertEquals([result intValue], 42, nil);
-}  
+}
 
 
 @end

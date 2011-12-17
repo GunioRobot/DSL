@@ -11,7 +11,7 @@
 #import "Tester.h"
 
 int main(int argc, char *argv[]) {
-    
+
   @try {
     NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
     [Dsl initialize];

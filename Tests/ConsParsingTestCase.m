@@ -14,7 +14,7 @@
 
 - (void) setUp
 {
-  p = [[DslParser alloc] init];  
+  p = [[DslParser alloc] init];
 }
 
 
@@ -82,17 +82,17 @@
   STAssertNotNil(e.head, nil);
   STAssertTrue([e.head isMemberOfClass:[DslIdentifier class]], @"expected a DslIdentifier");
   STAssertEqualObjects([e.head identifierValue], @"a", nil);
-  
+
   STAssertNotNil(e.tail, nil);
   STAssertNotNil(e.tail.head, nil);
   STAssertTrue([e.tail.head isMemberOfClass:[DslNumber class]], @"expected a DslNumber");
   STAssertEquals([e.tail.head intValue], 2, nil);
-  
+
   STAssertNotNil(e.tail.tail, nil);
   STAssertNotNil(e.tail.tail.head, nil);
   STAssertTrue([e.tail.tail.head isMemberOfClass:[DslIdentifier class]], @"expected a DslIdentifier");
   STAssertEqualObjects([e.tail.tail.head identifierValue], @"b", nil);
-  
+
   STAssertNotNil(e.tail.tail.tail, nil);
   STAssertNotNil(e.tail.tail.tail.head, nil);
   STAssertTrue([e.tail.tail.tail.head isMemberOfClass:[DslNumber class]], @"expected a DslNumber");
@@ -111,7 +111,7 @@
   STAssertNotNil(e.head, nil);
   STAssertTrue([e.head isMemberOfClass:[DslIdentifier class]], @"expected a DslIdentifier");
   STAssertEqualObjects([e.head identifierValue], @"a", nil);
-  
+
   STAssertNotNil(e.tail, nil);
   STAssertNotNil(e.tail.head, nil);
   STAssertTrue([e.tail.head isMemberOfClass:[DslCons class]], @"expected a DslCons");
@@ -119,7 +119,7 @@
   STAssertNotNil(e.tail.tail, nil);
   STAssertNotNil(e.tail.tail.head, nil);
   STAssertTrue([e.tail.tail.head isMemberOfClass:[DslIdentifier class]], @"expected a DslIdentifier");
-  STAssertEqualObjects([e.tail.tail.head identifierValue], @"b", nil);  
+  STAssertEqualObjects([e.tail.tail.head identifierValue], @"b", nil);
 }
 
 

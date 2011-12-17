@@ -107,7 +107,7 @@ extern DslNil *NIL_CONS;
 - (DslString*) getString:(DslCons*)args;
 - (DslNumber*) getInteger:(DslCons*)args;
 - (DslBoolean*) getBoolean:(DslCons*)args;
-  
+
 - (DslExpression*) loadFile:(NSString*)filebasename;
 - (DslExpression*) exec:(NSString*)code;
 @end

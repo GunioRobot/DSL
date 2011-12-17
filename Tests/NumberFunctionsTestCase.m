@@ -13,7 +13,7 @@
 
 - (void) setUp
 {
-  p = [[DslParser alloc] init];  
+  p = [[DslParser alloc] init];
 }
 
 
@@ -23,7 +23,7 @@
   STAssertNotNil(result, nil);
   STAssertTrue([result isMemberOfClass:[DslBoolean class]], nil);
   STAssertTrue([result booleanValue], nil);
-}  
+}
 
 
 - (void) testLessThanFalse
@@ -32,7 +32,7 @@
   STAssertNotNil(result, nil);
   STAssertTrue([result isMemberOfClass:[DslBoolean class]], nil);
   STAssertFalse([result booleanValue], nil);
-}  
+}
 
 
 - (void) testGreaterThanTrue
@@ -41,7 +41,7 @@
   STAssertNotNil(result, nil);
   STAssertTrue([result isMemberOfClass:[DslBoolean class]], nil);
   STAssertTrue([result booleanValue], nil);
-}  
+}
 
 
 - (void) testGreaterThanFalse
@@ -50,7 +50,7 @@
   STAssertNotNil(result, nil);
   STAssertTrue([result isMemberOfClass:[DslBoolean class]], nil);
   STAssertFalse([result booleanValue], nil);
-}  
+}
 
 
 - (void) testEqualToTrue
@@ -59,7 +59,7 @@
   STAssertNotNil(result, nil);
   STAssertTrue([result isMemberOfClass:[DslBoolean class]], nil);
   STAssertTrue([result booleanValue], nil);
-}  
+}
 
 
 - (void) testEqualToFalse
@@ -68,7 +68,7 @@
   STAssertNotNil(result, nil);
   STAssertTrue([result isMemberOfClass:[DslBoolean class]], nil);
   STAssertFalse([result booleanValue], nil);
-}  
+}
 
 
 @end

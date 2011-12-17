@@ -44,7 +44,7 @@
 {
   BOOL value = NO;
   unichar nextChar = [input nextChar];
-  
+
   if (nextChar == 't') {
     value = YES;
   } else {
@@ -83,13 +83,13 @@
 
 - (BOOL) isSpecialIdentifierCharacter:(unichar)nextChar
 {
-  return nextChar == '+' || 
-         nextChar == '-' || 
-         nextChar == '*' || 
-         nextChar == '/' || 
-         nextChar == '%' || 
-         nextChar == '<' || 
-         nextChar == '>' || 
+  return nextChar == '+' ||
+         nextChar == '-' ||
+         nextChar == '*' ||
+         nextChar == '/' ||
+         nextChar == '%' ||
+         nextChar == '<' ||
+         nextChar == '>' ||
          nextChar == '=';
 }
 
@@ -138,7 +138,7 @@
 {
   DslCons *head = [DslCons empty];
   DslCons *tail = head;
-  
+
   while ([input nextChar] != ')') {
     if ([input atEnd]) {
       return NIL_CONS;
@@ -184,13 +184,13 @@
 - (DslCons*) parse:(InputStream *)input
 {
   NSMutableArray *resultSexprs = [NSMutableArray arrayWithCapacity:2];
-  
+
   DslExpression *nextSexpr = [self parseExpression:input];
   while (nextSexpr != nil) {
     [resultSexprs addObject:nextSexpr];
     nextSexpr = [self parseExpression:input];
   }
-  
+
   return [DSL arrayToList:resultSexprs];
 }
 

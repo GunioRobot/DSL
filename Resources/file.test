@@ -1,6 +1,6 @@
 Simple single sexpr file
 
-(do 
+(do
   (load "simple-test")
   (x))
 
@@ -8,7 +8,7 @@ Simple single sexpr file
 ----
 Using a symbol for filename
 
-(do 
+(do
   (load 'simple-test)
   (x))
 

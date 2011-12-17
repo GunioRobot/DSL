@@ -154,7 +154,7 @@ DslBuiltinFunction to point to your object/method.  You then must
 <blockquote>
 <pre>
 [DSL bindName:@"car"
-     toTarget:self 
+     toTarget:self
      andSelector:@selector(car:)]];
 </pre>
 </blockquote>
@@ -202,7 +202,7 @@ The main use for this is to set up bindings using the next function.</p>
 <p>Bind a value to a symbol in the most local scope.  You can use this
 (in conjunction with <code>internalIntern</code>
 and <code>DslObject</code>) to make objects from your system available
-in lisp. 
+in lisp.
 
 <h3><code>- (DslExpression*) valueOf:(DslSymbol*)symbol</code></h3>
 
@@ -276,7 +276,7 @@ Applying Multiple Argument Lambda
 ----
 Simple Defun
 
-(do 
+(do
   (defun foo ()
          42)
   (foo))
@@ -369,7 +369,7 @@ Finally, a summary is logged:
 <code>(defun <em>SYMBOL</em> (<em>PARAMS</em>) <em>BODY</em>)</code>
 
 <pre>
-(defun double (x) 
+(defun double (x)
        (+ x x))
 </pre>
 
@@ -413,9 +413,9 @@ is sometimes useful explicitly.
 
 <p><pre>
 (let ((x 5)
-      (y 2)) 
+      (y 2))
      (+ x y))
-</pre> 
+</pre>
 <p>=> <em>7</em></p>
 
 <p><code>let</code> creates a local scope in which to place the
@@ -484,7 +484,7 @@ caaar/caadr/cadar/caddr/cdaar/cdadr/cddar/cddr</code></h3>
 
 <p>
 <pre>
-(map (lambda (* 2 x)) 
+(map (lambda (* 2 x))
      '(1 2 3))
 </pre>
  => <code><em>(2 4 6)</em></code>
@@ -584,7 +584,7 @@ defined/builtin function of a lambda.</p>
 
 <h3><code>or, and, not</code></h3>
 
-logical functions 
+logical functions
 
 <p><code>(and x y ...)</code><br/>
 <code>(or x y ...)</code><br/>
@@ -702,9 +702,9 @@ all evaluate to boolean value.</p>
   project resource. It is located using:</p>
 
 <blockquote><pre>
-[[NSBundle mainBundle] 
-    pathForResource:filebasename 
-    ofType:@"lsp" 
+[[NSBundle mainBundle]
+    pathForResource:filebasename
+    ofType:@"lsp"
     inDirectory:nil]
 </pre></blockquote>
 

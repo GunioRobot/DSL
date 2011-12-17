@@ -25,7 +25,7 @@
   } else {
     return nil;
   }
-  
+
 }
 
 + (InputStream*) withString:(NSString*)str

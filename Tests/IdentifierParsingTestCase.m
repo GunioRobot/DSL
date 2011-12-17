@@ -13,7 +13,7 @@
 
 - (void) setUp
 {
-  p = [[DslParser alloc] init];  
+  p = [[DslParser alloc] init];
 }
 
 
@@ -21,7 +21,7 @@
 {
   DslExpression *e = [p parseIdentifier:[InputStream withString:@"test"]];
   STAssertTrue([e isMemberOfClass:[DslSymbol class]], @"expected a Dsldentifier");
-  STAssertEqualObjects([e identifierValue], @"test", nil);  
+  STAssertEqualObjects([e identifierValue], @"test", nil);
 }
 
 
@@ -29,7 +29,7 @@
 {
   DslExpression *e = [p parseIdentifier:[InputStream withString:@"test-dash"]];
   STAssertTrue([e isMemberOfClass:[DslSymbol class]], @"expected a Dsldentifier");
-  STAssertEqualObjects([e identifierValue], @"test-dash", nil);  
+  STAssertEqualObjects([e identifierValue], @"test-dash", nil);
 }
 
 
@@ -37,7 +37,7 @@
 {
   DslExpression *e = [p parseSpecialIdentifier:[InputStream withString:@"+"]];
   STAssertTrue([e isMemberOfClass:[DslSymbol class]], @"expected a Dsldentifier");
-  STAssertEqualObjects([e identifierValue], @"+", nil);  
+  STAssertEqualObjects([e identifierValue], @"+", nil);
 }
 
 
@@ -45,7 +45,7 @@
 {
   DslExpression *e = [p parseSpecialIdentifier:[InputStream withString:@"-"]];
   STAssertTrue([e isMemberOfClass:[DslSymbol class]], @"expected a Dsldentifier");
-  STAssertEqualObjects([e identifierValue], @"-", nil);  
+  STAssertEqualObjects([e identifierValue], @"-", nil);
 }
 
 
@@ -54,7 +54,7 @@
   DslExpression *e = [p parseExpression:[InputStream withString:@"'"]];
   STAssertTrue([e isMemberOfClass:[DslCons class]], @"expected a DslCons");
   STAssertTrue([e.head isMemberOfClass:[DslSymbol class]], @"expected a DslIdentifier");
-  STAssertEqualObjects([e.head identifierValue], @"quote", nil);  
+  STAssertEqualObjects([e.head identifierValue], @"quote", nil);
 }
 
 

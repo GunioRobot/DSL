@@ -14,23 +14,23 @@
 
 - (void) setUp
 {
-  p = [[DslParser alloc] init];  
+  p = [[DslParser alloc] init];
 }
 
 
-- (void) testTrue 
+- (void) testTrue
 {
   DslExpression *e = [p parseBoolean:[InputStream withString:@"t"]];
   STAssertTrue([e isMemberOfClass:[DslBoolean class]], @"expected a DslBoolean");
-  STAssertTrue([e booleanValue], nil);  
+  STAssertTrue([e booleanValue], nil);
 }
 
 
-- (void) testFalse 
+- (void) testFalse
 {
   DslExpression *e = [p parseBoolean:[InputStream withString:@"f"]];
   STAssertTrue([e isMemberOfClass:[DslBoolean class]], @"expected a DslBoolean");
-  STAssertFalse([e booleanValue], nil);  
+  STAssertFalse([e booleanValue], nil);
 }
 
 

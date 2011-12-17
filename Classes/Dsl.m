@@ -106,8 +106,8 @@ DslNil *NIL_CONS = nil;
   [self bindName:@"assoc"       toTarget:self andSelector:@selector(assoc:)];
   [self bindName:@"rassoc"      toTarget:self andSelector:@selector(rassoc:)];
   [self bindName:@"load"        toTarget:self andSelector:@selector(load:)];
-  
-  return self;  
+
+  return self;
 }
 
 
@@ -128,12 +128,12 @@ DslNil *NIL_CONS = nil;
   DslCons *list = [DslCons withHead:[anArray objectAtIndex:0]];
   DslCons *tail = list;
   int limit = [anArray count];
-  
+
   for (int index = 1; index < limit; index++) {
     tail.tail = [DslCons withHead:[anArray objectAtIndex:index]];
     tail = (DslCons*)tail.tail;
   }
-  
+
   return list;
 }
 
@@ -143,12 +143,12 @@ DslNil *NIL_CONS = nil;
   DslCons *list = [DslCons withHead:[DslObject withObject:[anArray objectAtIndex:0]]];
   DslCons *tail = list;
   int limit = [anArray count];
-  
+
   for (int index = 1; index < limit; index++) {
     tail.tail = [DslCons withHead:[DslObject withObject:[anArray objectAtIndex:index]]];
     tail = (DslCons*)tail.tail;
   }
-  
+
   return list;
 }
 
@@ -159,7 +159,7 @@ DslNil *NIL_CONS = nil;
   DslExpression *eachObject;
   DslCons *list = [DslCons withHead:firstObject];
   DslCons *tail = list;
-  
+
   va_start(argumentList, firstObject);
   while (eachObject = va_arg(argumentList, DslExpression*)) {
     tail.tail = [DslCons withHead:eachObject];
@@ -252,7 +252,7 @@ DslNil *NIL_CONS = nil;
 {
   DslCons *bindings = (DslCons*)args.head;
   DslCons *body = (DslCons*)args.tail;
-  
+
   [self pushLocalBindings];
   while ([bindings notNil]) {
     DslCons *binding = (DslCons*)bindings.head;
@@ -285,13 +285,13 @@ DslNil *NIL_CONS = nil;
   if ([args isNil]) return NIL_CONS;
   DslCons *result = [DslCons empty];
   DslCons *tail = result;
-  
+
   while ([args notNil]) {
     tail.tail = [DslCons withHead:[args.head eval]];
     tail = (DslCons*)tail.tail;
     args = (DslCons*)args.tail;
   }
-  
+
   return (DslCons*)result.tail;
 }
 
@@ -488,12 +488,12 @@ DslNil *NIL_CONS = nil;
 {
   if (args == nil) return [DslCons empty];
   if ([self internalLength:args] != 2) return [DslCons empty];
-  
+
   DslFunction *function = (DslFunction*)[self eval:args.head];
   DslCons *data = (DslCons*)[self eval:(DslCons*)args.tail.head];
   DslCons *result = [DslCons empty];
   DslCons *trailingCell = result;
-  
+
   while (![data isNil]) {
     trailingCell.tail = [DslCons withHead:[self apply:function to:[DslCons withHead:data.head]]];
     trailingCell = (DslCons*)trailingCell.tail;
@@ -509,12 +509,12 @@ DslNil *NIL_CONS = nil;
 {
   if (args == nil) return [DslCons empty];
   if ([self internalLength:args] != 2) return [DslCons empty];
-  
+
   DslFunction *predicate = (DslFunction*)[args.head eval];
   DslCons *data = (DslCons*)[args.tail.head eval];
   DslCons *result = [DslCons empty];
   DslCons *trailingCell = result;
-  
+
   while ([data notNil]) {
     if ([[self apply:predicate to:[DslCons withHead:data.head]] booleanValue]) {
       trailingCell.tail = [DslCons withHead:data.head];
@@ -532,12 +532,12 @@ DslNil *NIL_CONS = nil;
 {
   if ([args isNil]) return NIL_CONS;
   if ([self internalLength:args] == 1) return NIL_CONS;
-  
+
 
   DslFunction *function = (DslFunction*)[self eval:args.head];
   DslExpression *seed = [self eval:args.tail.head];
   DslCons *data;
-  
+
   if ([self internalLength:args] == 2) {
     if ([seed isList]) {
       data = seed.tail;
@@ -548,9 +548,9 @@ DslNil *NIL_CONS = nil;
   } else {
     data = (DslCons*)[self eval:(DslCons*)args.tail.tail.head];
   }
-  
+
   DslExpression *result = seed;
-  
+
   while ([data notNil]) {
     result = [self apply:function to:[self makeList:result, data.head, nil]];
     data = (DslCons*)data.tail;
@@ -571,7 +571,7 @@ DslNil *NIL_CONS = nil;
     if ([result booleanValue]) return result;
     data = (DslCons*)data.tail;
   }
-  return [DslBoolean withFalse];    
+  return [DslBoolean withFalse];
 }
 
 
@@ -579,7 +579,7 @@ DslNil *NIL_CONS = nil;
 {
   if ([args isNil]) return [DslBoolean withTrue];
   if ([self internalLength:args] != 2) return [DslBoolean withFalse];
-  
+
   DslFunction *predicate = (DslFunction*)[args.head eval];
   DslCons *data = (DslCons*)[args.tail.head eval];
   while ([data notNil]) {
@@ -587,14 +587,14 @@ DslNil *NIL_CONS = nil;
     if (![result booleanValue]) return result;
     data = (DslCons*)data.tail;
   }
-  return [DslBoolean withTrue];    
+  return [DslBoolean withTrue];
 }
 
 
 - (DslExpression*) cond:(DslCons*)args
 {
   if (args == nil) return NIL_CONS;
-  
+
   DslCons *pairs = args;
   while ([pairs notNil]) {
     if ([[self eval:pairs.head.head] booleanValue]) {
@@ -609,7 +609,7 @@ DslNil *NIL_CONS = nil;
 - (DslExpression*) if:(DslCons*)args
 {
   if ([args isNil]  || [args.head isNil]) return NIL_CONS;
-  
+
   DslExpression *condition = [args.head eval];
   if ([condition booleanValue]) {
     return ([args.tail isNil] || [args.tail.head isNil]) ? NIL_CONS : [args.tail.head eval];
@@ -622,26 +622,26 @@ DslNil *NIL_CONS = nil;
 - (DslBoolean*) logicalOr:(DslCons*)args
 {
   if (args == nil) return [DslBoolean withFalse];
-  
+
   while ([args notNil]) {
     DslBoolean *result = (DslBoolean*)[args.head eval];
     if ([result booleanValue]) return result;
     args = (DslCons*)args.tail;
   }
-  return [DslBoolean withFalse];  
+  return [DslBoolean withFalse];
 }
 
 
 - (DslBoolean*) logicalAnd:(DslCons*)args
 {
   if (args == nil) return [DslBoolean withTrue];
-  
+
   while ([args notNil]) {
     DslBoolean *result = (DslBoolean*)[args.head eval];
     if (![result booleanValue]) return result;
     args = (DslCons*)args.tail;
   }
-  return [DslBoolean withTrue];  
+  return [DslBoolean withTrue];
 }
 
 
@@ -654,7 +654,7 @@ DslNil *NIL_CONS = nil;
 - (DslNumber*) add:(DslCons*)args
 {
   if (args == nil) return [DslNumber numberWith:0];
-  
+
   DslCons *arg = args;
   int sum = 0;
   while ([arg notNil]) {
@@ -668,7 +668,7 @@ DslNil *NIL_CONS = nil;
 - (DslNumber*) subtract:(DslCons*)args
 {
   if (args == nil) return [DslNumber numberWith:0];
-  
+
   DslCons *arg = args;
   BOOL first = YES;
   int result = 0;
@@ -688,7 +688,7 @@ DslNil *NIL_CONS = nil;
 - (DslNumber*) multiply:(DslCons*)args
 {
   if (args == nil) return [DslNumber numberWith:0];
-  
+
   DslCons *arg = args;
   int product = 1;
   while (![arg isNil]) {
@@ -702,7 +702,7 @@ DslNil *NIL_CONS = nil;
 - (DslNumber*) divide:(DslCons*)args
 {
   if (args == nil) return [DslNumber numberWith:0];
-  
+
   DslCons *arg = args;
   BOOL first = YES;
   int quotient = 0;
@@ -723,7 +723,7 @@ DslNil *NIL_CONS = nil;
 {
   if (args == nil) return [DslNumber numberWith:0];
   if ([self internalLength:args] != 2) return [DslNumber numberWith:0];
-  
+
   DslExpression *lval = args.head;
   DslExpression *rval = args.tail.head;
 
@@ -735,7 +735,7 @@ DslNil *NIL_CONS = nil;
 {
   if (args == nil) return [DslBoolean withFalse];
   if ([self internalLength:args] != 2) return [DslBoolean withFalse];
-  
+
   DslExpression *lval = [args.head eval];
   DslExpression *rval = [args.tail.head eval];
 
@@ -747,10 +747,10 @@ DslNil *NIL_CONS = nil;
 {
   if (args == nil) return [DslBoolean withFalse];
   if ([self internalLength:args] != 2) return [DslBoolean withFalse];
-  
+
   DslExpression *lval = [args.head eval];
   DslExpression *rval = [args.tail.head eval];
-  
+
   return [DslBoolean booleanWith:([lval intValue] > [rval intValue])];
 }
 
@@ -759,10 +759,10 @@ DslNil *NIL_CONS = nil;
 {
   if (args == nil) return [DslBoolean withFalse];
   if ([self internalLength:args] != 2) return [DslBoolean withFalse];
-  
+
   DslExpression *lval = [args.head eval];
   DslExpression *rval = [args.tail.head eval];
-  
+
   return [DslBoolean booleanWith:([lval intValue] == [rval intValue])];
 }
 
@@ -771,10 +771,10 @@ DslNil *NIL_CONS = nil;
 {
   if (args == nil) return [DslBoolean withFalse];
   if ([self internalLength:args] != 2) return [DslBoolean withFalse];
-  
+
   DslExpression *lval = [args.head eval];
   DslExpression *rval = [args.tail.head eval];
-  
+
   return [DslBoolean booleanWith:[[lval stringValue] isEqualToString:[rval stringValue]]];
 }
 

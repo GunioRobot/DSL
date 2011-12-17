@@ -53,13 +53,13 @@
 - (void) endRun
 {
   NSTimeInterval duration = -[startTime timeIntervalSinceNow];
-  
+
   NSLog(@"------------");
   NSLog(@"Failures");
   for (FailureReport *fail in failures) {
     [fail report];
   }
-  
+
   NSLog(@"------------");
   NSLog(@"Time: %f sec, %d Tests, %d Passes, %d Failures\n", duration, numberOfTests, numberOfPasses, [failures count]);
 }
